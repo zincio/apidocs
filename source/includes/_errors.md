@@ -1,20 +1,32 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-The Kittn API uses the following error codes:
-
+The Zinc API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
-406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
-418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+invalid_json | The JSON in your request could not be parsed.
+internal_error | Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.
+invalid_client_token |  Your client token is invalid.
+product_unavailable | The product_id you used is being phased out by the retailer -- please update your product_id database accordingly. (On Amazon, this means that the offers page at [amazon_domain]/gp/offer-listing/[your_ASIN] has a more recent ASIN for that same product).
+request_processing | Request is currently processing and will complete soon.
+invalid_request_id | The provided request_id is invalid.
+invalid_request | Validation failed on the request.
+max_quantity_exceeded | You have exceeded the maximum quantity available for a specific product.
+invalid_shipping_method | The shipping method you selected was not valid.
+shipping_address_refused | The shipping address you provided was refused by the retailer.
+billing_address_refused | The billing address you provided was refused by the retailer.
+credit_card_declined | The credit card you entered was declined.
+invalid_security_code | The security code you entered was declined.
+invalid_card_number | The credit card number you entered is not valid.
+brand_not_accepted | Your credit card brand is not accepted with this merchant.
+invalid_login_credentials | The email and password you entered were incorrect.
+duplicate_order | This order is a duplicate.
+add_on_item | Add-on items cannot be ordered individually.
+invalid_promo_code | One of the promotion code you entered was not valid.
+no_two_day_shipping | Two day shipping (or faster) is not available for the item(s) you selected.
+no_free_shipping | Free shipping is not available for the item(s) you selected.
+invalid_quantity | The quantity for one of the products does not match the one available on the retailer.
+additional_information_required | The retailer asked for additional account verification questions. If using the API, please add a field 'phone_number' in the billing address that matches your billing telephone number.
+payment_info_problem | There was a problem with your payment information (likely not enough gift balance).
+expired_product_id | The product_id you used is no longer supported by the retailer.
+insufficient_variants | You did not select all required variants for a product.
