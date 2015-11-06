@@ -8,6 +8,7 @@ toc_footers:
   - <a href='http://dash.zinc.io'>Sign Up for a Zinc account</a>
 
 includes:
+  - orders
   - errors
 
 search: true
