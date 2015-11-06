@@ -1,9 +1,75 @@
 # Orders
 
-## The order object
+## Create an order
+
+> Example Request
 
 ```shell
-curl "https://api.zinc.io/
+curl -X POST "https://api.zinc.io/v1/orders" \
+  -u client_token: \
+  -d '{
+  "retailer": "amazon",
+  "products": [
+    {
+      "product_id": "0923568964", 
+      "quantity": 1,
+      "seller_selection_criteria": [
+        {
+          "condition_in": ["New"],
+          "international": false,
+          "max_shipping_days": 5
+        }
+      ]
+    }
+  ],
+  "max_price": 2300,
+  "shipping_address": {
+    "first_name": "Tim",
+    "last_name": "Beaver",
+    "address_line1": "77 Massachusetts Avenue",
+    "address_line2": "",
+    "zip_code": "02139",
+    "city": "Cambridge", 
+    "state": "MA",
+    "country": "US",
+    "phone_number": "5551230101"
+  },
+  "is_gift": true,
+  "gift_message": "Here is your package, Tim! Enjoy!",
+  "shipping_method": "cheapest",
+  "payment_method": {
+    "name_on_card": "Ben Bitdiddle",
+    "number": "5555555555554444",
+    "security_code": "123",
+    "expiration_month": 1,
+    "expiration_year": 2015,
+    "use_gift": false
+  },
+  "billing_address": {
+    "first_name": "William", 
+    "last_name": "Rogers",
+    "address_line1": "84 Massachusetts Ave",
+    "address_line2": "",
+    "zip_code": "02139",
+    "city": "Cambridge", 
+    "state": "MA",
+    "country": "US",
+    "phone_number": "5551234567"
+  },
+  "retailer_credentials": {
+    "email": "timbeaver@gmail.com",
+    "password": "myRetailerPassword"
+  },
+  "webhooks": {
+    "order_placed": "http://mywebsite.com/zinc/order_placed",
+    "order_failed": "http://mywebsite.com/zinc/order_failed",
+    "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained"
+  },
+  "client_notes": {
+    "our_internal_order_id": "abc123",
+    "any_other_field": ["any value"]
+  }
+}'
 ```
 
 ### Required Attributes
@@ -30,3 +96,4 @@ client_notes | Object | TODO
 promo_codes | Array | TODO
 ignore_invalid_promo_code | Boolean | TODO
 po_number | Number | TODO
+
