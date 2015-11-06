@@ -72,6 +72,41 @@ curl -X POST "https://api.zinc.io/v1/orders" \
 }'
 ```
 
+> Example Response
+
+```shell
+{
+  "_type" : "order_response",
+  "price_components" : {
+    "shipping" : 0,
+    "subtotal" : 1999,
+    "tax" : 0,
+    "total" : 1999
+  },
+  "merchant_order_ids" : [
+    {
+      "product_id" : "B000000123",
+      "merchant_order_id" : "112-1234567-7272727",
+      "merchant" : "amazon",
+      "account" : "timbeaver@gmail.com",
+      "placed_at" : ISODate("2014-07-02T23:51:08.366Z")
+    }
+  ],
+  "tracking" : [
+    {
+      "product_id" : "0923568964",
+      "merchant_order_id" : "112-1234567-7272727",
+      "carrier" : "Fedex",
+      "tracking_number" : "9261290100129790891234",
+      "obtained_at" : ISODate("2014-07-03T23:22:48.165Z")
+    }
+  ],
+  "request" : {
+    ...
+  }
+}
+```
+
 ### Required Attributes
 
 Attribute | Type | Description
