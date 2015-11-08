@@ -1,11 +1,19 @@
 # Orders
 
+## Product object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+product_id | String | The retailer's unique identifier for the product.
+quantity | Number | The number of products to purchase.
+
+
 ## Create an order
 
-> Example Request
+> Example create an order request
 
 ```shell
-curl -X POST "https://api.zinc.io/v1/orders" \
+curl "https://api.zinc.io/v1/orders" \
   -u client_token: \
   -d '{
   "retailer": "amazon",
@@ -76,13 +84,14 @@ curl -X POST "https://api.zinc.io/v1/orders" \
 
 Attribute | Type | Description
 --------- | ---- | -----------
-retailer | String |The retailer code of the supported retailer
-products | List | TODO
+retailer | String | The retailer code of the supported retailer
+products | List | A list of [product objects](#product-object) that should be ordered.
 shipping_address | Object | TODO
 shipping_method | String | The desired shipping method for the object.
 billing_address | Object | TODO
 payment_method | Object | TODO
 retailer_credentials | Object | TODO
+
 
 ### Optional Attributes
 
@@ -97,7 +106,40 @@ promo_codes | Array | TODO
 ignore_invalid_promo_code | Boolean | TODO
 po_number | Number | TODO
 
-> Example Response
+## Retrieving an order
+
+> Example retrieve an order request
+
+```shell
+curl "https://api.zinc.io/v1/orders/3f1c939065cf58e7b9f0aea70640dffc" \
+  -u client_token:
+```
+
+To see the status of an order, you can retrieve it using the request id you obtained from your order request, and placing it in a GET request URL. Orders usually take a while to process. While your order is processing, the response will return an error with code type `request_processing`.
+
+> Example retrieve an order response (request processing)
+
+```shell
+{
+  "_type": "error",
+  "code": "request_processing",
+  "message": "Request is currently processing and will complete soon.",
+  "data": {}
+}
+```
+
+Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error_response`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
+
+### Order response attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+price_componets | Object | TODO
+merchant_order_ids | Array | TODO
+tracking | Array | TODO
+request | Object | TODO
+
+> Example retrieve an order response (order response)
 
 ```shell
 {
