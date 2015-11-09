@@ -7,6 +7,19 @@ Attribute | Type | Description
 product_id | String | The retailer's unique identifier for the product.
 quantity | Number | The number of products to purchase.
 
+## Address Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+first_name | String | The first name
+last_name | String |
+address_line1 | String |
+address_line2 | String |
+zip_code | String |
+city | String |
+state | String |
+country | String |
+phone_number | String |
 
 ## Create an order
 
@@ -85,10 +98,10 @@ curl "https://api.zinc.io/v1/orders" \
 Attribute | Type | Description
 --------- | ---- | -----------
 retailer | String | The retailer code of the supported retailer
-products | List | A list of [product objects](#product-object) that should be ordered.
-shipping_address | Object | TODO
-shipping_method | String | The desired shipping method for the object.
-billing_address | Object | TODO
+products | List | A list of [product objects](#product-object) that should be ordered
+shipping_address | Object | An [address object](#address-object) to which the order will be delivered
+shipping_method | String | The desired shipping method for the object. Available methods are `cheapest` (always select the cheapest method available), `fastest` (always select the fastest method available), or `free` (which will fail for items without some sort of free shipping).
+billing_address | Object | An [address object](#address-object) for the person associated with the credit card
 payment_method | Object | TODO
 retailer_credentials | Object | TODO
 
