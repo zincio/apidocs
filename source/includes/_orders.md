@@ -81,7 +81,7 @@ curl "https://api.zinc.io/v1/orders" \
 }
 ```
 
-### Required Attributes
+### Required attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -94,7 +94,7 @@ payment_method | Object |A [payment method](#payment-method-object) object conta
 retailer_credentials | Object | A [retailer credentials](#retailer-credentials-object) object for logging into the retailer with a preexisting account
 
 
-### Optional Attributes
+### Optional attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------

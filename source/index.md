@@ -21,12 +21,12 @@ search: true
 
 Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supporter retailers.
 
-### Quick Start
+### Quick start
 
 1. Make an account at [dash.zinc.io](https://dash.zinc.io).
 2. Follow the instructions in the [create an order](#create-an-order) section from the documentation below to place your first order.
 
-# Supported Retailers
+# Supported retailers
 
 The table below shows the endpoints available for each retailer. We can add additional retailers upon request -- fill out the form at the [bottom of our home page](https://zinc.io/#bottom) for a quote for a particular retailer.
 
