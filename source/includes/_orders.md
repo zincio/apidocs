@@ -2,6 +2,8 @@
 
 ## Create an order
 
+Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
+
 > Example create an order request
 
 ```shell
@@ -70,6 +72,14 @@ curl "https://api.zinc.io/v1/orders" \
     "any_other_field": ["any value"]
   }
 }'
+```
+
+> Example create an order response
+
+```shell
+{
+  "request_id": "3f1c939065cf58e7b9f0aea70640dffc"
+}
 ```
 
 ### Required Attributes
