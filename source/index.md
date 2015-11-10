@@ -28,7 +28,7 @@ Zinc offers the underlying API for apps that need real-time order placing capabi
 
 # Supported Retailers
 
-Zinc supports a number of retailers. The following table shows the endpoints available for each retailer.
+The table below shows the endpoints available for each retailer. We can add additional retailers upon request -- fill out the form at the [bottom of our home page](https://zinc.io/#bottom) for a quote for a particular retailer.
 
 Name | Retailer Code | Orders | Product Details | Product Prices
 ---- | ------------- | ------ | --------------- | --------------
@@ -42,4 +42,3 @@ Newegg | newegg | Y | |
 Walmart | walmart | Y | |
 Google Shopping | google_shopping | | Y | Y
 
-We can add additional retailers upon request -- fill out the form at the [bottom of our home page](https://zinc.io/#bottom) for a quote for a particular retailer.
