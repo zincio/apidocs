@@ -183,7 +183,7 @@ address_line2 | String | The suite, post office box, or apartment number (option
 zip_code | String | The zip code of the address
 city | String | The city of the address
 state | String | The USPS abbreviation for the state of the address (e.g. AK)
-country | String | The ISO abbreviation for the country of the address (e.g. US)
+country | String | The ISO abbreviation for the country of the address (e.g. US). A list of all available two-letter country codes can be found [here](http://www.theodora.com/country_digraphs.html).
 phone_number | String | The phone number associated with the address
 
 ## Payment method object
