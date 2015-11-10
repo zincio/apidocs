@@ -120,17 +120,6 @@ To see the status of an order, you can retrieve it using the request id you obta
 }
 ```
 
-Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error_response`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
-
-### Order response attributes
-
-Attribute | Type | Description
---------- | ---- | -----------
-price_components | Object | A [price components object](#price-components-object) which contains details about the price of the final order
-merchant_order_ids | Array | A [merchant order ids object](#merchant-order-ids-object) which contains details about the retailer's order identifiers
-tracking | Array | An array of [tracking objects](#tracking-object) that contain the order's tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the `tracking_obtained` field of the [webhooks object](#webhooks-object) from the request if set.
-request | Object | The original request that was sent to the Zinc API
-
 > Example retrieve an order response (order response)
 
 ```shell
@@ -164,6 +153,17 @@ request | Object | The original request that was sent to the Zinc API
   }
 }
 ```
+
+Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error_response`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
+
+### Order response attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+price_components | Object | A [price components object](#price-components-object) which contains details about the price of the final order
+merchant_order_ids | Array | A [merchant order ids object](#merchant-order-ids-object) which contains details about the retailer's order identifiers
+tracking | Array | An array of [tracking objects](#tracking-object) that contain the order's tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the `tracking_obtained` field of the [webhooks object](#webhooks-object) from the request if set.
+request | Object | The original request that was sent to the Zinc API
 
 ## Product object
 
