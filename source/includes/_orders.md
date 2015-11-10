@@ -15,11 +15,10 @@ curl "https://api.zinc.io/v1/orders" \
     {
       "product_id": "0923568964", 
       "quantity": 1,
-      "seller_selection_criteria": [
+      "variants": [
         {
-          "condition_in": ["New"],
-          "international": false,
-          "max_shipping_days": 5
+          "dimension": "color",
+          "value": "Red",
         }
       ]
     }
@@ -31,7 +30,7 @@ curl "https://api.zinc.io/v1/orders" \
     "address_line1": "77 Massachusetts Avenue",
     "address_line2": "",
     "zip_code": "02139",
-    "city": "Cambridge", 
+    "city": "Cambridge",
     "state": "MA",
     "country": "US",
     "phone_number": "5551230101"
@@ -48,12 +47,12 @@ curl "https://api.zinc.io/v1/orders" \
     "use_gift": false
   },
   "billing_address": {
-    "first_name": "William", 
+    "first_name": "William",
     "last_name": "Rogers",
     "address_line1": "84 Massachusetts Ave",
     "address_line2": "",
     "zip_code": "02139",
-    "city": "Cambridge", 
+    "city": "Cambridge",
     "state": "MA",
     "country": "US",
     "phone_number": "5551234567"

@@ -93,7 +93,7 @@ curl https://api.zinc.io/v1/products/0923568964/offers/retailer=amazon \
       "prime_only": false,
       "seller_name": "Amazon.com",
       "seller_num_ratings": 1000000,
-      "seller_percent_positive": 100,
+      "seller_percent_positive": 100
     }
   ]
 }
