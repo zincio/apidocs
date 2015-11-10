@@ -1,6 +1,4 @@
-# Products
-
-## Get product details
+# Get product details
 
 > Example product details request
 
@@ -62,7 +60,7 @@ title | String | Title of the product
 variant_specifics | Array | Array of objects containing information about the types and values of product variants available. A variant specifics object contains a `dimension` field describing the type of the variant (e.g. "Color") and a `value` field describing the specific value available.
 product_id | String | The retailer's unique identifier for the product
 
-## Get product offers
+# Get product prices
 
 > Example product offers request
 
@@ -103,22 +101,3 @@ Attribute | Type | Description
 --------- | ---- | -----------
 retailer | String | The retailer for the product offers
 offers | Array | An array of [product offer objects](#product-offer-object) for a particular product on a retailer
-
-## Product offer object
-
-Attribute | Type | Description
---------- | ---- | -----------
-addon | Boolean | Whether or not the product is an addon item that can only be purchased in a bundle
-condition | String | The condition of the product. Possible values are `New`, `Refurbished`, `Used - Like New`, `Used - Very Good`, `Used - Good`, `Used - Acceptable`, `Unacceptable`.
-handling_days_max | Number | The maximum number of days required for shipping and handling
-handling_days_min | Number | The minimum number of days required for shipping and handling
-international | Boolean | Whether or not the product ships from outside of the United States
-merchant_id | String | The merchant's unique identifier for the product
-offerlisting_id | String | (`amazon` and `amazon_uk` only). The unique identifier that identifies an item sold by any merchant on Amazon
-price | Number | The price of the item, not including shipping
-ship_price | Number | The price of the shipping for the item
-prime | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product ships using Amazon Prime
-prime_only | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product only ships using Amazon Prime
-seller_name | String | The name of the seller of the current offer
-seller_num_ratings | Number | The number of ratings that tha seller has accumulated
-seller_percent_positive | Number | Number between 0 and 100 denoting the percentage of positive ratings the seller has received

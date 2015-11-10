@@ -1,4 +1,4 @@
-# Orders
+# Place an order
 
 ## Create an order
 
@@ -174,69 +174,3 @@ price_components | Object | A [price components object](#price-components-object
 merchant_order_ids | Array | A [merchant order ids object](#merchant-order-ids-object) which contains details about the retailer's order identifiers
 tracking | Array | An array of [tracking objects](#tracking-object) that contain the order's tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the `tracking_obtained` field of the [webhooks object](#webhooks-object) from the request if set.
 request | Object | The original request that was sent to the Zinc API
-
-## Product object
-
-Attribute | Type | Description
---------- | ---- | -----------
-product_id | String | The retailer's unique identifier for the product.
-quantity | Number | The number of products to purchase.
-
-## Address object
-
-Attribute | Type | Description
---------- | ---- | -----------
-first_name | String | The first name of the addressee
-last_name | String | The last name of the addressee
-address_line1 | String | The house number and street name
-address_line2 | String | The suite, post office box, or apartment number (optional)
-zip_code | String | The zip code of the address
-city | String | The city of the address
-state | String | The USPS abbreviation for the state of the address (e.g. AK)
-country | String | The ISO abbreviation for the country of the address (e.g. US). A list of all available two-letter country codes can be found [here](http://www.theodora.com/country_digraphs.html).
-phone_number | String | The phone number associated with the address
-
-## Payment method object
-
-Attribute | Type | Description
---------- | ---- | -----------
-name_on_card | String | The full name on the credit/debit card
-number | String | The credit/debit card number
-security_code | String | The card verification value on the back of the credit/debit card
-expiration_month | Number | The month of the expiration of the card (e.g. January is 1, February is 2)
-expiration_year | Number | The year of the expiration of the card (e.g. 2016)
-use_gift | Boolean | Whether or not to use the gift balance on the retailer account. If true, then the gift balance will first be used up completely before the card will be charged. Only works for retailers which support gift balance (`amazon` and `amazon_uk`).
-
-## Webhooks object
-
-Attribute | Type | Description
---------- | ---- | -----------
-order_placed | String | The webhook URL to send data to when an order is placed
-order_failed | String | The webhook URL to send data to when an order fails
-tracking_obtained | String | The webhook URL to send data to when tracking for an order is retrieved
-
-## Retailer credentials object
-
-Attribute | Type | Description
---------- | ---- | -----------
-email | String | The email for the retailer account
-password | String | The password for the retailer account
-
-## Price components object
-
-Attribute | Type | Description
---------- | ---- | -----------
-shipping | Number | The price for shipping
-gift_certificate | Number | The amount of value used on a gift certificate placed on the account
-subtotal | Number | The total price of the order before tax and other price adjustments
-tax | Number | The tax collected on the order
-total | Number | The total price paid for the order
-
-## Merchant order ids object
-
-Attribute | Type | Description
---------- | ---- | -----------
-merchant_order_id | String | The identifier provided by the retailer for the order that was placed
-merchant | String | The retailer on which the order was placed
-account | String | The account on which the order was placed
-placed_at | Date | The date and time at which the order was placed
