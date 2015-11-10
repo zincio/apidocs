@@ -1,5 +1,7 @@
 # Get product details
 
+Get up to date information on the title, description, manufacturer details, item specifics, and more for any product on our supported retailers.
+
 > Example product details request
 
 ```shell
@@ -61,6 +63,8 @@ variant_specifics | Array | Array of objects containing information about the ty
 product_id | String | The retailer's unique identifier for the product
 
 # Get product prices
+
+Get information about all the offers for a particular product, including seller name, item price, shipping price, condition, seller reputation, and more.
 
 > Example product offers request
 
