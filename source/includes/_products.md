@@ -13,13 +13,8 @@ curl https://api.zinc.io/v1/products/0923568964?retailer=amazon \
 
 ```shell
 {
-  "cleaned_product_description": "",
-  "product_description": "",
+  "product_description": "This is a great book!",
   "retailer": "amazon",
-  "epid": {
-    "type": "ISBN",
-    "value": "0923568964"
-  },
   "epids":[
     {
       "type": "EAN",
@@ -41,7 +36,16 @@ curl https://api.zinc.io/v1/products/0923568964?retailer=amazon \
     "Shipping Weight: 3.5 ounces"
   ],
   "title": "APA: The Easy Way! [Updated for APA 6th Edition]",
-  "variant_specifics": null,
+  "variant_specifics": [
+    {
+      "dimension": "Color",
+      "value": "Gray"
+    },
+    {
+      "dimension": "Size",
+      "value": "Small/Medium"
+    }
+  ],
   "product_id": "0923568964"
 }
 ```
@@ -50,14 +54,12 @@ curl https://api.zinc.io/v1/products/0923568964?retailer=amazon \
 
 Attribute | Type | Description
 --------- | ---- | -----------
-cleaned_product_description | String | The description of the product
-product_description | String | Description of the product
+product_description | String | The description of the product
 retailer | String | The retailer for the product
-epid | Object |
-epids | Array |
-product_details | Array | TODO
+epids | Array | Array of objects containing external product identifier (epid) objects. An epid object contains a `type` field describing the name of the external product identifier and a `value` field for the identifier's value.
+product_details | Array | An array of strings providing details about the product
 title | String | Title of the product
-variant_specifics | Array | TODO
+variant_specifics | Array | Array of objects containing information about the types and values of product variants available. A variant specifics object contains a `dimension` field describing the type of the variant (e.g. "Color") and a `value` field describing the specific value available.
 product_id | String | The retailer's unique identifier for the product
 
 ## Get product offers
