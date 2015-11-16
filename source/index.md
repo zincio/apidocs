@@ -19,7 +19,8 @@ search: true
 
 # Introduction
 
-Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supporter retailers.
+Zinc lets you buy things from popular online retailers, including Amazon.com, with  a single POST request. Zinc also lets you get prices and descriptive information about products from supported retailers
+
 
 ### Quick start
 
