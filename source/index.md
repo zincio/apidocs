@@ -19,7 +19,7 @@ search: true
 
 # Introduction
 
-Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supporter retailers.
+Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers.
 
 ### Quick start
 
