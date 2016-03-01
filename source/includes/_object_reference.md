@@ -19,7 +19,7 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-product_id | String | The retailer's unique identifier for the product.
+product_id | String | The retailer's unique identifier for the product. Note that Zinc does not support digital purchases or Amazon prime pantry items.
 quantity | Number | The number of products to purchase.
 variants | Array | An array of variant objects containing information about the types of values of a specific product variant to select. A variant contains `dimension` field describing the type of the variant (e.g. "color" or "size") and a `value` field describing the specific value to select.
 
