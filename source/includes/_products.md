@@ -6,7 +6,7 @@ Get up to date information on the title, description, manufacturer details, item
 
 ```shell
 curl https://api.zinc.io/v1/products/0923568964?retailer=amazon \
-  -u client_token:
+  -u <client_token>:
 ```
 
 ### Product detail request attributes
@@ -80,7 +80,7 @@ Get information about all the offers for a particular product, including seller 
 
 ```shell
 curl https://api.zinc.io/v1/products/0923568964/offers?retailer=amazon \
-  -u client_token:
+  -u <client_token>:
 ```
 
 ### Product offers request attributes

@@ -4,7 +4,7 @@
 
 ```shell
 curl https://api.zinc.io/v1/orders \
-  -H client_token:
+  -H <client_token>:
 ```
 
 You can authenticate your account by including your client token in your request. Authentication is performed through HTTP Basic Auth, where the client token is the basic auth username value. You do not need to provide a password.

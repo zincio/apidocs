@@ -8,7 +8,7 @@ Zinc offers the underlying API for apps that need real-time order placing capabi
 
 ```shell
 curl "https://api.zinc.io/v1/orders" \
-  -u client_token: \
+  -u <client_token>: \
   -d '{
   "retailer": "amazon",
   "products": [
@@ -113,7 +113,7 @@ po_number | Number | (`amazon` business accounts only). Adds a purchase order nu
 
 ```shell
 curl "https://api.zinc.io/v1/orders/3f1c939065cf58e7b9f0aea70640dffc" \
-  -u client_token:
+  -u <client_token>:
 ```
 
 To see the status of an order, you can retrieve it using the request id you obtained from your order request, and placing it in a GET request URL. Orders usually take a while to process. While your order is processing, the response will return an error with code type `request_processing`.
