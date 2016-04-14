@@ -19,29 +19,42 @@ The Zinc API uses the following errors:
 
 Error Code | Meaning
 ---------- | -------
-invalid_json | The JSON in your request could not be parsed.
-internal_error | Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.
-invalid_client_token |  Your client token is invalid.
-product_unavailable | The product_id you used is being phased out by the retailer -- please update your product_id database accordingly. (On Amazon, this means that the offers page at [amazon_domain]/gp/offer-listing/[your_ASIN] has a more recent ASIN for that same product).
-request_processing | Request is currently processing and will complete soon.
-invalid_request_id | The provided request_id is invalid.
-invalid_request | Validation failed on the request.
-max_quantity_exceeded | You have exceeded the maximum quantity available for a specific product.
-invalid_shipping_method | The shipping method you selected was not valid.
-shipping_address_refused | The shipping address you provided was refused by the retailer.
-billing_address_refused | The billing address you provided was refused by the retailer.
-credit_card_declined | The credit card you entered was declined.
-invalid_security_code | The security code you entered was declined.
-invalid_card_number | The credit card number you entered is not valid.
-brand_not_accepted | Your credit card brand is not accepted with this merchant.
-invalid_login_credentials | The email and password you entered were incorrect.
-duplicate_order | This order is a duplicate.
 add_on_item | Add-on items cannot be ordered individually.
-invalid_promo_code | One of the promotion code you entered was not valid.
-no_two_day_shipping | Two day shipping (or faster) is not available for the item(s) you selected.
-no_free_shipping | Free shipping is not available for the item(s) you selected.
-invalid_quantity | The quantity for one of the products does not match the one available on the retailer.
 additional_information_required | The retailer asked for additional account verification questions. If using the API, please add a field 'phone_number' in the billing address that matches your billing telephone number.
-payment_info_problem | There was a problem with your payment information (likely not enough gift balance).
+billing_address_refused | The billing address you provided was refused by the retailer.
+brand_not_accepted | Your credit card brand is not accepted with this merchant.
+credit_card_declined | The credit card you entered was declined.
+duplicate_order | This order is a duplicate.
 expired_product_id | The product_id you used is no longer supported by the retailer.
 insufficient_variants | You did not select all required variants for a product.
+internal_error | Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.
+invalid_card_number | The credit card number you entered is not valid.
+invalid_client_token |  Your client token is invalid.
+invalid_expiration_date | The expiration date on your credit card is not valid.
+invalid_gift_options | The gift options you provided were rejected by the retailer.
+invalid_json | The JSON in your request could not be parsed.
+invalid_login_credentials | The email and password you entered were incorrect.
+invalid_payment_method | The payment method provided is not available on the retailer.
+invalid_promo_code | One of the promotion code you entered was not valid.
+invalid_quantity | The quantity for one of the products does not match the one available on the retailer.
+invalid_request | Validation failed on the request.
+invalid_request_id | The provided request_id is invalid.
+invalid_security_code | The security code you entered was declined.
+invalid_shipping_method | The shipping method you selected was not valid.
+invalid_variant | One of the product variants you provided was not valid.
+manual_review_required | This order is under manual review by Zinc -- please check back later for the status of this order.
+max_price_exceeded | The retailers final price exceeds the maximum price.
+max_quantity_exceeded | You have exceeded the maximum quantity available for a specific product.
+no_free_shipping | Free shipping is not available for the item(s) you selected.
+no_gift_shipping | No gift shipping was available on this order.
+no_two_day_shipping | Two day shipping (or faster) is not available for the item(s) you selected.
+order_probably_placed | This order was probably placed, but we were not able to retrieve the merchant order ids.
+payment_info_problem | There was a problem with your payment information (likely not enough gift balance).
+prime_pantry_not_supported | Purchasing Prime Pantry items is not supported by the Zinc API.
+product_unavailable | The product_id you used is being phased out by the retailer -- please update your product_id database accordingly. (On Amazon, this means that the offers page at [amazon_domain]/gp/offer-listing/[your_ASIN] has a more recent ASIN for that same product).
+request_processing | Request is currently processing and will complete soon.
+shipping_address_refused | The shipping address you provided was refused by the retailer.
+shipping_address_unavailable | The item(s) cannot be shipped to the selected shipping address.
+shipping_method_unavailable | The selected shipping_method is not available for the selected shipping_address.
+unauthorized_access | You are not authorized to make this API call. Please contact support@zinc.io.
+
