@@ -27,7 +27,7 @@ Attribute | Type | Description
 product_id | String | The retailer's unique identifier for the product. Note that Zinc does not support digital purchases or Amazon prime pantry items.
 quantity | Number | The number of products to purchase.
 variants | Array | An array of variant objects containing information about the types of values of a specific product variant to select. A variant contains `dimension` field describing the type of the variant (e.g. "color" or "size") and a `value` field describing the specific value to select.
-seller_selection_criteria | Object | A [seller selection criteria](#seller-selection-criteria-object) object containing information about which offers to choose when there are multiple offers available. If not provided, the default seller selection criteria will have `prime: true`, `handling_days_max: 6`, and `condition_in: ["New"]`.
+seller_selection_criteria | Object | A [seller selection criteria](#seller-selection-criteria-object) object containing information about which offers to choose when there are multiple offers available. If not provided, the seller selection criteria will default to `"prime": true`, `"handling_days_max": 6`, and `"condition_in": ["New"]`.
 
 ## Seller selection criteria object
 
@@ -35,15 +35,18 @@ seller_selection_criteria | Object | A [seller selection criteria](#seller-selec
 
 ```shell
 {
-  "prime": true,
-  "handling_days_max": 6,
+  "addon": false,
   "condition_in": ["New"],
+  "handling_days_max": 6,
+  "max_item_price": 5350
+  "min_seller_num_ratings": 100,
+  "prime": true,
 }
 ```
 
 Seller selection criteria allow you to filter multiple offers for a product from a retailer. They give you fine grained control when a retailer has multiple offers for a single product. This happens frequently when third party or affiliated merchants are selling on a platform, such as o Amazon.
 
-The seller selection criteria serve as a series of optional filters to narrow down the potential set of offers to something reasonable. After all the filters have been applied, Zinc will select the cheapest offer that is still available. For example, if `handling_days_max: 6` is applied, then the Zinc API will order the cheapest offer where the shipping will arrive in 6 days or less.
+The seller selection criteria serve as a series of optional filters to narrow down the potential set of offers to something reasonable. After all the filters have been applied, Zinc will select the cheapest offer that is still available. For example, if `"handling_days_max": 6` is applied, then the Zinc API will order the cheapest offer where the shipping will arrive in 6 days or less.
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -53,11 +56,10 @@ condition_in | Array | An array of item conditions that the Zinc API must order 
 condition_not_in | Array | An array of item conditions that the Zinc API must not order from
 handling_days_max | Number | The maximum number of allowable days for shipping and handling
 international | Boolean | Specifies whether the item should come from an international supplier
-max_item_price | Number | The maximum allowable price for an item
+max_item_price | Number | The maximum allowable price in cents for an item
 merchant_id_in | Array | An array of merchant ids that the Zinc API must order from
 merchant_id_not_in | Array | An array of merchant ids that the Zinc API must not order from
 min_seller_num_ratings | Number | (Amazon only) The minimum number of ratings required for an Amazon seller's offer to be selected
-min_seller_percent_positive_feedback | Number | (Amazon only) The minimum percentage of positive feedback required for an Amazon seller's offer to be selected
 prime | Boolean | (Amazon only) Specifies whether the selected offer should be an Amazon Prime offer
 
 ## Address object
