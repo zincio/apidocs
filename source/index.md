@@ -39,6 +39,6 @@ Nordstrom | nordstrom | Y | |
 Shopbop | shopbop | Y | |
 East Dane | eastdane | Y | |
 Newegg | newegg | Y | |
-Walmart | walmart | Y | |
+Walmart | walmart | Y | Y | Y
 Google Shopping | google_shopping | | Y | Y
 
