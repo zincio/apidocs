@@ -124,7 +124,8 @@ use_gift | Boolean | Whether or not to use the gift balance on the retailer acco
 {
   "order_placed": "http://mywebsite.com/zinc/order_placed",
   "order_failed": "http://mywebsite.com/zinc/order_failed",
-  "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained"
+  "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained",
+  "status_updated": "http://mywebsite.com/zinc/status_updated"
 }
 ```
 
@@ -133,6 +134,7 @@ Attribute | Type | Description
 order_placed | String | The webhook URL to send data to when an order is placed
 order_failed | String | The webhook URL to send data to when an order fails
 tracking_obtained | String | The webhook URL to send data to when tracking for an order is retrieved
+status_updated | String | The webhook URL to send data to when the status of a request is updated
 
 ## Retailer credentials object
 
