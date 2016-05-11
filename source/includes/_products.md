@@ -9,19 +9,17 @@ curl https://api.zinc.io/v1/products/0923568964?retailer=amazon \
   -u <client_token>:
 ```
 
-### Product detail request attributes
-
 To retrieve product details, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product and specifying the request attributes as query parameters in the URL.
 
 `https://api.zinc.io/v1/products/:product_id`
 
-#### Required attributes
+### Required request attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
 retailer | String | The retailer for the product
 
-#### Optional attributes
+#### Optional request attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -92,19 +90,17 @@ curl https://api.zinc.io/v1/products/0923568964/offers?retailer=amazon \
   -u <client_token>:
 ```
 
-### Product offers request attributes
-
 To retrieve product offers and prices, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product and specifying the request attributes as query parameters in the URL.
 
 `https://api.zinc.io/v1/products/:product_id/offers`
 
-#### Required attributes
+### Required request attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
 retailer | String | The retailer for the product
 
-#### Optional attributes
+### Optional request attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
