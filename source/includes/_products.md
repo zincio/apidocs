@@ -67,7 +67,7 @@ newer_than | Number | A timestamp setting the minimum time the response should b
 }
 ```
 
-### Product detail response attributes
+### Response attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -133,7 +133,7 @@ newer_than | Number | A timestamp setting the minimum time the response should b
 }
 ```
 
-### Product offers response attributes
+### Response attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
