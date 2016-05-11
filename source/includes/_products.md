@@ -15,9 +15,18 @@ To retrieve product details, make a GET request to the following URL, replacing 
 
 `https://api.zinc.io/v1/products/:product_id`
 
+#### Required attributes
+
 Attribute | Type | Description
 --------- | ---- | -----------
 retailer | String | The retailer for the product
+
+#### Optional attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+max_age | Number | A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with `newer_than`.
+newer_than | Number | A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with `max_age`.
 
 > Example product details response
 
@@ -89,9 +98,18 @@ To retrieve product offers and prices, make a GET request to the following URL, 
 
 `https://api.zinc.io/v1/products/:product_id/offers`
 
+#### Required attributes
+
 Attribute | Type | Description
 --------- | ---- | -----------
 retailer | String | The retailer for the product
+
+#### Optional attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+max_age | Number | A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with `newer_than`.
+newer_than | Number | A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with `max_age`.
 
 > Example product offers response
 
