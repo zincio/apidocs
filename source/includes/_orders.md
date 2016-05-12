@@ -181,7 +181,7 @@ The bundling feature groups orders together before placing them. This is often a
 
 The bundling feature allows you to take advantage of free shipping over $50 (on Amazon) without having to change your Zinc integration. Bundling will take the shipping addresses, products, and quantities from separate orders and will group them together into a single order, making sure that each product is routed correctly. The order requests and responses remain exactly the same. The only difference is when the order is placed. The order bundling feature will wait for enough orders in the queue before launching a bundled order. The exact dynamics are as follows:
 
-1. The order bundler will wait until $55 in products have been purchased. As soon as more than $55 of products from orders with `bundled: true` have been queued, the bundler will launch a new order.
+1. The order bundler will wait until $55 in products have been purchased. As soon as more than $55 of products have been queued with `bundled: true`, the bundler will launch a new order.
 2. If the order bundler has waited for longer than 6 hours and has not yet obtained $55 in products, it will launch an order with whatever products are currently in the queue.
 
 Note that the order bundler will not group together two orders which have the same product ids.
