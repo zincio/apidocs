@@ -13,7 +13,7 @@ curl "https://api.zinc.io/v1/orders" \
   "retailer": "amazon",
   "products": [
     {
-      "product_id": "0923568964", 
+      "product_id": "0923568964",
       "quantity": 1,
       "variants": [
         {
@@ -103,7 +103,7 @@ is_gift | Boolean | Whether or not this order should be placed as a gift. Typica
 max_price | Number | The maximum price in cents for the order. If the final price exceeds this number, the order will not go through and will return a `max_price_exceeded` error.
 webhooks | Object | A [webhooks object](#webhooks-object) including URLs that will receive POST requests after particular events have finished
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
-promo_codes | Array | (`nordstrom` only). A list of promotion codes to use at checkout.
+promo_codes | Array | A list of promotion codes to use at checkout.
 ignore_invalid_promo_code | Boolean | (`nordstrom` only). Continue with checkout even if promotion codes are invalid. Default is `false`.
 po_number | Number | (`amazon` business accounts only). Adds a purchase order number to the order.
 bundled | Boolean | (`amazon` only). If enabled, orders will be grouped together into batches and placed together. See the [order bundling](#order-bundling) section for more details.
