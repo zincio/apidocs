@@ -177,7 +177,7 @@ request | Object | The original request that was sent to the Zinc API
 
 ## Order bundling
 
-The bundling feature groups orders together before placing them. This is often advantageous on retailers where larger orders are given free shipping. To use bundling, you only need to specify `bundled: true` when placing an order request. Bundling currently only works on the following retailers: `amazon`, `amazon_uk`, `amazon_ca`.
+The bundling feature groups orders together before placing them. This is often advantageous on retailers where larger orders are given free shipping. To use bundling, you only need to specify `bundled: true` when placing an order request. Bundling currently only works on the following retailers: `amazon`, `amazon_uk`.
 
 The bundling feature allows you to take advantage of free shipping over $50 (on Amazon) without having to change your Zinc integration. Bundling will take the shipping addresses, products, and quantities from separate orders and will group them together into a single order, making sure that each product is routed correctly. The order requests and responses remain exactly the same. The only difference is when the order is placed. The order bundling feature will wait for enough orders in the queue before launching a bundled order. The exact dynamics are as follows:
 
