@@ -107,6 +107,10 @@ phone_number | String | The phone number associated with the address
 }
 ```
 
+The recommended way to pay for purchases on a retailer is by using gift card balance already applied to an account. Gift cards are supported on `amazon`, `amazon_uk`, `amazon_ca`, and `walmart`. To use the existing gift balance on the account, simply pass `{"use_gift": true}` as the payment method object.
+
+To use a credit card, you must include the `name_on_card`, `number`, `security_code`, `expiration_month`, and `expiration_year` fields. For Amazon, you should only have a single credit card associated with an account which should be the same as the card passed in the payment method object. This allows the system to correctly answer any payment-related security questions.
+
 Attribute | Type | Description
 --------- | ---- | -----------
 name_on_card | String | The full name on the credit/debit card
