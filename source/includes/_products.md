@@ -31,6 +31,7 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 
 ```shell
 {
+  "status": "completed",
   "product_description": "This is a great book!",
   "retailer": "amazon",
   "epids":[
@@ -115,6 +116,7 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 ```shell
 {
   "retailer": "amazon",
+  "status": "completed",
   "offers":[
     {
       "addon": false,
