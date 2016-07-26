@@ -122,7 +122,7 @@ use_gift | Boolean | Whether or not to use the gift balance on the retailer acco
 
 ## Webhooks object
 
-Webhooks let you register a URL that the Zinc API notifies whenever an event happens pertaining to your account. When an event occurs, we will send a `POST` request to the URL defined in the webhooks object for that particular event type. If no URL exists, then a webhook will not be sent. The body of the `POST` request is the standard response for that object.
+Webhooks let you register a URL that the Zinc API notifies whenever an event happens pertaining to your account. When an event occurs, we will send a `POST` request to the URL specified in the webhooks object. If no URL was specified, then a webhook will not be sent. The body of the `POST` request is the standard response for that object.
 
 As an example, let's say you have just created an order via the Zinc API. Every time the order status changes, a `POST` request will be sent to the URL that you passed in the `status_updated` parameter of the webhooks object. The body will mimic the response received from the standard `GET https://api.zinc.io/v1/orders/<request_id>` request. A webhook will also be sent if order fails, gets placed, or if tracking gets updated.
 
