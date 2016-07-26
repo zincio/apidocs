@@ -72,7 +72,7 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 
 Attribute | Type | Description
 --------- | ---- | -----------
-status | String | Can be one of `processing`, `failed`, or `completed`. Will only see `processing` if `async` was set to `true` on the request.
+status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the `request`.
 product_description | String | The description of the product
 retailer | String | The retailer for the product
 epids | Array | Array of objects containing external product identifier (epid) objects. An epid object contains a `type` field describing the name of the external product identifier and a `value` field for the identifier's value.
@@ -140,6 +140,6 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 
 Attribute | Type | Description
 --------- | ---- | -----------
-status | String | Can be one of `processing`, `failed`, or `completed`. Will only see `processing` if `async` was set to `true` on the request.
+status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the `request`.
 retailer | String | The retailer for the product offers
 offers | Array | An array of [product offer objects](#product-offer-object) for a particular product on a retailer
