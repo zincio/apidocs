@@ -25,7 +25,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 max_age | Number | A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with `newer_than`.
 newer_than | Number | A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with `max_age`.
-async | Boolean | Determines whether the resulting response will be asynchronous. If set to `true`, then the API will not block waiting for a result. Instead, it will return `status: "processing"` as soon as possible and you will be responsible for sending another HTTP request and wait until `status` is no longer processing. Defaults to `false`.
+async | Boolean | Determines whether the resulting response will be asynchronous. If set to `true`, then the API will not block waiting for a result. Instead, it will immediately return `status: "processing"` and you will be responsible for resending the request until the response is no longer `status: "processing"`. Defaults to `false`.
 
 > Example product details response
 
@@ -73,7 +73,7 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 
 Attribute | Type | Description
 --------- | ---- | -----------
-status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the `request`.
+status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the request.
 product_description | String | The description of the product
 retailer | String | The retailer for the product
 epids | Array | Array of objects containing external product identifier (epid) objects. An epid object contains a `type` field describing the name of the external product identifier and a `value` field for the identifier's value.
@@ -109,7 +109,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 max_age | Number | A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with `newer_than`.
 newer_than | Number | A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with `max_age`.
-async | Boolean | Determines whether the resulting response will be asynchronous. If set to `true`, then the API will not block waiting for a result. Instead, it will return `status: "processing"` as soon as possible and you will be responsible for sending another HTTP request and wait until `status` is no longer processing. Defaults to `false`.
+async | Boolean | Determines whether the resulting response will be asynchronous. If set to `true`, then the API will not block waiting for a result. Instead, it will immediately return `status: "processing"` and you will be responsible for resending the request until the response is no longer `status: "processing"`. Defaults to `false`.
 
 > Example product offers response
 
@@ -142,6 +142,6 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 
 Attribute | Type | Description
 --------- | ---- | -----------
-status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the `request`.
+status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the request.
 retailer | String | The retailer for the product offers
 offers | Array | An array of [product offer objects](#product-offer-object) for a particular product on a retailer
