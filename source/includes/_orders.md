@@ -164,7 +164,7 @@ To see the status of an order, you can retrieve it using the request id you obta
 }
 ```
 
-Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error_response`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
+Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
 
 ### Order response attributes
 
