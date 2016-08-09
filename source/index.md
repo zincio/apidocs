@@ -8,9 +8,9 @@ toc_footers:
   - <a href='http://dash.zinc.io'>Sign Up for a Zinc account</a>
 
 includes:
+  - authentication
   - orders
   - products
-  - authentication
   - object_reference
   - errors
 
@@ -19,8 +19,7 @@ search: true
 
 # Introduction
 
-Zinc lets you buy things from popular online retailers, including Amazon.com, with  a single POST request. Zinc also lets you get prices and descriptive information about products from supported retailers
-
+Zinc lets you buy things from popular online retailers, including Amazon.com, with  a single POST request. Zinc also lets you get prices and descriptive information about products from supported retailers.
 
 ### Quick start
 
@@ -35,11 +34,11 @@ Name | Retailer Code | Orders | Product Details | Product Prices
 ---- | ------------- | ------ | --------------- | --------------
 Amazon | amazon | Y | Y | Y
 Amazon United Kingdom | amazon_uk | Y | Y | Y
-Amazon Canada | amazon_ca | Y | |
+Amazon Canada | amazon_ca | Y | Y | Y
 Nordstrom | nordstrom | Y | |
 Shopbop | shopbop | Y | |
 East Dane | eastdane | Y | |
 Newegg | newegg | Y | |
-Walmart | walmart | Y | |
+Walmart | walmart | Y | Y | Y
 Google Shopping | google_shopping | | Y | Y
 

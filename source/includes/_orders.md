@@ -8,12 +8,12 @@ Zinc offers the underlying API for apps that need real-time order placing capabi
 
 ```shell
 curl "https://api.zinc.io/v1/orders" \
-  -u client_token: \
+  -u <client_token>: \
   -d '{
   "retailer": "amazon",
   "products": [
     {
-      "product_id": "0923568964", 
+      "product_id": "0923568964",
       "quantity": 1,
       "variants": [
         {
@@ -103,9 +103,10 @@ is_gift | Boolean | Whether or not this order should be placed as a gift. Typica
 max_price | Number | The maximum price in cents for the order. If the final price exceeds this number, the order will not go through and will return a `max_price_exceeded` error.
 webhooks | Object | A [webhooks object](#webhooks-object) including URLs that will receive POST requests after particular events have finished
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
-promo_codes | Array | (`nordstrom` only). A list of promotion codes to use at checkout.
+promo_codes | Array | A list of promotion codes to use at checkout.
 ignore_invalid_promo_code | Boolean | (`nordstrom` only). Continue with checkout even if promotion codes are invalid. Default is `false`.
 po_number | Number | (`amazon` business accounts only). Adds a purchase order number to the order.
+bundled | Boolean | (`amazon` only). If enabled, orders will be grouped together into batches and placed together. See the [order bundling](#order-bundling) section for more details.
 
 ## Retrieving an order
 
@@ -113,7 +114,7 @@ po_number | Number | (`amazon` business accounts only). Adds a purchase order nu
 
 ```shell
 curl "https://api.zinc.io/v1/orders/3f1c939065cf58e7b9f0aea70640dffc" \
-  -u client_token:
+  -u <client_token>:
 ```
 
 To see the status of an order, you can retrieve it using the request id you obtained from your order request, and placing it in a GET request URL. Orders usually take a while to process. While your order is processing, the response will return an error with code type `request_processing`.
@@ -163,7 +164,7 @@ To see the status of an order, you can retrieve it using the request id you obta
 }
 ```
 
-Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error_response`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
+Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
 
 ### Order response attributes
 
@@ -173,3 +174,15 @@ price_components | Object | A [price components object](#price-components-object
 merchant_order_ids | Array | A [merchant order ids object](#merchant-order-ids-object) which contains details about the retailer's order identifiers
 tracking | Array | An array of [tracking objects](#tracking-object) that contain the order's tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the `tracking_obtained` field of the [webhooks object](#webhooks-object) from the request if set.
 request | Object | The original request that was sent to the Zinc API
+
+## Order bundling
+
+The bundling feature groups orders together before placing them. This is often advantageous on retailers where larger orders are given free shipping. To use bundling, you only need to specify `bundled: true` when placing an order request. Bundling currently only works on the following retailers: `amazon`, `amazon_uk`.
+
+The bundling feature allows you to take advantage of free shipping over $50 (on Amazon) without having to change your Zinc integration. Bundling will take the shipping addresses, products, and quantities from separate orders and will group them together into a single order, making sure that each product is routed correctly. The order requests and responses remain exactly the same. The only difference is when the order is placed. The order bundling feature will wait for enough orders in the queue before launching a bundled order. The exact dynamics are as follows:
+
+1. The order bundler will wait until $55 in products have been purchased. As soon as more than $55 of products have been queued with `bundled: true`, the bundler will launch a new order.
+2. If the order bundler has waited for longer than 6 hours and has not yet obtained $55 in products, it will launch an order with whatever products are currently in the queue.
+
+Note that the order bundler will not group together two orders which have the same product ids.
+

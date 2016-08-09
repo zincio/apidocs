@@ -13,15 +13,54 @@
       "dimension": "color",
       "value": "Red",
     }
-  ]
+  ],
+  "seller_selection_criteria": {
+    "prime": true,
+    "handling_days_max": 6,
+    "condition_in": ["New"],
+  }
 }
 ```
 
 Attribute | Type | Description
 --------- | ---- | -----------
-product_id | String | The retailer's unique identifier for the product.
+product_id | String | The retailer's unique identifier for the product. Note that Zinc does not support digital purchases or Amazon prime pantry items.
 quantity | Number | The number of products to purchase.
 variants | Array | An array of variant objects containing information about the types of values of a specific product variant to select. A variant contains `dimension` field describing the type of the variant (e.g. "color" or "size") and a `value` field describing the specific value to select.
+seller_selection_criteria | Object | A [seller selection criteria](#seller-selection-criteria-object) object containing information about which offers to choose when there are multiple offers available. If not provided, the seller selection criteria will default to `"prime": true`, `"handling_days_max": 6`, and `"condition_in": ["New"]`.
+
+## Seller selection criteria object
+
+> Example seller selection criteria object
+
+```shell
+{
+  "addon": false,
+  "condition_in": ["New"],
+  "handling_days_max": 6,
+  "max_item_price": 5350
+  "min_seller_num_ratings": 100,
+  "prime": true,
+}
+```
+
+Seller selection criteria allow you to filter multiple offers for a product from a retailer. They give you fine grained control when a retailer has multiple offers for a single product. This happens frequently when third party or affiliated merchants are selling on a platform, such as o Amazon.
+
+The seller selection criteria serve as a series of optional filters to narrow down the potential set of offers to something reasonable. After all the filters have been applied, Zinc will select the cheapest offer that is still available. For example, if `"handling_days_max": 6` is applied, then the Zinc API will order the cheapest offer where the shipping will arrive in 6 days or less.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+addon | Boolean | (Amazon only) Specifies whether the selected offer should be an addon item
+buy_box | Boolean | (Amazon only) Specifies whether the selected offer should be Amazon's default buy box offer
+condition_in | Array | An array of item conditions that the Zinc API must order from
+condition_not_in | Array | An array of item conditions that the Zinc API must not order from
+handling_days_max | Number | The maximum number of allowable days for shipping and handling
+international | Boolean | Specifies whether the item should come from an international supplier
+max_item_price | Number | The maximum allowable price in cents for an item
+merchant_id_in | Array | An array of merchant ids that the Zinc API must order from
+merchant_id_not_in | Array | An array of merchant ids that the Zinc API must not order from
+min_seller_num_ratings | Number | (Amazon only) The minimum number of ratings required for an Amazon seller's offer to be selected
+prime | Boolean | (Amazon only) Specifies whether the selected offer should be an Amazon Prime offer
 
 ## Address object
 
@@ -68,6 +107,10 @@ phone_number | String | The phone number associated with the address
 }
 ```
 
+The recommended way to pay for purchases on a retailer is by using gift card balance already applied to an account. Gift cards are supported on `amazon`, `amazon_uk`, `amazon_ca`, and `walmart`. To use the existing gift balance on the account, simply pass `{"use_gift": true}` as the payment method object.
+
+To use a credit card, you must include the `name_on_card`, `number`, `security_code`, `expiration_month`, and `expiration_year` fields. For Amazon, you should only have a single credit card associated with an account which should be the same as the card passed in the payment method object. This allows the system to correctly answer any payment-related security questions.
+
 Attribute | Type | Description
 --------- | ---- | -----------
 name_on_card | String | The full name on the credit/debit card
@@ -79,13 +122,18 @@ use_gift | Boolean | Whether or not to use the gift balance on the retailer acco
 
 ## Webhooks object
 
+Webhooks let you register a URL that the Zinc API notifies whenever an event happens pertaining to your account. When an event occurs, we will send a `POST` request to the URL specified in the webhooks object. If no URL was specified, then a webhook will not be sent. The body of the `POST` request is the standard raw JSON response for that object.
+
+As an example, let's say you have just created an order via the Zinc API. Every time the order status changes, a `POST` request will be sent to the URL that you passed in the `status_updated` parameter of the webhooks object. The body will mimic the response received from the standard `GET https://api.zinc.io/v1/orders/<request_id>` request. A webhook will also be sent if order fails, gets placed, or if tracking gets updated.
+
 > Example webhooks object
 
 ```shell
 {
   "order_placed": "http://mywebsite.com/zinc/order_placed",
   "order_failed": "http://mywebsite.com/zinc/order_failed",
-  "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained"
+  "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained",
+  "status_updated": "http://mywebsite.com/zinc/status_updated"
 }
 ```
 
@@ -94,6 +142,7 @@ Attribute | Type | Description
 order_placed | String | The webhook URL to send data to when an order is placed
 order_failed | String | The webhook URL to send data to when an order fails
 tracking_obtained | String | The webhook URL to send data to when tracking for an order is retrieved
+status_updated | String | The webhook URL to send data to when the status of a request is updated
 
 ## Retailer credentials object
 

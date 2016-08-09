@@ -9,6 +9,13 @@ Slate helps you create beautiful API documentation. Think of it as an intelligen
 
 *The example above was created with Slate. Check it out at [tripit.github.io/slate](http://tripit.github.io/slate).*
 
+Deploying
+------------
+
+````
+rake publish
+````
+
 Features
 ------------
 
