@@ -37,7 +37,11 @@ curl "https://api.zinc.io/v1/orders" \
   },
   "is_gift": true,
   "gift_message": "Here is your package, Tim! Enjoy!",
-  "shipping_method": "cheapest",
+  "shipping": {
+    "order_by": "price",
+    "max_days": 5,
+    "max_price": 1000
+  },
   "payment_method": {
     "name_on_card": "Ben Bitdiddle",
     "number": "5555555555554444",
@@ -88,7 +92,8 @@ Attribute | Type | Description
 retailer | String | The retailer code of the supported retailer
 products | List | A list of [product objects](#product-object) that should be ordered
 shipping_address | Object | An [address object](#address-object) to which the order will be delivered
-shipping_method | String | The desired shipping method for the object. Available methods are `cheapest` (always select the cheapest method available), `fastest` (always select the fastest method available), or `free` (which will fail for items without some sort of free shipping).
+shipping_method | String | The desired shipping method for the object. Available methods are `cheapest` (always select the cheapest method available), `fastest` (always select the fastest method available), or `free` (which will fail for items without some sort of free shipping). You must provide either this or the `shipping` attribute, but not both.
+shipping | Object | A [shipping object](#shipping-object) with information as to which shipping method to use. You must provide either this or the `shipping_method` attribute, but not both.
 billing_address | Object | An [address object](#address-object) for the person associated with the credit card
 payment_method | Object |A [payment method](#payment-method-object) object containing payment information for the order
 retailer_credentials | Object | A [retailer credentials](#retailer-credentials-object) object for logging into the retailer with a preexisting account

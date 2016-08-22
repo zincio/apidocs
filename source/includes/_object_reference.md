@@ -62,6 +62,26 @@ merchant_id_not_in | Array | An array of merchant ids that the Zinc API must not
 min_seller_num_ratings | Number | (Amazon only) The minimum number of ratings required for an Amazon seller's offer to be selected
 prime | Boolean | (Amazon only) Specifies whether the selected offer should be an Amazon Prime offer
 
+## Shipping object
+
+> Example shipping object
+
+```shell
+{
+  "order_by": "price",
+  "max_days": 5,
+  "max_price": 1000
+}
+```
+
+The shipping object gives you fine grained control over shipping speeds on your orders. Typically, there is a tradeoff between how fast your order arrives and the cost of shipping. The shipping object gives you a way to make sure that you don't go over budget and that your order still arrives on time.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+order_by | String | The ordering of available shipping methods that meet the desired criteria. Available values are `price` or `speed`. If ordering by price, then the Zinc API will choose the cheapest shipping method that meets the desired criteria, while `speed` will choose the fastest shipping method meeting the criteria.
+max_days | Number | The maximum number of days allowed for shipping on the order.
+max_price | Number | The maximum price in cents allowed for the shipping cost of the order.
+
 ## Address object
 
 > Example address object
