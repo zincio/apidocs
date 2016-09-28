@@ -47,7 +47,7 @@ curl "https://api.zinc.io/v1/orders" \
     "number": "5555555555554444",
     "security_code": "123",
     "expiration_month": 1,
-    "expiration_year": 2015,
+    "expiration_year": 2020,
     "use_gift": false
   },
   "billing_address": {
