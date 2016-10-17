@@ -258,5 +258,5 @@ ship_price | Number | The price of the shipping for the item
 prime | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product ships using Amazon Prime
 prime_only | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product only ships using Amazon Prime
 seller_name | String | The name of the seller of the current offer
-seller_num_ratings | Number | The number of ratings that tha seller has accumulated
+seller_num_ratings | Number | The number of ratings that the seller has accumulated
 seller_percent_positive | Number | Number between 0 and 100 denoting the percentage of positive ratings the seller has received
