@@ -151,7 +151,7 @@ To see the status of an order, you can retrieve it using the request id you obta
       "merchant_order_id" : "112-1234567-7272727",
       "merchant" : "amazon",
       "account" : "timbeaver@gmail.com",
-      "placed_at" : ISODate("2014-07-02T23:51:08.366Z")
+      "placed_at" : "2014-07-02T23:51:08.366Z"
     }
   ],
   "tracking" : [
@@ -160,7 +160,7 @@ To see the status of an order, you can retrieve it using the request id you obta
       "merchant_order_id" : "112-1234567-7272727",
       "carrier" : "Fedex",
       "tracking_number" : "9261290100129790891234",
-      "obtained_at" : ISODate("2014-07-03T23:22:48.165Z")
+      "obtained_at" : "2014-07-03T23:22:48.165Z"
     }
   ],
   "request" : {

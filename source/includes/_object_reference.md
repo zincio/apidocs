@@ -210,7 +210,7 @@ gift_certificate | Number | (Optional) The amount of value used on a gift certif
   "merchant_order_id" : "112-1234567-7272727",
   "merchant" : "amazon",
   "account" : "timbeaver@gmail.com",
-  "placed_at" : ISODate("2014-07-02T23:51:08.366Z")
+  "placed_at" : "2014-07-02T23:51:08.366Z"
 }
 ```
 
@@ -260,3 +260,23 @@ prime_only | Boolean | (`amazon` and `amazon_uk` only). Whether or not the produ
 seller_name | String | The name of the seller of the current offer
 seller_num_ratings | Number | The number of ratings that the seller has accumulated
 seller_percent_positive | Number | Number between 0 and 100 denoting the percentage of positive ratings the seller has received
+
+## Tracking object
+
+> Example tracking object
+
+```shell
+{
+  "merchant_order_id": "112-1234567-7272727",
+  "carrier": "UPS",
+  "tracking_number": "1Z9999999999999999",
+  "product_id": "0923568964"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+merchant_order_id | String | The corresponding order identifier for which tracking was obtained.
+carrier | String | (Optional) The logistics carrier that was used to ship the package.
+tracking_number | String | (Optional) The tracking number from the logistics carrier.
+product_id | String | (Optional) The corresponding product for which tracking was obtained.
