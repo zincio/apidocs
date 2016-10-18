@@ -60,6 +60,7 @@ max_item_price | Number | The maximum allowable price in cents for an item
 merchant_id_in | Array | An array of merchant ids that the Zinc API must order from
 merchant_id_not_in | Array | An array of merchant ids that the Zinc API must not order from
 min_seller_num_ratings | Number | (Amazon only) The minimum number of ratings required for an Amazon seller's offer to be selected
+min_seller_percent_positive_feedback | Number | (Amazon only) The minimum percentage of positive ratings of an Amazon seller for their offer to be selected
 prime | Boolean | (Amazon only) Specifies whether the selected offer should be an Amazon Prime offer
 
 ## Shipping object
