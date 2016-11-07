@@ -19,6 +19,7 @@ The Zinc API uses the following errors:
 
 Error Code | Meaning
 ---------- | -------
+account_login_failed | We were unable to log in to the retailer with the username and password you provided.
 add_on_item | Add-on items cannot be ordered individually.
 additional_information_required | The retailer asked for additional account verification questions. If using the API, please add a field 'phone_number' in the billing address that matches your billing telephone number.
 billing_address_refused | The billing address you provided was refused by the retailer.
@@ -26,6 +27,7 @@ brand_not_accepted | Your credit card brand is not accepted with this merchant.
 credit_card_declined | The credit card you entered was declined.
 duplicate_order | This order is a duplicate.
 expired_product_id | The product_id you used is no longer supported by the retailer.
+incomplete_account_setup | You attempted to place an order with an account that has not been fully set up.
 insufficient_variants | You did not select all required variants for a product.
 internal_error | Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.
 invalid_card_number | The credit card number you entered is not valid.
