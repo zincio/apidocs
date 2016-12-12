@@ -35,6 +35,7 @@ Name | Retailer Code | Orders | Product Details | Product Prices
 Amazon | amazon | Y | Y | Y
 Amazon United Kingdom | amazon_uk | Y | Y | Y
 Amazon Canada | amazon_ca | Y | Y | Y
+Amazon Mexico | amazon_mx | Y | Y | Y
 Walmart | walmart | Y | Y | Y
 AliExpress | aliexpress | Y | Y | Y
 Nordstrom | nordstrom | Y | |
