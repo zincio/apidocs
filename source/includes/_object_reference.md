@@ -54,6 +54,7 @@ addon | Boolean | (Amazon only) Specifies whether the selected offer should be a
 buy_box | Boolean | (Amazon only) Specifies whether the selected offer should be Amazon's default buy box offer
 condition_in | Array | An array of item conditions that the Zinc API must order from
 condition_not_in | Array | An array of item conditions that the Zinc API must not order from
+first_party_seller | Boolean | Is the seller first-party? e.g. sold by Walmart.com on walmart
 handling_days_max | Number | The maximum number of allowable days for shipping and handling
 international | Boolean | Specifies whether the item should come from an international supplier
 max_item_price | Number | The maximum allowable price in cents for an item
