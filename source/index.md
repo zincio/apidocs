@@ -32,15 +32,20 @@ The table below shows the endpoints available for each retailer. We can add addi
 
 Name | Retailer Code | Orders | Product Details | Product Prices
 ---- | ------------- | ------ | --------------- | --------------
+AliExpress | aliexpress | Y | Y | Y
 Amazon | amazon | Y | Y | Y
 Amazon United Kingdom | amazon_uk | Y | Y | Y
 Amazon Canada | amazon_ca | Y | Y | Y
 Amazon Mexico | amazon_mx | Y | Y | Y
-Walmart | walmart | Y | Y | Y
-AliExpress | aliexpress | Y | Y | Y
-Nordstrom | nordstrom | Y | |
-Shopbop | shopbop | Y | |
+Best Buy | bestbuy | | Y | Y
+BH Photo Video | bhphotovideo | | Y | Y 
+Costco | Y | Y | Y
 East Dane | eastdane | Y | |
-Newegg | newegg | Y | |
 Google Shopping | google_shopping | | Y | Y
+Newegg | newegg | Y | |
+Nordstrom | nordstrom | Y | |
+Overstock | overstock | | Y | Y
+Sears | sears | | Y | Y
+Shopbop | shopbop | Y | |
+Walmart | walmart | Y | Y | Y
 
