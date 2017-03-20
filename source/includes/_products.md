@@ -73,14 +73,19 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 
 Attribute | Type | Description
 --------- | ---- | -----------
-status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the request.
-product_description | String | The description of the product
-retailer | String | The retailer for the product
-epids | Array | Array of objects containing external product identifier (epid) objects. An epid object contains a `type` field describing the name of the external product identifier and a `value` field for the identifier's value.
-product_details | Array | An array of strings providing details about the product
-title | String | Title of the product
-variant_specifics | Array | Array of objects containing information about the types and values of product variants available. A variant specifics object contains a `dimension` field describing the type of the variant (e.g. "Color") and a `value` field describing the specific value available.
+status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the request
+main_image | String | The URL of the primary image associated with the product
 product_id | String | The retailer's unique identifier for the product
+title | String | Title of the product
+timestamp | String | The timestamp that the resource was accessed
+retailer | String | The retailer for the product
+product_details | Array | An array of strings providing details about the product
+variant_specifics | Array | Array of objects containing information about the types and values of product variants available. A variant specifics object contains a `dimension` field describing the type of the variant (e.g. "Color") and a `value` field describing the specific value available
+categories | Array | Array of different categories that the product belongs in
+authors | Array | Array of author names (only available for products that are books)
+images | Array | An array of image URLs associated with the product
+product_description | String | The description of the product
+epids | Array | Array of objects containing external product identifier (epid) objects. An epid object contains a `type` field describing the name of the external product identifier and a `value` field for the identifier's value
 
 # Get product prices
 
