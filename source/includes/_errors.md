@@ -53,7 +53,7 @@ no_two_day_shipping | Two day shipping (or faster) is not available for the item
 order_probably_placed | This order was probably placed, but we were not able to retrieve the merchant order ids.
 payment_info_problem | There was a problem with your payment information (likely not enough gift balance).
 prime_pantry_not_supported | Purchasing Prime Pantry items is not supported by the Zinc API.
-product_unavailable | The product_id you used is being phased out by the retailer -- please update your product_id database accordingly. (On Amazon, this means that the offers page at [amazon_domain]/gp/offer-listing/[your_ASIN] has a more recent ASIN for that same product).
+product_unavailable | One of the products you selected is not available on the retailer. Either the seller selection criteria did not match any available offers or the product is out of stock and not available for purchase.
 request_processing | Request is currently processing and will complete soon.
 shipping_address_refused | The shipping address you provided was refused by the retailer.
 shipping_address_unavailable | The item(s) cannot be shipped to the selected shipping address.
