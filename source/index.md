@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - authentication
+  - idempotency
   - orders
   - products
   - object_reference
