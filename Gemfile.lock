@@ -1,8 +1,4 @@
 GEM
-  remote: https://api.rubygems.org/
-  specs:
-
-GEM
   remote: https://rubygems.org/
   specs:
     activesupport (4.1.16)
@@ -142,3 +138,6 @@ DEPENDENCIES
   redcarpet (~> 3.3.2)
   rouge (~> 1.9.0)
   therubyracer (~> 0.12.1)
+
+BUNDLED WITH
+   1.10.6
