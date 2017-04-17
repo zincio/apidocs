@@ -179,7 +179,7 @@ merchant_order_ids | Array | A [merchant order ids object](#merchant-order-ids-o
 tracking | Array | An array of [tracking objects](#tracking-object) that contain the order's tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the `tracking_obtained` field of the [webhooks object](#webhooks-object) from the request if set.
 request | Object | The original request that was sent to the Zinc API
 
-## Selecting shipping speed and cost
+## Selecting shipping
 
 Ordering on the Zinc API can be complicated due to all the potential shipping options available. Generally, faster shipping will cost more money, so you must decide how fast you'd like your items or how much money to pay for shipping. Zinc provides a number of options to customize your shipping speed and cost formulas.
 
