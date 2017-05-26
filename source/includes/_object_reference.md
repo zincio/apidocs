@@ -8,12 +8,6 @@
 {
   "product_id": "0923568964",
   "quantity": 1,
-  "variants": [
-    {
-      "dimension": "color",
-      "value": "Red",
-    }
-  ],
   "seller_selection_criteria": {
     "prime": true,
     "handling_days_max": 6,
@@ -26,7 +20,6 @@ Attribute | Type | Description
 --------- | ---- | -----------
 product_id | String | The retailer's unique identifier for the product. Note that Zinc does not support digital purchases or Amazon prime pantry items.
 quantity | Number | The number of products to purchase.
-variants | Array | An array of variant objects containing information about the types of values of a specific product variant to select. A variant contains `dimension` field describing the type of the variant (e.g. "color" or "size") and a `value` field describing the specific value to select.
 seller_selection_criteria | Object | A [seller selection criteria](#seller-selection-criteria-object) object containing information about which offers to choose when there are multiple offers available. If the seller selection criteria object is not included for a product, the seller selection criteria will default to `"prime": true`, `"handling_days_max": 6`, and `"condition_in": ["New"]`.
 
 ## Seller selection criteria object
