@@ -265,6 +265,7 @@ seller_percent_positive | Number | Number between 0 and 100 denoting the percent
   "merchant_order_id": "112-1234567-7272727",
   "carrier": "UPS",
   "tracking_number": "1Z9999999999999999",
+  "tracking_url": "https://some-url.com/tracking-number/1Z9999999999999999",
   "product_id": "0923568964"
 }
 ```
@@ -274,4 +275,5 @@ Attribute | Type | Description
 merchant_order_id | String | The corresponding order identifier for which tracking was obtained.
 carrier | String | (Optional) The logistics carrier that was used to ship the package.
 tracking_number | String | (Optional) The tracking number from the logistics carrier.
+tracking_url | String | (Optional) The tracking url that can be used to find the carrier and tracking number for a package.
 product_id | String | (Optional) The corresponding product for which tracking was obtained.
