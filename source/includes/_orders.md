@@ -109,7 +109,7 @@ max_price | Number | The maximum price in cents for the order. If the final pric
 webhooks | Object | A [webhooks object](#webhooks-object) including URLs that will receive POST requests after particular events have finished
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
 promo_codes | Array | A list of promotion codes to use at checkout.
-ignore_invalid_promo_code | Boolean | (`nordstrom` only). Continue with checkout even if promotion codes are invalid. Default is `false`.
+ignore_invalid_promo_code | Boolean | Continue with checkout even if promotion codes are invalid. Default is `false`.
 po_number | Number | (`amazon` business accounts only). Adds a purchase order number to the order.
 
 ## Retrieving an order
