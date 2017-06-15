@@ -111,6 +111,7 @@ client_notes | Object | Any metadata to store on the request for future use. Thi
 promo_codes | Array | A list of promotion codes to use at checkout.
 ignore_invalid_promo_code | Boolean | Continue with checkout even if promotion codes are invalid. Default is `false`.
 po_number | Number | (`amazon` business accounts only). Adds a purchase order number to the order.
+bundled | Boolean | (`amazon` only). If enabled, orders will be grouped together into batches and placed together. See the [order bundling](#order-bundling) section for more details.
 
 ## Retrieving an order
 
@@ -186,3 +187,14 @@ Ordering on the Zinc API can be complicated due to all the potential shipping op
 Since different items will have different shipping options, you can use a product's [seller selection criteria](#seller-selection-criteria) to specify `handling_days_max`. This will filter the list of potential offers down to those that will arrive within a certain number of days. The Zinc API will then select the cheapest offer that matched all of your seller selection criteria to make a purchase. For example, if you specified `"handling_days_max": 6`, then any offer whose latest delivery date is greater than 6 days from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed delivery date 10 days away and the other seller has a guaranteed delivery date 5 days away, the second seller's offer would be selected.
 
 You may also use the [shipping parameter](#shipping-object) on an order to select a shipping option once a product has been selected. Instead of filtering by the different offers, like the seller selection criteria, the `shipping` parameter will choose the shipping speed on the selected offer. For example, if you set `"max_days": 5` on the `shipping` parameter, the Zinc API would attempt to select the cheapest shipping method that took less than 5 days. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.
+
+## Order bundling
+
+The bundling feature groups orders together before placing them. This is often advantageous on retailers where larger orders are given free shipping. To use bundling, you only need to specify `bundled: true` when placing an order request. Bundling currently only works on the following retailers: `amazon`, `amazon_uk`.
+
+The bundling feature allows you to take advantage of free shipping over $50 (on Amazon) without having to change your Zinc integration. Bundling will take the shipping addresses, products, and quantities from separate orders and will group them together into a single order, making sure that each product is routed correctly. The order requests and responses remain exactly the same. The only difference is when the order is placed. The order bundling feature will wait for enough orders in the queue before launching a bundled order. The exact dynamics are as follows:
+
+1. The order bundler will wait until $55 in products have been purchased. As soon as more than $55 of products have been queued with `bundled: true`, the bundler will launch a new order.
+2. If the order bundler has waited for longer than 6 hours and has not yet obtained $55 in products, it will launch an order with whatever products are currently in the queue.
+
+Note that the order bundler will not group together two orders which have the same product ids.
