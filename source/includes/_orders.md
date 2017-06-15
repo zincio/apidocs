@@ -110,8 +110,8 @@ webhooks | Object | A [webhooks object](#webhooks-object) including URLs that wi
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
 promo_codes | Array | A list of promotion codes to use at checkout.
 ignore_invalid_promo_code | Boolean | Continue with checkout even if promotion codes are invalid. Default is `false`.
-po_number | Number | (`amazon` business accounts only). Adds a purchase order number to the order.
-bundled | Boolean | (`amazon` only). If enabled, orders will be grouped together into batches and placed together. See the [order bundling](#order-bundling) section for more details.
+po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
+bundled | Boolean | (Amazon only). If enabled, orders will be grouped together into batches and placed together. See the [order bundling](#order-bundling) section for more details.
 
 ## Retrieving an order
 

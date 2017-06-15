@@ -133,7 +133,7 @@ number | String | The credit/debit card number
 security_code | String | The card verification value on the back of the credit/debit card
 expiration_month | Number | The month of the expiration of the card (e.g. January is 1, February is 2)
 expiration_year | Number | The year of the expiration of the card (e.g. 2016)
-use_gift | Boolean | Whether or not to use the gift balance on the retailer account. If true, then the gift balance will be used for payment. Only works for retailers which support gift balance (`amazon` and `amazon_uk`).
+use_gift | Boolean | Whether or not to use the gift balance on the retailer account. If true, then the gift balance will be used for payment. Only works for retailers which support gift balance (Amazon and Walmart).
 
 ## Webhooks object
 
