@@ -145,8 +145,8 @@ As an example, let's say you have just created an order via the Zinc API. Every 
 
 ```shell
 {
-  "order_placed": "http://mywebsite.com/zinc/order_placed",
-  "order_failed": "http://mywebsite.com/zinc/order_failed",
+  "request_succeeded": "http://mywebsite.com/zinc/request_placed",
+  "request_failed": "http://mywebsite.com/zinc/request_failed",
   "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained",
   "status_updated": "http://mywebsite.com/zinc/status_updated"
 }
@@ -154,8 +154,8 @@ As an example, let's say you have just created an order via the Zinc API. Every 
 
 Attribute | Type | Description
 --------- | ---- | -----------
-order_placed | String | The webhook URL to send data to when an order is placed
-order_failed | String | The webhook URL to send data to when an order fails
+request_succeeded | String | The webhook URL to send data to when a request succeeds
+request_failed | String | The webhook URL to send data to when a request fails
 tracking_obtained | String | The webhook URL to send data to when tracking for an order is retrieved
 status_updated | String | The webhook URL to send data to when the status of a request is updated
 
