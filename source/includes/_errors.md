@@ -19,6 +19,7 @@ The Zinc API uses the following errors:
 
 Error Code | Meaning
 ---------- | -------
+account_locked | The retailer asked for additional information to verify your account.
 account_login_failed | We were unable to log in to the retailer with the username and password you provided.
 add_on_item | Add-on items cannot be ordered individually.
 additional_information_required | The retailer asked for additional account verification questions. If using the API, please add a field 'phone_number' in the billing address that matches your billing telephone number.
