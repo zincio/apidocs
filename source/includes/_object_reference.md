@@ -51,8 +51,8 @@ first_party_seller | Boolean | Is the seller first-party? e.g. sold by Walmart.c
 handling_days_max | Number | The maximum number of allowable days for shipping and handling
 international | Boolean | Specifies whether the item should come from an international supplier
 max_item_price | Number | The maximum allowable price in cents for an item
-merchant_id_in | Array | An array of merchant ids that the Zinc API must order from
-merchant_id_not_in | Array | An array of merchant ids that the Zinc API must not order from
+merchant_id_in | Array | (Amazon only) An array of merchant ids that the Zinc API must order from
+merchant_id_not_in | Array | (Amazon only) An array of merchant ids that the Zinc API must not order from
 min_seller_num_ratings | Number | (Amazon only) The minimum number of ratings required for an Amazon seller's offer to be selected
 min_seller_percent_positive_feedback | Number | (Amazon only) The minimum percentage of positive ratings of an Amazon seller for their offer to be selected
 prime | Boolean | (Amazon only) Specifies whether the selected offer should be an Amazon Prime offer
