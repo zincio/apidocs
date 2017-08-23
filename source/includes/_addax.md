@@ -35,6 +35,10 @@ You can view past transactions using a request like:
 curl "https://api.zinc.io/v1/addax/transactions?count=100&offset=0" -u <client_token>:
 ```
 
+Note: these funds are used to pay for the cost of your order on Amazon, but
+you'll still be billed the normal ordering fee at the end of the month. Your
+Zinc sales contact can provide more information about billing.
+
 ## Create an order
 
 Follow the [standard documentation for creating orders]() with two changes:
@@ -112,6 +116,9 @@ Dropoff` is the only method supported for automatic refunds. If you'd like to
 use a different method, you'll need to manually request refunds as specified
 below.
 
+Many users have had success using "inaccurate website description" for
+Amazon.com and "description on website was not accurate" for Amazon.co.uk.
+
 `explanation` is extra information that will be passed to Amazon or the Amazon
 seller. It is required for some return reasons.
 
@@ -170,17 +177,3 @@ Code | Description
 
 If none of these reason codes cover your use case, please contact
 support@zinc.io and use the code: `other`.
-
-## Aborting orders
-
-You can abort an order which is in the process of being placed by making a POST request like:
-
-```shell
-curl -X POST "https://api.zinc.io/v1/orders/<order_id>/abort" -u <client_token>:
-```
-
-This will typically cause your order to immediately fail. In some cases, it can
-take as long as 10 minutes. If your order has not completed with failure or
-success within 10 minutes of sending the abort request, please contact
-support@zinc.io and provide your order ID.
-
