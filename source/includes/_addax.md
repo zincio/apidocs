@@ -17,23 +17,20 @@ you need more information to determine if Managed Accounts are right for you.
 
 ## Funding your account
 
+> Check account balance and view past transactions
+
+```shell
+curl "https://api.zinc.io/v1/addax/balance" -u <client_token>:
+curl "https://api.zinc.io/v1/addax/transactions?count=100&offset=0" -u <client_token>:
+```
+
 Please contact sales@zinc.io. They'll help set up funding options taylored for
 your needs. Generally, funding is performed either through PayPal's Mass Pay
 option or via wire transfer directly to our bank.
 
 You'll need to fund your account before you'll be able to place orders.
 
-You can check your account balance at any time by making a request like:
-
-```shell
-curl "https://api.zinc.io/v1/addax/balance" -u <client_token>:
-```
-
-You can view past transactions using a request like:
-
-```shell
-curl "https://api.zinc.io/v1/addax/transactions?count=100&offset=0" -u <client_token>:
-```
+You can check your account balance and transactions at any time.
 
 Note: these funds are used to pay for the cost of your order on Amazon, but
 you'll still be billed the normal ordering fee at the end of the month. Your
@@ -55,7 +52,9 @@ for the currency of the market. Failed orders will not cost you anything.
 ## Cancelling orders
 
 The Zinc API supports pre-shipment order cancellation on Amazon.com and
-Amazon.co.uk. Simply POST to the cancellation endpoint:
+Amazon.co.uk. Simply POST to the cancellation endpoint.
+
+> Example cancellation POST
 
 ```shell
 curl "https://api.zinc.io/v1/orders/<order_id>/cancel" \
@@ -85,8 +84,9 @@ See below for more details.
 
 ## Returning orders
 
-The Zinc API also supports generating return labels through Amazon. Here's an
-example request:
+The Zinc API also supports generating return labels through Amazon.
+
+> Example return label request
 
 ```shell
 curl "https://api.zinc.io/v1/orders/<order_id>/return" \
@@ -139,7 +139,9 @@ manually.
 
 ### Checking refund status
 
-Make a GET request to the refund endpoint:
+Make a GET request to the refund endpoint.
+
+> Check refund status
 
 ```shell
 curl "https://api.zinc.io/v1/orders/<order_id>/refund" \
@@ -157,7 +159,9 @@ declined | The Pro-buyer has declined the refund request. Please contact support
 
 ### Requesting a refund manually
 
-You can POST to the refund endpoint:
+Make a POST request to the refund endpoint.
+
+> Create refund
 
 ```shell
 curl "https://api.zinc.io/v1/orders/<order_id>/refund" \
