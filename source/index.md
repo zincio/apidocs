@@ -12,6 +12,7 @@ includes:
   - idempotency
   - orders
   - products
+  - addax
   - object_reference
   - errors
 
