@@ -82,7 +82,14 @@ automatically update when the order is either cancelled or shipped. At the
 moment, however, you'll need to manually open a refund request for these cases.
 See below for more details.
 
-## Returning orders
+> Checking on a cancelled order
+
+```shell
+curl "https://api.zinc.io/v1/cancellations/<cancellation request_id>/cancel" \
+  -u <client_token>: \
+```
+
+## Returns
 
 The Zinc API also supports generating return labels through Amazon.
 
@@ -121,6 +128,13 @@ Amazon.com and "description on website was not accurate" for Amazon.co.uk.
 
 `explanation` is extra information that will be passed to Amazon or the Amazon
 seller. It is required for some return reasons.
+
+> Checking on a returned order
+
+```shell
+curl "https://api.zinc.io/v1/returns/<return request_id>/cancel" \
+  -u <client_token>: \
+```
 
 ## Refunds
 
