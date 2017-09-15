@@ -198,3 +198,12 @@ The bundling feature allows you to take advantage of free shipping over $50 (on 
 2. If the order bundler has waited for longer than 6 hours and has not yet obtained $55 in products, it will launch an order with whatever products are currently in the queue.
 
 Note that the order bundler will not group together two orders which have the same product ids.
+
+## Amazon Email Verification
+
+Amazon occasionally requires additional verification of account ownership by
+emailing you a code to enter during login. If this happens during an order, you
+will receive an `account_locked_verification_required` error. In this case,
+please check the email associated with the account and obtain the verification
+code. Then resubmit your order and supply the code as `verification_code` under
+the `retailer_credentials` object.

@@ -20,6 +20,7 @@ The Zinc API uses the following errors:
 Error Code | Meaning
 ---------- | -------
 account_locked | The retailer asked for additional information to verify your account.
+account_locked_verification_required | The retailer emailed you a code which you must supply to continue ordering.
 account_login_failed | We were unable to log in to the retailer with the username and password you provided.
 add_on_item | Add-on items cannot be ordered individually.
 additional_information_required | The retailer asked for additional account verification questions. If using the API, please add a field 'phone_number' in the billing address that matches your billing telephone number.
@@ -60,4 +61,3 @@ shipping_address_refused | The shipping address you provided was refused by the 
 shipping_address_unavailable | The item(s) cannot be shipped to the selected shipping address.
 shipping_method_unavailable | The selected shipping_method is not available for the selected shipping_address.
 unauthorized_access | You are not authorized to make this API call. Please contact support@zinc.io.
-

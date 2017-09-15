@@ -85,7 +85,7 @@ See below for more details.
 > Checking on a cancelled order
 
 ```shell
-curl "https://api.zinc.io/v1/cancellations/<cancellation request_id>/cancel" \
+curl "https://api.zinc.io/v1/cancellations/<cancellation request_id>" \
   -u <client_token>: \
 ```
 
@@ -109,10 +109,11 @@ curl "https://api.zinc.io/v1/orders/<order_id>/return" \
     "reason_code": "inaccurate website description",
     "method_code": "UPS Dropoff",
     "explanation": "Additional details for Amazon seller",
+    "cancel_pending": false
   }'
 ```
 
-Webhooks are optional, as usual, but the other four fields are required.
+`webhooks` and `cancel_pending` are optional, but the other four fields are required.
 
 `products` is in the same format as for an order. It determines which products
 of a multi-item order to return.
@@ -128,11 +129,22 @@ Amazon.com and "description on website was not accurate" for Amazon.co.uk.
 
 `explanation` is extra information that will be passed to Amazon or the Amazon
 seller. It is required for some return reasons.
+```
+By default, if a return is already in progress, we'll respond with a
+`return_in_progress` error code and include the status of the return. You may
+override this behavior by setting `cancel_pending` to `true`. This will cause us
+to cancel any pending returns before attempting to place the return.
+
+You can also use the new `return_in_progress` error to check the status of your
+return. Just supply an invalid `method_code` like "Dummy Method Code". If the
+return is in progress, you'll get the status back with the error. If the return
+is not yet started, we'll be unable to start a return because the method code
+does not exist.
 
 > Checking on a returned order
 
 ```shell
-curl "https://api.zinc.io/v1/returns/<return request_id>/cancel" \
+curl "https://api.zinc.io/v1/returns/<return request_id>" \
   -u <client_token>: \
 ```
 
