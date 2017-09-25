@@ -174,6 +174,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 email | String | The email for the retailer account
 password | String | The password for the retailer account
+verification_code | String | (Optional) The verification code required by the retailer for logging in. Only required in cases where the retailer prevents a login with an `account_locked_verification_required` error code.
 
 ## Price components object
 
