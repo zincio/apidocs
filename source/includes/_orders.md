@@ -199,15 +199,51 @@ The bundling feature allows you to take advantage of free shipping over $50 (on 
 
 Note that the order bundler will not group together two orders which have the same product ids.
 
+## Amazon Email Verification
+
+Amazon occasionally requires additional verification of account ownership by
+emailing you a code to enter during login. If this happens during an order, you
+will receive an `account_locked_verification_required` error. In this case,
+please check the email associated with the account and obtain the verification
+code. Then resubmit your order and supply the code as `verification_code` under
+the `retailer_credentials` object.
+
+## Aborting orders
+
+The Zinc API allows you to abort an order uncompleted orders that are still
+in the `request_processing` stage. This
+functionality allows you to stop an order from going through if a mistake was made
+on the order, or if the order is taking too long to process.
+
+> Example abort POST
+
+```shell
+curl "https://api.zinc.io/v1/orders/<request_id>/cancel" \
+  -X POST \
+  -u <client_token>:
+```
+
+The response to this request will be a standard GET response for an order.
+If we are able to successfully abort the order, an `aborted_request` error code
+will be returned for the order in question. You may need to continue to wait before
+the API is able to abort a request on an already running process.
+
+Note that abortion is best effort, so it is not guaranteed that you will be
+able to abort a request.
+
 ## Cancelling orders
 
 The Zinc API supports pre-shipment order cancellation on Amazon.com and
-Amazon.co.uk. Simply POST to the cancellation endpoint.
+Amazon.co.uk. Simply POST to the cancellation endpoint. Note that cancelling an order
+occurs after an order has been successfully placed on the API. This is distinct from
+an order abort, which occurs while the order is still in progress. Cancellations
+will send a cancellation request to the retailer and attempt to stop the order from
+shipping and can only be initiated for order requests that were successful.
 
 > Example cancellation POST
 
 ```shell
-curl "https://api.zinc.io/v1/orders/<order_id>/cancel" \
+curl "https://api.zinc.io/v1/orders/<request_id>/cancel" \
   -X POST \
   -u <client_token>: \
   -H 'Content-type: application/json' \
@@ -246,7 +282,7 @@ The Zinc API also supports generating return labels through Amazon.
 > Example return label request
 
 ```shell
-curl "https://api.zinc.io/v1/orders/<order_id>/return" \
+curl "https://api.zinc.io/v1/orders/<request_id>/return" \
   -X POST \
   -u <client_token>: \
   -H 'Content-type: application/json' \
@@ -297,12 +333,3 @@ does not exist.
 curl "https://api.zinc.io/v1/returns/<return request_id>" \
   -u <client_token>: \
 ```
-
-## Amazon Email Verification
-
-Amazon occasionally requires additional verification of account ownership by
-emailing you a code to enter during login. If this happens during an order, you
-will receive an `account_locked_verification_required` error. In this case,
-please check the email associated with the account and obtain the verification
-code. Then resubmit your order and supply the code as `verification_code` under
-the `retailer_credentials` object.
