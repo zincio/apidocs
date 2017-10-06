@@ -317,7 +317,7 @@ Amazon.com and "description on website was not accurate" for Amazon.co.uk.
 
 `explanation` is extra information that will be passed to Amazon or the Amazon
 seller. It is required for some return reasons.
-```
+
 By default, if a return is already in progress, we'll respond with a
 `return_in_progress` error code and include the status of the return. You may
 override this behavior by setting `cancel_pending` to `true`. This will cause us
