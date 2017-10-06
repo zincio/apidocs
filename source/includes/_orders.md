@@ -208,7 +208,7 @@ please check the email associated with the account and obtain the verification
 code. Then resubmit your order and supply the code as `verification_code` under
 the `retailer_credentials` object.
 
-## Aborting orders
+## Aborting an order
 
 The Zinc API allows you to abort an order uncompleted orders that are still
 in the `request_processing` stage. This
@@ -231,7 +231,7 @@ the API is able to abort a request on an already running process.
 Note that abortion is best effort, so it is not guaranteed that you will be
 able to abort a request.
 
-## Cancelling orders
+## Cancelling an order
 
 The Zinc API supports pre-shipment order cancellation on Amazon.com and
 Amazon.co.uk. Simply POST to the cancellation endpoint. Note that cancelling an order
