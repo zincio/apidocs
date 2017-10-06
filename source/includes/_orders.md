@@ -263,8 +263,12 @@ request.
 
 In about 50% of cases, Amazon is unable to immediately cancel an order. Instead,
 they tell Zinc that they're "Attempting to Cancel" the order. This currently
-results in the _failure_ code `attempting_to_cancel` in the API. We hope to improve this in the future to
-automatically update when the order is either cancelled or shipped.
+results in the _failure_ code `attempting_to_cancel` in the API. This status will
+be updated when the order is either cancelled successfully or if the cancellation
+fails. The Zinc API will continue to poll the retailer and attempt to figure out
+the status of the order, but no guarantees can be made for how long this will take.
+Once Zinc determines the actual status of the cancellation, the `attempting_to_cancel`
+error code will be removed and the updated response will take its place.
 
 > Checking on a cancelled order
 
