@@ -1,4 +1,4 @@
-# Get product details
+# Product details
 
 Get up to date information on the title, description, manufacturer details, item specifics, and more for any product on our supported retailers.
 
@@ -87,7 +87,7 @@ authors | Array | Array of author names (only available for products that are bo
 product_description | String | The description of the product
 epids | Array | Array of objects containing external product identifier (epid) objects. An epid object contains a `type` field describing the name of the external product identifier and a `value` field for the identifier's value
 
-# Get product prices
+# Product prices
 
 Get information about all the offers for a particular product, including seller name, item price, shipping price, condition, seller reputation, and more.
 
