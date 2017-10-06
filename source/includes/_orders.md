@@ -259,14 +259,12 @@ The `request_succeeded` and `request_failed` webhooks are optional. If supplied,
 they will be called when the corresponding event occurs on the cancellation
 request.
 
-### `attempting_to_cancel`
+### Attempting to cancel
 
 In about 50% of cases, Amazon is unable to immediately cancel an order. Instead,
 they tell Zinc that they're "Attempting to Cancel" the order. This currently
-results in a _failure_ code in the API. We hope to improve this in the future to
-automatically update when the order is either cancelled or shipped. At the
-moment, however, you'll need to manually open a refund request for these cases.
-See below for more details.
+results in the _failure_ code `attempting_to_cancel` in the API. We hope to improve this in the future to
+automatically update when the order is either cancelled or shipped.
 
 > Checking on a cancelled order
 
