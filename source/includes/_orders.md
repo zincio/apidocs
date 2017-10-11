@@ -218,7 +218,7 @@ on the order, or if the order is taking too long to process.
 > Example abort POST
 
 ```shell
-curl "https://api.zinc.io/v1/orders/<request_id>/cancel" \
+curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
   -X POST \
   -u <client_token>:
 ```
