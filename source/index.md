@@ -46,5 +46,8 @@ Newegg | newegg | Y | |
 Nordstrom | nordstrom | Y | |
 Overstock | overstock | | Y | Y
 Shopbop | shopbop | Y | |
-Walmart | walmart | Y | Y | Y
+Walmart | walmart | Y* | Y | Y
 
+## Walmart
+
+Note: Walmart AutoOrdering is currently in unsupported beta.
