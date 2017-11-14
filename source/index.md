@@ -40,12 +40,6 @@ Amazon United Kingdom | amazon_uk | Y | Y | Y
 Amazon Canada | amazon_ca | Y | Y | Y
 Amazon Mexico | amazon_mx | Y | Y | Y
 Costco | costco | Y | Y | Y
-East Dane | eastdane | Y | |
-Google Shopping | google_shopping | | Y | Y
-Newegg | newegg | Y | |
-Nordstrom | nordstrom | Y | |
-Overstock | overstock | | Y | Y
-Shopbop | shopbop | Y | |
 Walmart | walmart | Y* | Y | Y
 
 ## Walmart
