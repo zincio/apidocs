@@ -2,8 +2,6 @@
 
 ## Create an order
 
-Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
-
 > Example create an order request
 
 ```shell
@@ -84,6 +82,8 @@ curl "https://api.zinc.io/v1/orders" \
   "request_id": "3f1c939065cf58e7b9f0aea70640dffc"
 }
 ```
+
+Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
 
 ### Required attributes
 
@@ -210,11 +210,6 @@ the `retailer_credentials` object.
 
 ## Aborting an order
 
-The Zinc API allows you to abort an order uncompleted orders that are still
-in the `request_processing` stage. This functionality allows you to stop an
-order from going through if a mistake was made on the order, or if the order
-is taking too long to process.
-
 > Example order abort request
 
 ```shell
@@ -252,6 +247,11 @@ curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
 }
 
 ```
+
+The Zinc API allows you to abort an order uncompleted orders that are still
+in the `request_processing` stage. This functionality allows you to stop an
+order from going through if a mistake was made on the order, or if the order
+is taking too long to process.
 
 The response to this request will be a standard GET response for an order, which is
 either a `request_processing` response, an error response, or a successful order

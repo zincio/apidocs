@@ -2,13 +2,6 @@
 
 ## Initiate a cancellation
 
-The Zinc API supports pre-shipment order cancellation on Amazon.com and
-Amazon.co.uk. Simply POST to the cancellation endpoint. Note that cancelling an order
-occurs after an order has been successfully placed on the API. This is distinct from
-an order abort, which occurs while the order is still in progress. Cancellations
-will send a cancellation request to the retailer and attempt to stop the order from
-shipping and can only be initiated for order requests that were successful.
-
 > Example cancellation
 
 ```shell
@@ -41,6 +34,13 @@ curl "https://api.zinc.io/v1/orders/<request_id>/cancel" \
 }
 ```
 
+The Zinc API supports pre-shipment order cancellation on Amazon.com and
+Amazon.co.uk. Simply POST to the cancellation endpoint. Note that cancelling an order
+occurs after an order has been successfully placed on the API. This is distinct from
+an order abort, which occurs while the order is still in progress. Cancellations
+will send a cancellation request to the retailer and attempt to stop the order from
+shipping and can only be initiated for order requests that were successful.
+
 There aren't any required parameters for a cancellation, so you can send an authenticated post to the cancellation URL "https://api.zinc.io/v1/orders/<request_id>/cancel" without any extra parameters. However, cancellations can only be performed for a single merchant order id. If your order response has multiple merchant order ids, then you need to pass the `merchant_order_id` parameter to the request.
 
 ### Optional cancellation attributes
@@ -55,10 +55,6 @@ they will be called when the corresponding event occurs on the cancellation
 request.
 
 ## Retrieve a cancellation
-
-To retrieve a cancellation response given a cancellation request id, simply make a GET request to the cancellation URL "https://api.zinc.io/v1/cancellations/<request_id>". You will receive either a `request_processing` response, an error response, or a successful cancellation response of type "cancellation_response".
-
-### Cancellation response attributes
 
 > Example cancellation retrieval request
 
@@ -78,6 +74,10 @@ curl "https://api.zinc.io/v1/cancellations/<request_id>" \
   }
 }
 ```
+
+To retrieve a cancellation response given a cancellation request id, simply make a GET request to the cancellation URL "https://api.zinc.io/v1/cancellations/<request_id>". You will receive either a `request_processing` response, an error response, or a successful cancellation response of type "cancellation_response".
+
+### Cancellation response attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------

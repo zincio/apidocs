@@ -2,11 +2,6 @@
 
 ## Create a Return
 
-The Zinc API also supports generating return labels. Returns are only available
-on the following retailers: `amazon`, `amazon_uk`. You can create a return for
-an order by hitting the `https://api.zinc.io/v1/orders/<request_id>/return`
-route where `request_id` is the request id of the original order.
-
 > Example return label request
 
 ```shell
@@ -35,6 +30,11 @@ curl "https://api.zinc.io/v1/orders/<request_id>/return" \
 }
 ```
 
+The Zinc API also supports generating return labels. Returns are only available
+on the following retailers: `amazon`, `amazon_uk`. You can create a return for
+an order by hitting the `https://api.zinc.io/v1/orders/<request_id>/return`
+route where `request_id` is the request id of the original order.
+
 ### Required attributes
 
 Attribute | Type | Description
@@ -53,8 +53,6 @@ cancel_pending | Boolean | Whether or not this request should cancel any pending
 return_address | Object | An [address object](#address-object) from which the return is sent. If not provided, the default return address from Amazon will be used.
 
 ## Retrieving a return
-
-To retrieve a return response given a return request id, simply make a GET request to the return URL "https://api.zinc.io/v1/returns/<request_id>". You will receive either a `request_processing` response, an error response, or a successful cancellation response of type "return_response".
 
 > Example return retrieval request
 
@@ -98,6 +96,8 @@ curl "https://api.zinc.io/v1/returns/<request_id>" \
   }
 }
 ```
+
+To retrieve a return response given a return request id, simply make a GET request to the return URL "https://api.zinc.io/v1/returns/<request_id>". You will receive either a `request_processing` response, an error response, or a successful cancellation response of type "return_response".
 
 ### Return response attributes
 

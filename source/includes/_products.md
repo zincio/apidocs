@@ -1,13 +1,13 @@
 # Product details
 
-Get up to date information on the title, description, manufacturer details, item specifics, and more for any product on our supported retailers.
-
 > Example product details request
 
 ```shell
 curl https://api.zinc.io/v1/products/0923568964?retailer=amazon \
   -u <client_token>:
 ```
+
+Get up to date information on the title, description, manufacturer details, item specifics, and more for any product on our supported retailers.
 
 To retrieve product details, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product and specifying the request attributes as query parameters in the URL.
 
@@ -89,14 +89,14 @@ epids | Array | Array of objects containing external product identifier (epid) o
 
 # Product prices
 
-Get information about all the offers for a particular product, including seller name, item price, shipping price, condition, seller reputation, and more.
-
 > Example product offers request
 
 ```shell
 curl https://api.zinc.io/v1/products/0923568964/offers?retailer=amazon \
   -u <client_token>:
 ```
+
+Get information about all the offers for a particular product, including seller name, item price, shipping price, condition, seller reputation, and more.
 
 To retrieve product offers and prices, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product and specifying the request attributes as query parameters in the URL.
 
