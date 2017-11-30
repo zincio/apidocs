@@ -54,6 +54,8 @@ return_address | Object | An [address object](#address-object) from which the re
 
 ## Retrieving a return
 
+To retrieve a return response given a return request id, simply make a GET request to the return URL "https://api.zinc.io/v1/returns/<request_id>". You will receive either a `request_processing` response, an error response, or a successful cancellation response of type "return_response".
+
 > Example return retrieval request
 
 ```shell
