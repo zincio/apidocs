@@ -1,6 +1,6 @@
 # Cancellations
 
-## Initiating an order cancellation
+## Initiate a cancellation
 
 The Zinc API supports pre-shipment order cancellation on Amazon.com and
 Amazon.co.uk. Simply POST to the cancellation endpoint. Note that cancelling an order
@@ -54,9 +54,11 @@ The `request_succeeded` and `request_failed` webhooks are optional. If supplied,
 they will be called when the corresponding event occurs on the cancellation
 request.
 
-### Cancellation response attributes
+## Retrieve a cancellation
 
 To retrieve a cancellation response given a cancellation request id, simply make a GET request to the cancellation URL "https://api.zinc.io/v1/cancellations/<request_id>". You will receive either a `request_processing` response, an error response, or a successful cancellation response of type "cancellation_response".
+
+### Cancellation response attributes
 
 > Example cancellation retrieval request
 
@@ -82,7 +84,7 @@ Attribute | Type | Description
 merchant_order_id | String | The merchant order id of the order that was cancelled
 request | Object | The original request that was sent to the Zinc API
 
-### Attempting to cancel
+## Attempting to cancel
 
 > Example `attempting_to_cancel` cancellation response
 
