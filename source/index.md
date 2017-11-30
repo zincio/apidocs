@@ -11,6 +11,7 @@ includes:
   - authentication
   - idempotency
   - orders
+  - cancellations
   - returns
   - products
   - addax

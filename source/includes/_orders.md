@@ -211,11 +211,11 @@ the `retailer_credentials` object.
 ## Aborting an order
 
 The Zinc API allows you to abort an order uncompleted orders that are still
-in the `request_processing` stage. This
-functionality allows you to stop an order from going through if a mistake was made
-on the order, or if the order is taking too long to process.
+in the `request_processing` stage. This functionality allows you to stop an
+order from going through if a mistake was made on the order, or if the order
+is taking too long to process.
 
-> Example abort POST
+> Example order abort request
 
 ```shell
 curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
@@ -223,56 +223,47 @@ curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
   -u <client_token>:
 ```
 
-The response to this request will be a standard GET response for an order.
-If we are able to successfully abort the order, an `aborted_request` error code
-will be returned for the order in question. You may need to continue to wait before
-the API is able to abort a request on an already running process.
+> Example successful order abort response
 
-Note that abortion is best effort, so it is not guaranteed that you will be
+```shell
+{
+  "_type": "error",
+  "code": "aborted_request",
+  "message": "The request was aborted before it completed.",
+  "data": {
+    "msg": "Order aborted and dequeued"
+  },
+  "request_id": "3f1c939065cf58e7b9f0aea70640dffc",
+  "request": {
+    ...
+  }
+}
+```
+
+> Example request processing order abort response
+
+```shell
+{
+  "_type": "error",
+  "code": "request_processing",
+  "message": "Request is currently processing and will complete soon.",
+  "data": {}
+  "request_id": "3f1c939065cf58e7b9f0aea70640dffc",
+}
+
+```
+
+The response to this request will be a standard GET response for an order, which is
+either a `request_processing` response, an error response, or a successful order
+response. If we are able to successfully abort the order, an `aborted_request` error
+code will be returned for the order in question. If you receive back a
+`request_processing` response, you will need to continue to wait before the API is
+able to abort a request on an already running process.
+
+If you are using the `request_succeeded` and `request_failed` webhooks, you won't
+need to do anything with the order abort response. The API will hit the
+`request_failed` webhook if an order is aborted correctly, and will have normal
+behavior if the order abortion fails.
+
+Note that abortion is best effort, so we cannot guaranteed that you will be
 able to abort a request.
-
-## Cancelling an order
-
-The Zinc API supports pre-shipment order cancellation on Amazon.com and
-Amazon.co.uk. Simply POST to the cancellation endpoint. Note that cancelling an order
-occurs after an order has been successfully placed on the API. This is distinct from
-an order abort, which occurs while the order is still in progress. Cancellations
-will send a cancellation request to the retailer and attempt to stop the order from
-shipping and can only be initiated for order requests that were successful.
-
-> Example cancellation POST
-
-```shell
-curl "https://api.zinc.io/v1/orders/<request_id>/cancel" \
-  -X POST \
-  -u <client_token>: \
-  -H 'Content-type: application/json' \
-  -d '{
-    "webhooks": {
-      "request_succeeded": "https://www.example.com/webhooks/success",
-      "request_failed": "https://www.example.com/webhooks/failed"
-     }
-   }'
-```
-
-The `request_succeeded` and `request_failed` webhooks are optional. If supplied,
-they will be called when the corresponding event occurs on the cancellation
-request.
-
-### Attempting to cancel
-
-In about 50% of cases, Amazon is unable to immediately cancel an order. Instead,
-they tell Zinc that they're "Attempting to Cancel" the order. This currently
-results in the _failure_ code `attempting_to_cancel` in the API. This status will
-be updated when the order is either cancelled successfully or if the cancellation
-fails. The Zinc API will continue to poll the retailer and attempt to figure out
-the status of the order, but no guarantees can be made for how long this will take.
-Once Zinc determines the actual status of the cancellation, the `attempting_to_cancel`
-error code will be removed and the updated response will take its place.
-
-> Checking on a cancelled order
-
-```shell
-curl "https://api.zinc.io/v1/cancellations/<cancellation request_id>" \
-  -u <client_token>: \
-```

@@ -49,15 +49,8 @@ explanation | String | Any extra information that will be passed to Amazon or th
 Attribute | Type | Description
 --------- | ---- | -----------
 webhooks | Object | A [webhooks object](#webhooks-object) including URLs that will receive POST requests after particular events have finished.
-cancel_pending | Boolean | Whether or not this request should cancel any pending returns while creating a new return. If false, the request will return a `return_in_progress` error code if a pending return already exists. Defaults
-to false.
+cancel_pending | Boolean | Whether or not this request should cancel any pending returns while creating a new return. If false, the request will return a `return_in_progress` error code if a pending return already exists. Defaults to false.
 return_address | Object | An [address object](#address-object) from which the return is sent. If not provided, the default return address from Amazon will be used.
-
-You can use the `return_in_progress` error to check the status of your return.
-Just supply an invalid `method_code` like "Dummy Method Code". If the return is
-in progress, you'll get the status back with the error. If the return
-is not yet started, we'll be unable to start a return because the method code
-does not exist.
 
 ## Retrieving a return
 
@@ -112,3 +105,9 @@ merchant_return_id | String | A unique identifier for the return
 return_by | String | The date before which the products must be returned by
 label_urls | Array | A list of URLs for the generated return labels
 request | Object | The original request that was sent to the Zinc API
+
+You can use the `return_in_progress` error to check the status of your return.
+Just supply an invalid `method_code` like "Dummy Method Code". If the return is
+in progress, you'll get the status back with the error. If the return
+is not yet started, we'll be unable to start a return because the method code
+does not exist.
