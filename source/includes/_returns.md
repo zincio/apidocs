@@ -40,32 +40,18 @@ curl "https://api.zinc.io/v1/orders/<request_id>/return" \
 Attribute | Type | Description
 --------- | ---- | -----------
 products | List | A list of [product objects](#product-object) that should be returned
-reason_code | String | The reason for the return. This is passed directly to
-Amazon. Reason codes will vary depending on Amazon country. Many users have had
-success using "inaccurate website description" for Amazon.com and "description
-on website was not accurate" for Amazon.co.uk. Note that the reason_code must
-be an exact match with the reason code dropdown available on Amazon.
-method_code | String | The method of returning the specified products. This is
-passed directly to Amazon. The available options may vary based on Amazon
-country and customer address. Note that `UPS Dropoff` is the only method
-supported for automatic refunds on Zinc Managed Account orders. If you'd like
-to use a different method, you'll need to manually request a refund.
-explanation | String | Any extra information that will be passed to Amazon or
-the Amazon seller. It is required for some return reasons.
+reason_code | String | The reason for the return. This is passed directly to Amazon. Reason codes will vary depending on Amazon country. Many users have had success using "inaccurate website description" for Amazon.com and "description on website was not accurate" for Amazon.co.uk. Note that the reason_code must be an exact match with the reason code dropdown available on Amazon.
+method_code | String | The method of returning the specified products. This is passed directly to Amazon. The available options may vary based on Amazon country and customer address. Note that `UPS Dropoff` is the only method supported for automatic refunds on Zinc Managed Account orders. If you'd like to use a different method, you'll need to manually request a refund.
+explanation | String | Any extra information that will be passed to Amazon or the Amazon seller. It is required for some return reasons.
 
 ### Optional attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
-webhooks | Object | A [webhooks object](#webhooks-object) including URLs that
-will receive POST requests after particular events have finished.
-cancel_pending | Boolean | Whether or not this request should cancel any
-pending returns while creating a new return. If false, the request will return
-a `return_in_progress` error code if a pending return already exists. Defaults
+webhooks | Object | A [webhooks object](#webhooks-object) including URLs that will receive POST requests after particular events have finished.
+cancel_pending | Boolean | Whether or not this request should cancel any pending returns while creating a new return. If false, the request will return a `return_in_progress` error code if a pending return already exists. Defaults
 to false.
-return_address | Object | An [address object](#address-object) from which the
-return is sent. If not provided, the default return address from Amazon will
-be used.
+return_address | Object | An [address object](#address-object) from which the return is sent. If not provided, the default return address from Amazon will be used.
 
 You can use the `return_in_progress` error to check the status of your return.
 Just supply an invalid `method_code` like "Dummy Method Code". If the return is
@@ -87,10 +73,10 @@ curl "https://api.zinc.io/v1/returns/<request_id>" \
 ```shell
 {
   "_type": "return_response",
-  "merchant_return_id": "1b95c9d5-6a4c-409d-9598-6e5da88b91e7",
+  "merchant_return_id": "12345678-abcd-efgh-1234-abcde1234567",
   "return_by": "2018-02-01T00:00:00",
   "label_urls": [
-    "https://zincapi.s3.amazonaws.com/2791c7cf243f44349ac1fbf179dd7428_return_label.pdf"
+    "https://zincapi.s3.amazonaws.com/3f1c939065cf58e7b9f0aea70640dffc_return_label.pdf"
   ],
   "request": {
     ...
