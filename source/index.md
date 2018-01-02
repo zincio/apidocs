@@ -44,6 +44,4 @@ Amazon Mexico | amazon_mx | Y | Y | Y
 Costco | costco | Y | Y | Y
 Walmart | walmart | Y* | Y | Y
 
-## Walmart
-
-Note: Walmart AutoOrdering is currently in unsupported beta.
+```*```Walmart AutoOrdering is currently in unsupported beta.
