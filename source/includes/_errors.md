@@ -30,6 +30,7 @@ credit_card_declined | The credit card you entered was declined.
 duplicate_order | This order is a duplicate.
 expired_product_id | The product_id you used is no longer supported by the retailer.
 incomplete_account_setup | You attempted to place an order with an account that has not been fully set up.
+insufficient_addax_balance | Insufficient funds in your Managed Account Balance to complete the order. Add more funds through your payment channel.
 insufficient_variants | You did not select all required variants for a product.
 internal_error | Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.
 invalid_card_number | The credit card number you entered is not valid.
@@ -39,7 +40,7 @@ invalid_gift_options | The gift options you provided were rejected by the retail
 invalid_json | The JSON in your request could not be parsed.
 invalid_login_credentials | The email and password you entered were incorrect.
 invalid_payment_method | The payment method provided is not available on the retailer.
-invalid_promo_code | One of the promotion code you entered was not valid.
+invalid_promo_code | One of the promotion codes you entered was not valid.
 invalid_quantity | The quantity for one of the products does not match the one available on the retailer.
 invalid_request | Validation failed on the request.
 invalid_request_id | The provided request_id is invalid.
@@ -60,4 +61,4 @@ request_processing | Request is currently processing and will complete soon.
 shipping_address_refused | The shipping address you provided was refused by the retailer.
 shipping_address_unavailable | The item(s) cannot be shipped to the selected shipping address.
 shipping_method_unavailable | The selected shipping_method is not available for the selected shipping_address.
-unauthorized_access | You are not authorized to make this API call. Please contact support@zinc.io.
+unauthorized_access | You are not authorized to make this API call. Please contact support@zinc.io. (Usually, attempting to use Addax before it has been enabled)
