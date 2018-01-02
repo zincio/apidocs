@@ -35,7 +35,7 @@ Zinc sales contact can provide more information about billing.
 
 ## Create an order
 
-Follow the [standard documentation for creating orders]() with two changes:
+Follow the [standard documentation for creating orders](#create-an-order) with two changes:
 
 1. Add `"addax": true` to your request body.
 2. Do not supply the `retailer_credentials`, `payment_method`, or `billing_address` keys.
