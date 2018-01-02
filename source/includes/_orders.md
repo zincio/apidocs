@@ -206,7 +206,7 @@ emailing you a code to enter during login. If this happens during an order, you
 will receive an `account_locked_verification_required` error. In this case,
 please check the email associated with the account and obtain the verification
 code. Then resubmit your order and supply the code as `verification_code` under
-the `retailer_credentials` object.
+the `retailer_credentials` object. Another option is to enable Two Factor Authentication on your account and supply the 'totp_2fa_key' with every order, which will skip Amazon email verification, for more detail review the info on ['retailer_credentials'](#retailer-credentials-object) 
 
 ## Aborting an order
 
