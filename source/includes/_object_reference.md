@@ -225,6 +225,25 @@ product_ids | Array | A list of product_ids in the order
 tracking_url | String | The tracking url provided by the merchant (if available)
 delivery_date | String | The projected delivery date given by the retailer
 
+## Account status object
+> Example account status object
+
+```shell
+{
+  "prime": true,
+  "fresh": false,
+  "business": false,
+  "charity": null
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+prime | boolean | Indicates if the account has Prime enabled
+fresh| boolean | Indicates if the account has Fresh enabled
+business | boolean | Indicates if the account has Business enabled
+charity | string | Indicates if the account has a Charity associated
+
 ## Product offer object
 
 > Example product offer object
