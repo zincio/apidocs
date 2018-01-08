@@ -11,14 +11,8 @@ curl "https://api.zinc.io/v1/orders" \
   "retailer": "amazon",
   "products": [
     {
-      "product_id": "0923568964",
-      "quantity": 1,
-      "variants": [
-        {
-          "dimension": "color",
-          "value": "Red",
-        }
-      ]
+      "product_id": "B0016NHH56",
+      "quantity": 1
     }
   ],
   "max_price": 2300,
@@ -61,7 +55,8 @@ curl "https://api.zinc.io/v1/orders" \
   },
   "retailer_credentials": {
     "email": "timbeaver@gmail.com",
-    "password": "myRetailerPassword"
+    "password": "myRetailerPassword",
+    "totp_2fa_key": "3DE4 3ERE 23WE WIKJ GRSQ VOBG CO3D METM 2NO2 OGUX Z7U4 DP2H UYMA"
   },
   "webhooks": {
     "order_placed": "http://mywebsite.com/zinc/order_placed",
