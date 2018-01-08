@@ -78,7 +78,7 @@ curl "https://api.zinc.io/v1/orders" \
 }
 ```
 
-Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
+Zinc offers an API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
 
 ### Required attributes
 
@@ -117,7 +117,7 @@ curl "https://api.zinc.io/v1/orders/3f1c939065cf58e7b9f0aea70640dffc" \
   -u <client_token>:
 ```
 
-To see the status of an order, you can retrieve it using the request id you obtained from your order request, and placing it in a GET request URL. Orders usually take a while to process. While your order is processing, the response will return an error with code type `request_processing`.
+To see the status of an order, append the 'request_id' returned from your order query to the order URL and place GET request. Orders usually take a while to process. While your order is processing, the response will return an error with code type `request_processing`.
 
 > Example retrieve an order response (request processing)
 
@@ -164,7 +164,7 @@ To see the status of an order, you can retrieve it using the request id you obta
 }
 ```
 
-Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
+Once the request process completes, the retrieve an order response should either return a response of type `order_response`, with the details of the successfully placed order or `error`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
 
 ### Order response attributes
 
@@ -177,7 +177,7 @@ request | Object | The original request that was sent to the Zinc API
 
 ## Selecting shipping
 
-Ordering on the Zinc API can be complicated due to all the potential shipping options available. Generally, faster shipping will cost more money, so you must decide how fast you'd like your items or how much money to pay for shipping. Zinc provides a number of options to customize your shipping speed and cost formulas.
+Zinc provides a number of options to customize your shipping speed and cost formulas from the various options available from our supported retailers.
 
 Since different items will have different shipping options, you can use a product's [seller selection criteria](#seller-selection-criteria-object) to specify `handling_days_max`. This will filter the list of potential offers down to those that will arrive within a certain number of days. The Zinc API will then select the cheapest offer that matched all of your seller selection criteria to make a purchase. For example, if you specified `"handling_days_max": 6`, then any offer whose latest delivery date is greater than 6 days from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed delivery date 10 days away and the other seller has a guaranteed delivery date 5 days away, the second seller's offer would be selected.
 
@@ -243,7 +243,7 @@ curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
 
 ```
 
-The Zinc API allows you to abort an order uncompleted orders that are still
+The Zinc API allows you to abort uncompleted orders that are still
 in the `request_processing` stage. This functionality allows you to stop an
 order from going through if a mistake was made on the order, or if the order
 is taking too long to process.
@@ -258,7 +258,7 @@ able to abort a request on an already running process.
 If you are using the `request_succeeded` and `request_failed` webhooks, you won't
 need to do anything with the order abort response. The API will hit the
 `request_failed` webhook if an order is aborted correctly, and will have normal
-behavior if the order abortion fails.
+behavior if the order abort fails.
 
 Note that abortion is best effort, so we cannot guaranteed that you will be
 able to abort a request.
