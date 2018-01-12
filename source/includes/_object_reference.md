@@ -271,15 +271,17 @@ Attribute | Type | Description
 --------- | ---- | -----------
 addon | Boolean | Whether or not the product is an addon item that can only be purchased in a bundle
 condition | String | The condition of the product. Possible values are `New`, `Refurbished`, `Used - Like New`, `Used - Very Good`, `Used - Good`, `Used - Acceptable`, `Unacceptable`.
+greytext | String | (Amazon only) The shipping text provided by the seller
 handling_days_max | Number | The maximum number of days required for shipping and handling
 handling_days_min | Number | The minimum number of days required for shipping and handling
 international | Boolean | Whether or not the product ships from outside of the United States
+member_only | Boolean | (Costco only) Whether or not the purchase must be from a Costco Member
 merchant_id | String | The merchant's unique identifier for the product
-offerlisting_id | String | (`amazon` and `amazon_uk` only). The unique identifier that identifies an item sold by any merchant on Amazon
+offerlisting_id | String | (Amazon only). The unique identifier that identifies an item sold by any merchant on Amazon
 price | Number | The price of the item, not including shipping
 ship_price | Number | The price of the shipping for the item
-prime | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product ships using Amazon Prime
-prime_only | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product only ships using Amazon Prime
+prime | Boolean | (Amazon only). Whether or not the product ships using Amazon Prime
+prime_only | Boolean | (Amazon only). Whether or not the product only ships using Amazon Prime
 seller_name | String | The name of the seller of the current offer
 seller_num_ratings | Number | The number of ratings that the seller has accumulated
 seller_percent_positive | Number | Number between 0 and 100 denoting the percentage of positive ratings the seller has received
