@@ -9,9 +9,9 @@ curl https://api.zinc.io/v1/products/0923568964?retailer=amazon \
 
 Get up to date information on the title, description, manufacturer details, item specifics, and more for any product on our supported retailers.
 
-To retrieve product details, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product and specifying the request attributes as query parameters in the URL.
+To retrieve product details, make a GET request to the following URL, replacing `<product_id>` with the retailer's unique identifier for a particular product and specifying the request attributes as query parameters in the URL.
 
-`https://api.zinc.io/v1/products/:product_id`
+`https://api.zinc.io/v1/products/<product_id>?retailer=<retailer_name>`
 
 ### Required request attributes
 
@@ -31,41 +31,117 @@ async | Boolean | Determines whether the resulting response will be asynchronous
 
 ```shell
 {
-  "status": "completed",
-  "product_description": "This is a great book!",
-  "retailer": "amazon",
-  "epids":[
-    {
-      "type": "EAN",
-      "value": "9780923568962"
+    "status": "completed",
+    "original_retail_price": 899,
+    "timestamp": 1515775557,
+    "all_variants": [
+        {
+            "variant_specifics": [
+                {
+                    "dimension": "Size",
+                    "value": "2"
+                }
+            ],
+            "product_id": "B00Q3H18EQ"
+        },
+        {
+            "variant_specifics": [
+                {
+                    "dimension": "Size",
+                    "value": "1"
+                }
+            ],
+            "product_id": "B00KFP6NHO"
+        }
+    ],
+    "retailer": "amazon",
+    "feature_bullets": [
+        "Includes four freeze-and-feed popsicle molds with handles shaped perfectly for little hands",
+        "Perfect for fresh homemade puree popsicles - turn fresh fruit/veggie puree or juice into 1 fl. oz popsicles",
+        "Wide popsicle-holder base catches drips as the popsicle melts to reduce the risk of messes",
+        "Great for teething babies to help soothe sore gums",
+        "6 Months + / BPA Free"
+    ],
+    "variant_specifics": [
+        {
+            "dimension": "Size",
+            "value": "1"
+        }
+    ],
+    "main_image": "https://images-na.ssl-images-amazon.com/images/I/61K0YbuLi-L.jpg",
+    "images": [
+        "https://images-na.ssl-images-amazon.com/images/I/61K0YbuLi-L.jpg",
+        "https://images-na.ssl-images-amazon.com/images/I/81KtOn8ddTL.jpg",
+        "https://images-na.ssl-images-amazon.com/images/I/71%2BruDKMSoL.jpg",
+        "https://images-na.ssl-images-amazon.com/images/I/91AE6dpp5EL.jpg",
+        "https://images-na.ssl-images-amazon.com/images/I/61FQEQJR2HL.jpg",
+        "https://images-na.ssl-images-amazon.com/images/I/511agWyBf3L.jpg",
+        "https://images-na.ssl-images-amazon.com/images/I/31cC6K6y%2ByL.jpg",
+        "https://images-na.ssl-images-amazon.com/images/I/31ocdUye0ML.jpg"
+    ],
+    "package_dimensions": {
+        "weight": {
+            "amount": 8.5,
+            "unit": "ounces"
+        },
+        "size": {
+            "width": {
+                "amount": 4,
+                "unit": "inches"
+            },
+            "depth": {
+                "amount": 5.8,
+                "unit": "inches"
+            },
+            "length": {
+                "amount": 5.8,
+                "unit": "inches"
+            }
+        }
     },
-    {
-      "type": "ISBN",
-      "value": "0923568964"
-    }
-  ],
-  "product_details": [
-    "Series: The Easy Way!",
-    "Paperback: 60 pages",
-    "Publisher: XanEdu Publishing Inc; 2nd Edition edition (September 28, 2009)",
-    "Language: English",
-    "ISBN-10: 0923568964",
-    "ISBN-13: 978-0923568962",
-    "Product Dimensions: 8.3 x 5.3 x 0.2 inches",
-    "Shipping Weight: 3.5 ounces"
-  ],
-  "title": "APA: The Easy Way! [Updated for APA 6th Edition]",
-  "variant_specifics": [
-    {
-      "dimension": "Color",
-      "value": "Gray"
+    "epids": [
+        {
+            "type": "MPN",
+            "value": "5438"
+        },
+        {
+            "type": "UPC",
+            "value": "048526054381"
+        },
+        {
+            "type": "EAN",
+            "value": "0048526054381"
+        }
+    ],
+    "product_id": "B00KFP6NHO",
+    "asin": "B00KFP6NHO",
+    "ship_price": 0,
+    "categories": [
+        "Home & Kitchen",
+        "Kitchen & Dining",
+        "Kitchen Utensils & Gadgets",
+        "Specialty Tools & Gadgets",
+        "Ice Pop Molds"
+    ],
+    "review_count": 829,
+    "epids_map": {
+        "MPN": "5438",
+        "UPC": "048526054381",
+        "EAN": "0048526054381"
     },
-    {
-      "dimension": "Size",
-      "value": "Small/Medium"
-    }
-  ],
-  "product_id": "0923568964"
+    "title": "Nuby Garden Fresh Fruitsicle Frozen Pop Tray",
+    "brand": "Nuby",
+    "product_description": "Size:1  Nuby's Garden Fresh Fruitsicle Frozen Popsicle Tray\nis specially designed for making fresh puree popsicles at home. Nuby’s\nFruitsicles are the perfect size for baby’s small hands and are designed to\ncatch drips as the pop melts. Fruitsicles are perfect for teething babies with\nsore gums. This set includes four fruitsicle handles and a tray to mold the\npops while keeping them in place while in your freezer. To use: fill\ncompartments with fresh puree, breast milk, or juice. Snap handles into mold\nand freeze until solid. BPA Free. By Nuby",
+    "product_details": [
+        "Product Dimensions: 5.8 x 5.8 x 4 inches ; 7.8 ounces",
+        "Shipping Weight: 8.5 ounces",
+        "Domestic Shipping: Item can be shipped within U.S.",
+        "UPC: 048526054381 013513034066",
+        "Item model number: 5438"
+    ],
+    "question_count": 26,
+    "stars": 4.5,
+    "price": 799
 }
 ```
 
@@ -79,13 +155,26 @@ product_id | String | The retailer's unique identifier for the product
 timestamp | String | The timestamp that the resource was accessed
 title | String | Title of the product
 product_details | Array | An array of strings providing details about the product
+feature_bullets | String | An array of strings providing highlights of the product
+brand | String | The brand of the product (if available)
 main_image | String | The URL of the primary image associated with the product
 images | Array | An array of image URLs associated with the product
-variant_specifics | Array | Array of objects containing information about the types and values of product variants available. A variant specifics object contains a `dimension` field describing the type of the variant (e.g. "Color") and a `value` field describing the specific value available
+variant_specifics | Array | Array of objects containing information about the types and values of a particular product variant. A variant specifics object contains a `dimension` field describing the type of the variant (e.g. "Color") and a `value` field describing the specific value available. At the top level, this contains information on the selected variant
+all_variants | Array | An array of variant_specifics objects detailing all variants of the product as well as their product IDs
 categories | Array | Array of different categories that the product belongs in
 authors | Array | Array of author names (only available for products that are books)
 product_description | String | The description of the product
 epids | Array | Array of objects containing external product identifier (epid) objects. An epid object contains a `type` field describing the name of the external product identifier and a `value` field for the identifier's value
+epids_map | Array | An array of the epids with the epid type as the the field and the epid value as the value
+package_dimensions | Array | An array detailing the packaging details if available. Each dimension contains a 'amount' and 'unit'
+item_location | String | (AliExpress only) The originating location of the product
+original_retail_price | Number | (Amazon only) The "List Price" in cents of the product (present if the retailer is presenting a crossed out list price)
+price | Number | (Amazon only) The price in cents of the buy box price of the item
+review_count | Number | (Amazon only) The number of reviews of the product
+stars | Double | (Amazon only) The review score of the product
+question_count | Number | (Amazon only) The number of questions on the Amazon question section
+ASIN | String | (Amazon only) The ASIN of the product
+item_number | String | (Costco only) The Costco item number of the product (may not contain variant details)
 
 # Product prices
 
