@@ -173,7 +173,7 @@ price | Number | (Amazon only) The price in cents of the buy box price of the it
 review_count | Number | (Amazon only) The number of reviews of the product
 stars | Double | (Amazon only) The review score of the product
 question_count | Number | (Amazon only) The number of questions on the Amazon question section
-ASIN | String | (Amazon only) The ASIN of the product
+asin | String | (Amazon only) The ASIN of the product
 item_number | String | (Costco only) The Costco item number of the product (may not contain variant details)
 
 # Product prices
