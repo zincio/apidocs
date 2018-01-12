@@ -262,3 +262,18 @@ behavior if the order abort fails.
 
 Note that abortion is best effort, so we cannot guaranteed that you will be
 able to abort a request.
+
+## Adding and Amazon Affiliate Tag
+
+> Example Affiliate Tag Snippet
+
+```shell
+curl "https://api.zinc.io/v1/orders" \
+  -u <client_token>: \
+  -d '{
+  "retailer": "amazon",
+  "affiliate_info": {"tag": "yourtag-20"},
+  ...
+  }
+  ```
+The API allows you to add an Amazon Affiliate tag if you so desire. However, Zinc doesn't recommend using the affiliate tag due to the high risk of your affiliate account being closed when a large number of orders are coming from a particular purchasing account.
