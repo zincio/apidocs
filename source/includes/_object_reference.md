@@ -155,9 +155,13 @@ As an example, let's say you have just created an order via the Zinc API. Every 
 Attribute | Type | Description
 --------- | ---- | -----------
 request_succeeded | String | The webhook URL to send data to when a request succeeds
+order_placed | String | (deprecated) Synonym for request_succeeded (placing orders call only)
 request_failed | String | The webhook URL to send data to when a request fails
-tracking_obtained | String | The webhook URL to send data to when tracking for an order is retrieved
+order_failed | String | (deprecated) Synonym for request_failed (placing orders call only)
+tracking_obtained | String | The webhook URL to send data to when tracking for an order is retrieved (placing orders call only)
 status_updated | String | The webhook URL to send data to when the status of a request is updated
+
+You can optionally pass an Array of webhooks instead of a String, and Zinc will hit all of the webhooks.
 
 ## Retailer credentials object
 

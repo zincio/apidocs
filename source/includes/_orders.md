@@ -59,8 +59,8 @@ curl "https://api.zinc.io/v1/orders" \
     "totp_2fa_key": "3DE4 3ERE 23WE WIKJ GRSQ VOBG CO3D METM 2NO2 OGUX Z7U4 DP2H UYMA"
   },
   "webhooks": {
-    "order_placed": "http://mywebsite.com/zinc/order_placed",
-    "order_failed": "http://mywebsite.com/zinc/order_failed",
+    "request_succeeded": "http://mywebsite.com/zinc/request_succeeded",
+    "request_failed": "http://mywebsite.com/zinc/requrest_failed",
     "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained"
   },
   "client_notes": {
