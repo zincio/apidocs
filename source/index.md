@@ -37,13 +37,12 @@ The table below shows the endpoints available for each retailer. We can add addi
 Name | Retailer Code | Orders | Product Details | Product Prices
 ---- | ------------- | ------ | --------------- | --------------
 AliExpress | aliexpress | Y | Y | Y
-Amazon | amazon | Y | Y | Y
-Amazon United Kingdom | amazon_uk | Y | Y | Y
-Amazon Canada | amazon_ca | Y | Y | Y
-Amazon Mexico | amazon_mx | Y | Y | Y
+Amazon† | amazon | Y | Y | Y
+Amazon United Kingdom† | amazon_uk | Y | Y | Y
+Amazon Canada† | amazon_ca | Y | Y | Y
+Amazon Mexico† | amazon_mx | Y | Y | Y
 Costco | costco | Y | Y | Y
 Walmart | walmart | Y* | Y | Y
 
-## Walmart
-
-Note: Walmart AutoOrdering is currently in unsupported beta.
+```*```Walmart AutoOrdering is currently in unsupported beta.
+```†```Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported

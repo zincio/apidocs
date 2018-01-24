@@ -11,14 +11,8 @@ curl "https://api.zinc.io/v1/orders" \
   "retailer": "amazon",
   "products": [
     {
-      "product_id": "0923568964",
-      "quantity": 1,
-      "variants": [
-        {
-          "dimension": "color",
-          "value": "Red",
-        }
-      ]
+      "product_id": "B0016NHH56",
+      "quantity": 1
     }
   ],
   "max_price": 2300,
@@ -61,7 +55,8 @@ curl "https://api.zinc.io/v1/orders" \
   },
   "retailer_credentials": {
     "email": "timbeaver@gmail.com",
-    "password": "myRetailerPassword"
+    "password": "myRetailerPassword",
+    "totp_2fa_key": "3DE4 3ERE 23WE WIKJ GRSQ VOBG CO3D METM 2NO2 OGUX Z7U4 DP2H UYMA"
   },
   "webhooks": {
     "order_placed": "http://mywebsite.com/zinc/order_placed",
@@ -83,7 +78,7 @@ curl "https://api.zinc.io/v1/orders" \
 }
 ```
 
-Zinc offers the underlying API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
+Zinc offers an API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
 
 ### Required attributes
 
@@ -122,7 +117,7 @@ curl "https://api.zinc.io/v1/orders/3f1c939065cf58e7b9f0aea70640dffc" \
   -u <client_token>:
 ```
 
-To see the status of an order, you can retrieve it using the request id you obtained from your order request, and placing it in a GET request URL. Orders usually take a while to process. While your order is processing, the response will return an error with code type `request_processing`.
+To see the status of an order, append the 'request_id' returned from your order query to the order URL and place GET request. Orders usually take a while to process. While your order is processing, the response will return an error with code type `request_processing`.
 
 > Example retrieve an order response (request processing)
 
@@ -169,7 +164,7 @@ To see the status of an order, you can retrieve it using the request id you obta
 }
 ```
 
-Once the request completes, the retrieve an order response should either return a response of type `order_response` or `error`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
+Once the request process completes, the retrieve an order response should either return a response of type `order_response`, with the details of the successfully placed order or `error`. An error response body will contain a `code` and a `message`. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the `data` object. For a full list of errors, see the [Errors section](#errors).
 
 ### Order response attributes
 
@@ -179,14 +174,16 @@ price_components | Object | A [price components object](#price-components-object
 merchant_order_ids | Array | A [merchant order ids object](#merchant-order-ids-object) which contains details about the retailer's order identifiers
 tracking | Array | An array of [tracking objects](#tracking-object) that contain the order's tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the `tracking_obtained` field of the [webhooks object](#webhooks-object) from the request if set.
 request | Object | The original request that was sent to the Zinc API
+delivery_dates | Array | An array of ordered products and their given delivery dates
+account_status | Array | (Amazon only) An [account status object](#account-status-object) that gives details about the ordering account
 
 ## Selecting shipping
 
-Ordering on the Zinc API can be complicated due to all the potential shipping options available. Generally, faster shipping will cost more money, so you must decide how fast you'd like your items or how much money to pay for shipping. Zinc provides a number of options to customize your shipping speed and cost formulas.
+Zinc provides a number of options to customize your shipping speed and cost formulas from the various options available from our supported retailers.
 
-Since different items will have different shipping options, you can use a product's [seller selection criteria](#seller-selection-criteria) to specify `handling_days_max`. This will filter the list of potential offers down to those that will arrive within a certain number of days. The Zinc API will then select the cheapest offer that matched all of your seller selection criteria to make a purchase. For example, if you specified `"handling_days_max": 6`, then any offer whose latest delivery date is greater than 6 days from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed delivery date 10 days away and the other seller has a guaranteed delivery date 5 days away, the second seller's offer would be selected.
+Since different items will have different shipping options, you can use a product's [seller selection criteria](#seller-selection-criteria-object) to specify `handling_days_max`. This will filter the list of potential offers down to those that will ship within a certain number of days, which is useful when customers expect to see a tracking number within a certain amount of time. The Zinc API will then select the cheapest offer that matched all of your seller selection criteria to make a purchase. For example, if you specified `"handling_days_max": 6`, then any offer that won't ship in 6 days or less from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed shipping date 10 days away and the other seller has a guaranteed shipping date 5 days away, the second seller's offer would be selected. (Note: when no handling information is available, we use the longest projected arrival date of the product as the `handling_days_max`)
 
-You may also use the [shipping parameter](#shipping-object) on an order to select a shipping option once a product has been selected. Instead of filtering by the different offers, like the seller selection criteria, the `shipping` parameter will choose the shipping speed on the selected offer. For example, if you set `"max_days": 5` on the `shipping` parameter, the Zinc API would attempt to select the cheapest shipping method that took less than 5 days. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.
+You may also use the [shipping parameter](#shipping-object) on an order to select a shipping option once a product has been selected. Instead of filtering by the different offers, like the seller selection criteria, the `shipping` parameter will choose the shipping speed on the selected offer. This is useful for ensuring the product will arrive by a specific day. For example, if you set `"max_days": 5` on the `shipping` parameter, the Zinc API would attempt to select the cheapest shipping method that took less than 5 days to arrive. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.
 
 ## Order bundling
 
@@ -206,7 +203,7 @@ emailing you a code to enter during login. If this happens during an order, you
 will receive an `account_locked_verification_required` error. In this case,
 please check the email associated with the account and obtain the verification
 code. Then resubmit your order and supply the code as `verification_code` under
-the `retailer_credentials` object.
+the `retailer_credentials` object. Another option is to enable Two Factor Authentication on your account and supply the 'totp_2fa_key' with every order, which will skip Amazon email verification, for more detail review the info on ['retailer_credentials'](#retailer-credentials-object) 
 
 ## Aborting an order
 
@@ -248,7 +245,7 @@ curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
 
 ```
 
-The Zinc API allows you to abort an order uncompleted orders that are still
+The Zinc API allows you to abort uncompleted orders that are still
 in the `request_processing` stage. This functionality allows you to stop an
 order from going through if a mistake was made on the order, or if the order
 is taking too long to process.
@@ -263,7 +260,22 @@ able to abort a request on an already running process.
 If you are using the `request_succeeded` and `request_failed` webhooks, you won't
 need to do anything with the order abort response. The API will hit the
 `request_failed` webhook if an order is aborted correctly, and will have normal
-behavior if the order abortion fails.
+behavior if the order abort fails.
 
 Note that abortion is best effort, so we cannot guaranteed that you will be
 able to abort a request.
+
+## Adding and Amazon Affiliate Tag
+
+> Example Affiliate Tag Snippet
+
+```shell
+curl "https://api.zinc.io/v1/orders" \
+  -u <client_token>: \
+  -d '{
+  "retailer": "amazon",
+  "affiliate_info": {"tag": "yourtag-20"},
+  ...
+  }
+  ```
+The API allows you to add an Amazon Affiliate tag if you so desire. However, Zinc doesn't recommend using the affiliate tag due to the high risk of your affiliate account being closed when a large number of orders are coming from a particular purchasing account.

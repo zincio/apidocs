@@ -6,7 +6,7 @@
 
 ```shell
 {
-  "product_id": "0923568964",
+  "product_id": "B06XGHJ5H3",
   "quantity": 1,
   "seller_selection_criteria": {
     "prime": true,
@@ -193,6 +193,7 @@ totp_2fa_key | String | (Optional) The secret key used for two factor authentica
 Attribute | Type | Description
 --------- | ---- | -----------
 shipping | Number | The price for shipping
+product_subtotals | Array | A list of the price for each product_id in the order
 subtotal | Number | The total price of the order before tax and other price adjustments
 tax | Number | The tax collected on the order
 total | Number | The total price paid for the order
@@ -207,7 +208,9 @@ gift_certificate | Number | (Optional) The amount of value used on a gift certif
   "merchant_order_id" : "112-1234567-7272727",
   "merchant" : "amazon",
   "account" : "timbeaver@gmail.com",
-  "placed_at" : "2014-07-02T23:51:08.366Z"
+  "placed_at" : "2018-01-02T23:51:08.366Z",
+  "tracking_url": "https://www.amazon.com/progress-tracker/package/ref=oh_aui_hz_st_btn?_encoding=UTF8&itemId=jnlnooqppopuun&orderId=112-1234567-7272727",
+  "delivery_date": "Jan. 7, 2018"
 }
 ```
 
@@ -217,6 +220,29 @@ merchant_order_id | String | The identifier provided by the retailer for the ord
 merchant | String | The retailer on which the order was placed
 account | String | The account on which the order was placed
 placed_at | Date | The date and time at which the order was placed
+tracking | Array | A list of the tracking numbers associated with the order
+product_ids | Array | A list of product_ids in the order
+tracking_url | String | The tracking url provided by the merchant (if available)
+delivery_date | String | The projected delivery date given by the retailer
+
+## Account status object
+> Example account status object
+
+```shell
+{
+  "prime": true,
+  "fresh": false,
+  "business": false,
+  "charity": null
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+prime | boolean | Indicates if the account has Prime enabled
+fresh| boolean | Indicates if the account has Fresh enabled
+business | boolean | Indicates if the account has Business enabled
+charity | string | Indicates if the account has a Charity associated
 
 ## Product offer object
 
@@ -245,15 +271,17 @@ Attribute | Type | Description
 --------- | ---- | -----------
 addon | Boolean | Whether or not the product is an addon item that can only be purchased in a bundle
 condition | String | The condition of the product. Possible values are `New`, `Refurbished`, `Used - Like New`, `Used - Very Good`, `Used - Good`, `Used - Acceptable`, `Unacceptable`.
+greytext | String | (Amazon only) The shipping text provided by the seller
 handling_days_max | Number | The maximum number of days required for shipping and handling
 handling_days_min | Number | The minimum number of days required for shipping and handling
 international | Boolean | Whether or not the product ships from outside of the United States
+member_only | Boolean | (Costco only) Whether or not the purchase must be from a Costco Member
 merchant_id | String | The merchant's unique identifier for the product
-offerlisting_id | String | (`amazon` and `amazon_uk` only). The unique identifier that identifies an item sold by any merchant on Amazon
+offerlisting_id | String | (Amazon only). The unique identifier that identifies an item sold by any merchant on Amazon
 price | Number | The price of the item, not including shipping
 ship_price | Number | The price of the shipping for the item
-prime | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product ships using Amazon Prime
-prime_only | Boolean | (`amazon` and `amazon_uk` only). Whether or not the product only ships using Amazon Prime
+prime | Boolean | (Amazon only). Whether or not the product ships using Amazon Prime
+prime_only | Boolean | (Amazon only). Whether or not the product only ships using Amazon Prime
 seller_name | String | The name of the seller of the current offer
 seller_num_ratings | Number | The number of ratings that the seller has accumulated
 seller_percent_positive | Number | Number between 0 and 100 denoting the percentage of positive ratings the seller has received
