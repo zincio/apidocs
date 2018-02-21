@@ -181,6 +181,29 @@ password | String | The password for the retailer account
 verification_code | String | (Optional) The verification code required by the retailer for logging in. Only required in cases where the retailer prevents a login with an `account_locked_verification_required` error code.
 totp_2fa_key | String | (Optional) The secret key used for two factor authentication. If you have two factor authentication enabled, you must provide this key. You can find the 64 digit Amazon key by enabling two factor authentication and clicking on the "Can't scan the barcode?" link. Note this is not the 6 digit time based code.
 
+## Promo code object
+
+> Example promo code object
+
+```json
+{
+  "code": "FIVEBUCKSOFF",
+  "optional": false,
+  "merchant_id": "A3GH440E2AFGH4",
+  "discount_amount": 500
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+code | String | The promo code to apply (required)
+optional | Boolean | (Optional) Should we continue placing the order if this code fails to apply? Defaults to false.
+merchant_id | String | (Optional) If supplied, only try this code if we selected an offer from the given merchant.
+discount_amount | Number | (Optional) Fixed amount in cents by which we should discount the matching merchant's offers during offer selection. Only makes sense if merchant_id is also supplied. Defaults to 0.
+discount_percentage | Number | (Optional) Percentage amount (between 0 and 100) by which we should discount the matching merchant's offers during offer selection. Only makes sense if merchant_id is also supplied. Defaults to 0.
+cost_override | Number | (Optional) If supplied, we will assume all offers by this merchant cost exactly this many cents. Only makes sense if merchant_id is also supplied. Overrides other discount methods.
+
+
 ## Price components object
 
 > Example price components object
