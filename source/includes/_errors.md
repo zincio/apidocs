@@ -30,7 +30,7 @@ credit_card_declined | The credit card you entered was declined.
 duplicate_order | This order is a duplicate.
 expired_product_id | The product_id you used is no longer supported by the retailer.
 incomplete_account_setup | You attempted to place an order with an account that has not been fully set up.
-insufficient_addax_balance | Insufficient funds in your Managed Account Balance to complete the order. Add more funds through your payment channel.
+insufficient_zma_balance | Insufficient funds in your Managed Account Balance to complete the order. Add more funds through your payment channel.
 insufficient_variants | You did not select all required variants for a product.
 internal_error | Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.
 invalid_card_number | The credit card number you entered is not valid.
