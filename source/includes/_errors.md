@@ -52,7 +52,7 @@ max_price_exceeded | The retailers final price exceeds the maximum price.
 max_quantity_exceeded | You have exceeded the maximum quantity available for a specific product.
 no_free_shipping | Free shipping is not available for the item(s) you selected.
 no_gift_shipping | No gift shipping was available on this order.
-no_two_day_shipping | Two day shipping (or faster) is not available for the item(s) you selected.
+no_two_day_shipping | Two day shipping (or faster) is not available for the item(s) you selected. You'll need to retry the order, so manually check the retailer website to see if the order was actually placed. If it was, cancel it and then retry the order.
 order_probably_placed | This order was probably placed, but we were not able to retrieve the merchant order ids.
 payment_info_problem | There was a problem with your payment information (likely not enough gift balance).
 prime_pantry_not_supported | Purchasing Prime Pantry items is not supported by the Zinc API.
