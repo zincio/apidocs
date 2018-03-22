@@ -43,6 +43,7 @@ Amazon Canada† | amazon_ca | Y | Y | Y
 Amazon Mexico† | amazon_mx | Y | Y | Y
 Costco | costco | Y | Y | Y
 Walmart | walmart | Y* | Y | Y
+Wayfair | wayfair | Y* | N | N
 
-```*```Walmart AutoOrdering is currently in unsupported beta.
+```*```Currently in unsupported beta.
 ```†```Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported
