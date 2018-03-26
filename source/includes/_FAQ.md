@@ -51,7 +51,7 @@ accounts).
 
 ### I am not receiving POSTs to the my webhook URLs.
 
-* Make sure that your server is configured to accept POST requests from any other server. To debug this, we recommend creating a https://requestb.in/ URL, passing that in as your webhook, and looking at what the data that we returns looks like. This will also confirm to you that our webhooks are working properly.
+* Make sure that your server is configured to accept POST requests from any other server. To debug this, we recommend creating a [requestbin](https://requestb.in/) URL, passing that in as your webhook, and looking at what the data that we returns looks like. This will also confirm to you that our webhooks are working properly.
 
 ### Why am I getting multiple POSTs to my “order_placed” or other webhook?
 
