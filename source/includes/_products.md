@@ -239,3 +239,80 @@ Attribute | Type | Description
 status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the request.
 retailer | String | The retailer for the product offers
 offers | Array | An array of [product offer objects](#product-offer-object) for a particular product on a retailer
+
+# Product search
+
+> Example product search request
+
+```shell
+curl https://api.zinc.io/v1/search?query=fish%20oil&page=1&retailer=amazon \
+  -u <client_token>:
+```
+
+Get search results from Amazon based on a query term, including ASIN, title, image url, number of reviews, star rating, and price.
+
+To retrieve product offers and prices, make a GET request to the following URL, replacing :query with a url-encoded query string and specifying the request attributes as query parameters in the URL.
+
+`https://api.zinc.io/v1/search?query:query&page=1&retailer=amazon`
+
+### Required request attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+query | String | The query string you want to search for. Must be URL encoded.
+page | Number | The page number of the results page (starts at 1)
+retailer | String | The retailer you are searching on. Currently, only amazon is supported.
+
+> Example product offers response
+
+```shell
+{
+  "status": "completed",
+  "timestamp": 1522268852,
+  "retailer": "amazon",
+  "results": [
+    {
+      "product_id": "B000NPYY04",
+      "title": "Nature's Bounty Fish Oil, 1200 mg Omega-3, 200 Rapid Release Softgels, Dietary Supplement for Supporting Cardiovascular Health(1)",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51KGjV22PWL._AC_US218_.jpg",
+      "num_reviews": 395,
+      "stars": "4.5 out of 5 stars",
+      "fresh": false,
+      "price": 1248
+    },
+    {
+      "product_id": "B004U3Y9FU",
+      "title": "Nature Made Burpless Fish Oil 1000 mg w. Omega-3 300 mg Softgels 150 Ct",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/516F1UWawAL._AC_US218_.jpg",
+      "num_reviews": 0,
+      "stars": "4.4 out of 5 stars",
+      "fresh": false,
+      "price": 1299
+    },
+    {
+      "product_id": "B002VLZHLS",
+      "title": "Kirkland Signature Fish Oil Concentrate with Omega-3 Fatty Acids, 400 Softgels, 1000mg",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41bpqnspd1L._AC_US218_.jpg",
+      "num_reviews": 0,
+      "stars": "4.6 out of 5 stars",
+      "fresh": false,
+      "price": 1642
+    }
+  ]
+}
+```
+
+### Response attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the request.
+retailer | String | The retailer for the search results
+results | Array | An array of results for a particular query on a retailer
+results.product_id | String | The ASIN of a search result
+results.title | String | The title of a search result
+results.image | String | A link to an image of the search result
+results.num_reviews | Number | The number of reviews the product has
+results.stars | String | The star rating of the item (e.g. '4.1 out of 5 stars')
+results.fresh | Bool | Whether or not the product is an Amazon Fresh item
+results.price | Number | The price of the item
