@@ -17,6 +17,7 @@ includes:
   - addax
   - object_reference
   - errors
+  - FAQ
 
 search: true
 ---
