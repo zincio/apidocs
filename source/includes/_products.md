@@ -253,7 +253,7 @@ Get search results from Amazon based on a query term, including ASIN, title, ima
 
 To retrieve product offers and prices, make a GET request to the following URL, replacing :query with a url-encoded query string and specifying the request attributes as query parameters in the URL.
 
-`https://api.zinc.io/v1/search?query:query&page=1&retailer=amazon`
+`https://api.zinc.io/v1/search?query=:query&page=1&retailer=amazon`
 
 ### Required request attributes
 
