@@ -17,6 +17,7 @@ includes:
   - addax
   - object_reference
   - errors
+  - FAQ
 
 search: true
 ---
@@ -40,7 +41,9 @@ AliExpress | aliexpress | Y | Y | Y
 Amazon† | amazon | Y | Y | Y
 Amazon United Kingdom† | amazon_uk | Y | Y | Y
 Amazon Canada† | amazon_ca | Y | Y | Y
+Amazon Germany† | amazon_de | Y | Y | Y
 Amazon Mexico† | amazon_mx | Y | Y | Y
+Amazon Germany† | amazon_de | Y | Y | Y
 Costco | costco | Y | Y | Y
 Walmart | walmart | Y* | Y | Y
 Wayfair | wayfair | Y* | N | N
