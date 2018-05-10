@@ -5,7 +5,7 @@ language_tabs:
   - shell
 
 toc_footers:
-  - <a href='http://dash.zinc.io'>Sign Up for a Zinc account</a>
+  - <a href='http://dash.zinc.io/signup'>Sign Up for a Zinc account</a>
 
 includes:
   - authentication
@@ -27,7 +27,7 @@ Zinc lets you buy things from popular online retailers, including Amazon.com, wi
 
 ### Quick start
 
-1. Make an account at [dash.zinc.io](https://dash.zinc.io).
+1. Make an account at [dash.zinc.io](https://dash.zinc.io/signup).
 2. Follow the instructions in the [create an order](#create-an-order) section from the documentation below to place your first order.
 
 # Supported retailers
