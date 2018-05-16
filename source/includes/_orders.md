@@ -264,7 +264,7 @@ behavior if the order abort fails.
 Note that abortion is best effort, so we cannot guaranteed that you will be
 able to abort a request.
 
-## Adding and Amazon Affiliate Tag
+## Adding an Amazon Affiliate Tag
 
 > Example Affiliate Tag Snippet
 
