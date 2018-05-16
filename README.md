@@ -12,6 +12,11 @@ Deploying
 
 ```
 $> sudo apt-get install ruby ruby-dev
+## Add gem to path by adding the following lines to .bashrc
+export GEM_HOME=$HOME/.gems
+export PATH=$PATH:$GEM_HOME/bin
+
+$> gem install bundle
 $> bundle install
 ```
 
