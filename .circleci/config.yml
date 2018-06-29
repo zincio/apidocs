@@ -23,5 +23,9 @@ jobs:
         paths:
           - vendor/bundle
 
+      - run: git config --global user.email "devops@zinc.io"
+      - run: git config --global user.name "ApiDocs Deploy"
+
+
       # Setup the database
       - run: ALLOW_DIRTY=true bundle exec rake publish
