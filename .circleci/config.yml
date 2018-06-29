@@ -24,4 +24,4 @@ jobs:
           - vendor/bundle
 
       # Setup the database
-      - run: bundle exec rake publish
+      - run: ALLOW_DIRTY=true bundle exec rake publish
