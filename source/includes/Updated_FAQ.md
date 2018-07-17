@@ -59,12 +59,8 @@ accounts).
 
 ### The Product Details/Product Offers API is taking a long time to respond. How do I speed it up?
 
-* Our API is optimized for throughput, not latency and we don't make any latency guarantees. If you want to do a real-time call (your users wait on the results of the call) it's best to try three things:
+* Our API is optimized for throughput, not latency, and we don't make any latency guarantees. If you want to do a real-time call (your users wait on the results of the call) it's best to try these things:
 
-  * Add the "strategy=mws" query parameter at the end of the call. 
-  * If your users are using a limited number of products, cache the data on your end regularly, and then display it to them from your       cache in real-time when they request it.
-  * Make sure you have set the [max_age](https://docs.zincapi.com/#product-details) parameter to the maximum value that's allowable for     your needs.
-
-### Does Zinc offer a status update for “out for delivery” and “delivered"
-
-* Yes, we do track "out for deliery" and "delivered" through the [status_updated webhook](https://docs.zincapi.com/#webhooks-object) for those.
+  * If your users are using a limited number of products, cache the data on your end regularly, and then display it to them from your cache in real-time when they request it.
+  * Make sure you have set the [max_age](https://docs.zincapi.com/#product-details) parameter to the maximum value that's allowable for your needs.
+  * We have other techniques for speeding up the API--contact us for more details.
