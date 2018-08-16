@@ -85,7 +85,7 @@ case.opened.tracking.request_update | A case has been opened requesting an updat
 case.opened.cancel.forced_cancellation | A case has been opened for an order force cancelled by the source
 case.opened.other | A catch-all category for a case
 case.freetext | A generic, free text case response
-case.return.label_generated | A return label has been geneerated
+case.return.label_generated | A return label has been generated
 case.return.status_updated | The case status has been updated
 case.refund.partial | The case has resulted in a partial refund being issued
 case.refund.full | The case has resulted in a full refund being issued
