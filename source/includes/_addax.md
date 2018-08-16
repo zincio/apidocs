@@ -72,7 +72,7 @@ Case State | Description
 ----- | -----------
 (null) | No case has been opened for this order.
 open | A case has been opened for this order.
-closed | A case has been closed for this account.
+closed | A case has been closed for this order.
 
 `messages` contains the entire history of a case, and can have any of these values for `type`:
 Message Type | Description
@@ -82,15 +82,14 @@ case.opened.nondelivery.not_delivered | A case has been opened for a non-deliver
 case.opened.nondelivery.damaged | A case has been opened for a damaged package
 case.opened.nondelivery.empty_box | A case has been opened for an empty box
 case.opened.tracking.request_update | A case has been opened requesting an update on an order status
-case.opened.cancel.forced_cancellation | A case has been opened for a order force cancelled by the source
+case.opened.cancel.forced_cancellation | A case has been opened for an order force cancelled by the source
 case.opened.other | A catch-all category for a case
 case.freetext | A generic, free text case response
 case.return.label_generated | A return label has been geneerated
-case.return.label_generation_failed | Return label generation failed
 case.return.status_updated | The case status has been updated
 case.refund.partial | The case has resulted in a partial refund being issued
 case.refund.full | The case has resulted in a full refund being issued
-case.closed | A case has been closed
+case.closed | The case has been closed
 
 The most up to date case status is represented by the latest object in the `messages` list.
 
