@@ -62,12 +62,14 @@ regularly updated by Zinc with information about the status of the case.
 Make a GET request to the case endpoint
 
 > Check Case status
+
 ```shell
 curl "https://api.zinc.io/v1/orders/<order_id>/case" \
   -u <client_token>:
 ```
 
 `state` will be one of the following values:
+
 Case State | Description
 ----- | -----------
 (null) | No case has been opened for this order.
@@ -75,6 +77,7 @@ open | A case has been opened for this order.
 closed | A case has been closed for this order.
 
 `messages` contains the entire history of a case, and can have any of these values for `type`:
+
 Message Type | Description
 ----- | -----------
 case.opened.return.request_label | A case has been opened for a return label
@@ -98,6 +101,7 @@ The most up to date case status is represented by the latest object in the `mess
 Make a POST request to the case endpoint
 
 > Create a new Case
+
 ```shell
 curl "https://api.zinc.io/v1/orders/<order_id>/case" \
   -X POST \
@@ -123,6 +127,7 @@ other | Other
 You can append a freetext `message` to a Case by POSTing a `message` without a `reason`:
 
 > Update a Case
+
 ```shell
 curl "https://api.zinc.io/v1/orders/<order_id>/case" \
   -X POST \
