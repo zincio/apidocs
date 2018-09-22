@@ -1,4 +1,4 @@
-# Product details
+# Product Details
 
 > Example product details request
 
@@ -176,7 +176,7 @@ question_count | Number | (Amazon only) The number of questions on the Amazon qu
 asin | String | (Amazon only) The ASIN of the product
 item_number | String | (Costco only) The Costco item number of the product (may not contain variant details)
 
-# Product prices
+# Product Prices
 
 > Example product offers request
 
@@ -240,7 +240,7 @@ status | String | Possible values are `processing`, `failed`, or `completed`. Yo
 retailer | String | The retailer for the product offers
 offers | Array | An array of [product offer objects](#product-offer-object) for a particular product on a retailer
 
-# Product search
+# Product Search
 
 > Example product search request
 
@@ -249,11 +249,11 @@ curl https://api.zinc.io/v1/search?query=fish%20oil&page=1&retailer=amazon \
   -u <client_token>:
 ```
 
-Get search results from Amazon based on a query term, including ASIN, title, image url, number of reviews, star rating, and price.
+Get search results from a retailer based on a query term. Results include product id, title, image url, number of reviews, star rating, and price.
 
-To retrieve product offers and prices, make a GET request to the following URL, replacing :query with a url-encoded query string and specifying the request attributes as query parameters in the URL.
+To retrieve search results, make a GET request to the following URL, replacing :query with a url-encoded query string and specifying the request attributes as query parameters in the URL.
 
-`https://api.zinc.io/v1/search?query=:query&page=1&retailer=amazon`
+`https://api.zinc.io/v1/search?query=:query&page=1&retailer=:retailer`
 
 ### Required request attributes
 
@@ -261,7 +261,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 query | String | The query string you want to search for. Must be URL encoded.
 page | Number | The page number of the results page (starts at 1)
-retailer | String | The retailer you are searching on. Currently, only amazon is supported.
+retailer | String | The retailer you are searching on.
 
 > Example product offers response
 
@@ -309,10 +309,189 @@ Attribute | Type | Description
 status | String | Possible values are `processing`, `failed`, or `completed`. You will only see `processing` if `async: true` was set on the request.
 retailer | String | The retailer for the search results
 results | Array | An array of results for a particular query on a retailer
-results.product_id | String | The ASIN of a search result
+results.product_id | String | The product id of a search result
 results.title | String | The title of a search result
 results.image | String | A link to an image of the search result
 results.num_reviews | Number | The number of reviews the product has
 results.stars | String | The star rating of the item (e.g. '4.1 out of 5 stars')
 results.fresh | Bool | Whether or not the product is an Amazon Fresh item
 results.price | Number | The price of the item
+
+# Realtime Product Data
+
+The calls documented above are tuned for throughput rather than latency and for most use cases they work well. There are some use cases (exp catalog expansion) that have strict latency requirements. To satisfy those use cases we have developed a realtime version of or data calls. To ensure we meet our latency guarantees, we limit access to the realtime api. To get access to our realtime api contact <sales@zinc.io>.
+
+## Realtime Search
+
+> Example realtime search request
+
+```shell
+curl'https://api.zinc.io/v1/realtime/search?query=vitamin&retailer=amazon' \
+-u <client_token>:
+```
+
+> Example realtime search response
+
+```shell
+{
+  "status": "completed",
+  "timestamp": 1537653337,
+  "nextPage": "https://api.zinc.io/v1/realtime/search?nextToken=eyJzZWVuIjpbMjY4NDM1NDU2LDAsMTA0ODU3NiwwLDAsNDIxMDY4OCwwLDAsMTYzODQsMCwwLDAsMTMxMDcyLDAsMjU2LDAsMzI3NjgsMjU2LDAsNDA5NiwxMDQ4NTc2LDAsMCwyMzA0LDQsMjA2MDgsMjY4NDM1NDU2LDAsMCwwLC0yMTQ3NDgzNjQ4LDAsMCwwLDY3MTE3MDU2LDAsMTMxMDcyLDUzNjg3MDkxMiwwLDAsMCwyNTYsMCw1MTIwLDAsNTI0MjkyLDAsMzI3NjgsNjU1MzYsMCwxNiwwLDIwODAsMCwwLDAsMCw2NTUzNiwwLDEwNTYsMCwxMDI0LDAsMCwxNjc3NzIxNiwwLDAsMCwwLDI2ODQzNTQ1Niw1NzYsODE5Miw2NCwxMDczNzQxODI0LDEwNDg1NzYsMCwwLDQsMCwxMDQ4NTc2LDI3MiwwLDI4NTIxMjY3MiwwLDAsMCwwLDAsMCwwLDAsMTY3NzcyMTYsMCwwLC0yMTQ3NDgyNjI0LDI2NDE5MiwwLDAsMCw0MDk2LDAsMCw1MTIsMCwwLDAsMCwwLDIzMDQsMjYyMTQ0LDAsMCwyNjg0MzU0NTYsMCwxLDAsMCw2NTUzNywwLDUyOCwwLDAsMCwtMjE0NzQ2NzI2NCwwLDE2Mzg0LDAsMF0sInBhZ2UiOjIsImNvdW50cnkiOiJ1cyIsInF1ZXJ5Ijoidml0YW1pbiJ9",
+  "nextToken": "eyJzZWVuIjpbMjY4NDM1NDU2LDAsMTA0ODU3NiwwLDAsNDIxMDY4OCwwLDAsMTYzODQsMCwwLDAsMTMxMDcyLDAsMjU2LDAsMzI3NjgsMjU2LDAsNDA5NiwxMDQ4NTc2LDAsMCwyMzA0LDQsMjA2MDgsMjY4NDM1NDU2LDAsMCwwLC0yMTQ3NDgzNjQ4LDAsMCwwLDY3MTE3MDU2LDAsMTMxMDcyLDUzNjg3MDkxMiwwLDAsMCwyNTYsMCw1MTIwLDAsNTI0MjkyLDAsMzI3NjgsNjU1MzYsMCwxNiwwLDIwODAsMCwwLDAsMCw2NTUzNiwwLDEwNTYsMCwxMDI0LDAsMCwxNjc3NzIxNiwwLDAsMCwwLDI2ODQzNTQ1Niw1NzYsODE5Miw2NCwxMDczNzQxODI0LDEwNDg1NzYsMCwwLDQsMCwxMDQ4NTc2LDI3MiwwLDI4NTIxMjY3MiwwLDAsMCwwLDAsMCwwLDAsMTY3NzcyMTYsMCwwLC0yMTQ3NDgyNjI0LDI2NDE5MiwwLDAsMCw0MDk2LDAsMCw1MTIsMCwwLDAsMCwwLDIzMDQsMjYyMTQ0LDAsMCwyNjg0MzU0NTYsMCwxLDAsMCw2NTUzNywwLDUyOCwwLDAsMCwtMjE0NzQ2NzI2NCwwLDE2Mzg0LDAsMF0sInBhZ2UiOjIsImNvdW50cnkiOiJ1cyIsInF1ZXJ5Ijoidml0YW1pbiJ9",
+  "retailer": "amazon",
+  "results": [
+    {
+      "product_id": "B00K2RJAR0",
+      "title": "OPTIMUM NUTRITION Opti-Men, Mens Daily Multivitamin Supplement with Vitamins C, D, E, B12, 150 Count",
+      "price": 2278,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41raAjeCEwL._AC_US218_.jpg",
+      "brand": "Optimum Nutrition",
+      "prime": true,
+      "product_details": []
+    },
+    {
+      "product_id": "B007L0DPE0",
+      "title": "Vitafusion Women's Gummy Vitamins, 150 Count (Packaging May Vary)",
+      "price": 979,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51eGHGb0zqL._AC_US218_.jpg",
+      "brand": "Vitafusion",
+      "prime": true,
+      "product_details": []
+    },
+    {
+      "product_id": "B002H0KZ9M",
+      "title": "Vitafusion Multi-vite, Gummy Vitamins For Adults, 150 Count (Packaging May Vary)",
+      "price": 979,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/515YezxBrlL._AC_US218_.jpg",
+      "brand": "Vitafusion",
+      "prime": true,
+      "product_details": []
+    },
+    {
+      "product_id": "B003G4BP5G",
+      "title": "Centrum Adult (200 Count) Multivitamin / Multimineral Supplement Tablet, Vitamin D3",
+      "price": 949,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41IpifEYOpL._AC_US218_.jpg",
+      "brand": "Centrum",
+      "prime": false,
+      "product_details": []
+    },
+    {
+      "product_id": "B00GB85JR4",
+      "title": "NatureWise Vitamin D3 5,000 IU for Healthy Muscle Function, Bone Health and Immune Support, Non-GMO in Cold-Pressed Organic Olive Oil,Gluten-Free, 1-year supply, 360 count",
+      "price": 1105,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61X2dIACG9L._AC_US218_.jpg",
+      "brand": "NatureWise",
+      "prime": true,
+      "product_details": []
+    },
+    {
+      "product_id": "B00WR6JGD2",
+      "title": "Dr. Tobias Multivitamin for Women and for Men - Enhanced Bioavailability - With Whole Food & Herbal Ingredients, Minerals and Enzymes - Rich in Vitamin B & C - Womens And Mens Daily Vitamins - Non-GMO",
+      "price": 2277,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61GaW6R4iuL._AC_US218_.jpg",
+      "brand": "Dr. Tobias",
+      "prime": true,
+      "product_details": []
+    },
+    {
+      "product_id": "B007L0DONW",
+      "title": "Vitafusion Men's Gummy Vitamins, 150 Count (Packaging May Vary)",
+      "price": 1174,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/519q4FPn5eL._AC_US218_.jpg",
+      "brand": "Vitafusion",
+      "prime": false,
+      "product_details": []
+    },
+    {
+      "product_id": "B071ZH84QG",
+      "title": "Centrum Men (250 Count) Multivitamin / Multimineral Supplement Tablet, Vitamin D3",
+      "price": 1977,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51MR+UHdh8L._AC_US218_.jpg",
+      "brand": "Centrum",
+      "prime": true,
+      "product_details": []
+    },
+    {
+      "product_id": "B0771X1HTZ",
+      "title": "One A Day Men's Health Formula Multivitamin, 250 Count",
+      "price": 1424,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41-X+7wZ1DL._AC_US218_.jpg",
+      "brand": "ONE A DAY",
+      "prime": true,
+      "product_details": []
+    },
+    {
+      "product_id": "B01KE592JU",
+      "title": "Men's Daily Multimineral/Multivitamin Supplement - Vitamins A C E D B1 B2 B3 B5 B6 B12. Magnesium, Biotin, Spirulina, Zinc. Antioxidant For Heart & Immune Health. 60 Daily Gluten Free Multivitamins.",
+      "price": 1897,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51T72DkubeL._AC_US218_.jpg",
+      "brand": "Vimerson Health",
+      "prime": true,
+      "product_details": []
+    }
+  ]
+}
+```
+
+Expand your product catalog with realtime results from Amazon based on a query term. Results include product id, title, image url, and price.
+
+
+To retrieve search results, make a GET request to the following URL, replacing `<query>` with a url-encoded query string and specifying the request attributes as query parameters in the URL.
+
+`https://api.zinc.io/v1/realtime/search?query=<query>&retailer=<retailer_name>&nextToken=<token>`
+
+The first page should always return within 4 seconds and will contain 10 results. If you want to show more than 10 results, you should AJAX in additional pages so the user's experience is good. A demo of this can be found at <http://amazonsearchdemo.surge.sh/> ([source code](https://github.com/zincio/zinc-realtime-search-demo)).
+
+### Required request attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+query | String | The query string you want to search for. Must be URL encoded.
+retailer | String | The retailer you are searching on. Currently, only amazon is supported.
+nextToken | Number | Not included for the initial request. For subsequent requests, provide the token returned by previous request.
+
+### Response attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+status | String | Possible values are `failed`, or `completed`.
+retailer | String | The retailer for the search results
+results | Array | An array of results for a particular query on a retailer
+results.product_id | String | The ASIN of a search result
+results.title | String | The title of a search result
+results.image | String | A link to an image of the search result
+results.price | Number | The price of the item.
+results.product_details | Number | Additional data about product if any was found.
+
+## Realtime Details
+
+> Example realtime details request
+
+```shell
+curl https://api.zinc.io/v1/realtime/details/0923568964?retailer=amazon \
+  -u <client_token>:
+```
+
+To retrieve product details, make a GET request to the following URL, replacing `<product_id>` with the retailer's unique identifier for a particular product.
+
+`https://api.zinc.io/v1/realtime/details/<product_id>?retailer=<retailer_name>`
+
+Using the realtime details call is identical to our [normal details call](#product-details) with the exception that `max_age` is ignored.
+
+If a realtime details call hits our cache the call does not count against your rate limit.
+
+## Realtime Offers
+
+> Example realtime offers request
+
+```shell
+curl https://api.zinc.io/v1/realtime/offers/B00K4F45CA?retailer=amazon \
+  -u <client_token>:
+```
+
+To retrieve product offers and prices, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product.
+
+`https://api.zinc.io/v1/products/:product_id/offers`
+
+Usage and returned data is identical to our [normal offers call](#product-prices).
