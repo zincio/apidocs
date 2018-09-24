@@ -492,6 +492,6 @@ curl https://api.zinc.io/v1/realtime/offers/B00K4F45CA?retailer=amazon \
 
 To retrieve product offers and prices, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product.
 
-`https://api.zinc.io/v1/products/:product_id/offers`
+`https://api.zinc.io/v1/realtime/offers/:product_id?retailer=<retailer_name>`
 
 Usage and returned data is identical to our [normal offers call](#product-prices).
