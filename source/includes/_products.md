@@ -169,14 +169,14 @@ epids_map | Array | An array of the epids with the epid type as the the field an
 package_dimensions | Array | An array detailing the packaging details if available. Each dimension contains a 'amount' and 'unit'
 item_location | String | (AliExpress only) The originating location of the product
 original_retail_price | Number | (Amazon only) The "List Price" in cents of the product (present if the retailer is presenting a crossed out list price)
-price | Number | (Amazon only) The price in cents of the buy box price of the item
+price | Number | (Amazon only) The price in cents of the buy box price of the item. <br>**This is not always returned and is often not the cheapest option. If you want a product's price you should use [product offers](https://zinc.io/#product-prices).**
 review_count | Number | (Amazon only) The number of reviews of the product
 stars | Double | (Amazon only) The review score of the product
 question_count | Number | (Amazon only) The number of questions on the Amazon question section
 asin | String | (Amazon only) The ASIN of the product
 item_number | String | (Costco only) The Costco item number of the product (may not contain variant details)
 
-# Product Prices
+# Product Offers
 
 > Example product offers request
 

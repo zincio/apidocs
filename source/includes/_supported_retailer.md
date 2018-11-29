@@ -2,7 +2,7 @@
 
 The table below shows the endpoints available for each retailer. We can add additional retailers upon request. Fill out the form at the [bottom of our home page](https://zinc.io/#contact) for a quote for a particular retailer.
 
-Name | Retailer Code | Orders | Product Details | Product Prices | Product Search
+Name | Retailer Code | Orders | Product Details | Product Offers | Product Search
 ---- | ------------- | ------ | --------------- | -------------- | --------------
 Amazon† | amazon                     | Y | Y | Y | Y
 Amazon United Kingdom† | amazon_uk   | Y | Y | Y | Y
