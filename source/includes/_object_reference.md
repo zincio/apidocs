@@ -277,20 +277,36 @@ charity | string | Indicates if the account has a Charity associated
 
 ```shell
 {
-  "addon": false,
-  "condition": "New",
-  "handling_days_max": 0,
-  "handling_days_min": 0,
+  "seller": {
+    "num_ratings": null,
+    "percent_positive": null,
+    "first_party": false,
+    "name": "Amazon Warehouse",
+    "id": "A2L77EE7U53NWQ"
+  },
+  "marketplace_fulfilled": true,
   "international": false,
-  "merchant_id": "ATVPDKIKX0DER",
-  "offerlisting_id": "lUai8vEbhC%2F2vYZDwaePlc4baWiHzAy9XJncUR%2FpQ9l4VOrs%2FfpYt4ZtreQaB%2BPL1xJwz5OpIc%2BJjyymHg3iv4YkZvWy5z7flil7n7lUDWNPY76YUhMNdw%3D%3D",
-  "price": 9.79,
-  "ship_price": 0
-  "prime": true,
+  "offer_id": "eMLzuculxk%2",
+  "available": true,
+  "handling_days": {
+    "max": 0,
+    "min": 0
+  },
+  "price": 928,
   "prime_only": false,
-  "seller_name": "Amazon.com",
-  "seller_num_ratings": 1000000,
-  "seller_percent_positive": 100
+  "condition": "Used - Very Good",
+  "addon": false,
+  "shipping_options": [
+    {
+      "price": 0,
+      "delivery_days": {
+        "max": 4,
+        "min": 4
+      },
+      "name": "one-day"
+    }
+  ],
+  "minimum_quantity": null
 }
 ```
 
@@ -298,20 +314,22 @@ Attribute | Type | Description
 --------- | ---- | -----------
 addon | Boolean | Whether or not the product is an addon item that can only be purchased in a bundle
 condition | String | The condition of the product. Possible values are `New`, `Refurbished`, `Used - Like New`, `Used - Very Good`, `Used - Good`, `Used - Acceptable`, `Unacceptable`.
-greytext | String | (Amazon only) The shipping text provided by the seller
-handling_days_max | Number | The maximum number of days required for shipping and handling
-handling_days_min | Number | The minimum number of days required for shipping and handling
+handling_days.max | Number | The maximum number of days required for shipping and handling
+handling_days.min | Number | The minimum number of days required for shipping and handling
 international | Boolean | Whether or not the product ships from outside of the United States
-member_only | Boolean | (Costco only) Whether or not the purchase must be from a Costco Member
-merchant_id | String | The merchant's unique identifier for the product
-offerlisting_id | String | (Amazon only). The unique identifier that identifies an item sold by any merchant on Amazon
-price | Number | The price of the item, not including shipping
-ship_price | Number | The price of the shipping for the item
-prime | Boolean | (Amazon only). Whether or not the product ships using Amazon Prime
+offer_id | String | (Amazon only). The unique identifier that identifies an item sold by any merchant on Amazon
+price | Number | The price of the item, not including shipping in cents.
+marketplace_fulfilled | Boolean | Whether or not the product ships direct from retailer. For Amazon, this indicates if the item is shipped with Prime shipping.
+seller.id | String | The merchant's unique identifier for the product
+seller.name | String | The name of the seller of the current offer
+seller.num_ratings | Number | The number of ratings that the seller has accumulated
+seller.percent_positive | Number | Number between 0 and 100 denoting the percentage of positive ratings the seller has received
+shipping_options[].price | Number | The cost to ship the item in cents
+shipping_options[].delivery_days.min | Number | The minimum time in days it might take for the item to be delivered
+shipping_options[].delivery_days.max | Number | The maximum time in days it might take for the item to be delivered
+shipping_options[].name | Number | The name of the shipping option
 prime_only | Boolean | (Amazon only). Whether or not the product only ships using Amazon Prime
-seller_name | String | The name of the seller of the current offer
-seller_num_ratings | Number | The number of ratings that the seller has accumulated
-seller_percent_positive | Number | Number between 0 and 100 denoting the percentage of positive ratings the seller has received
+member_only | Boolean | (Costco only) Whether or not the purchase must be from a Costco Member
 
 ## Tracking object
 

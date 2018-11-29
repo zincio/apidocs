@@ -189,6 +189,51 @@ curl https://api.zinc.io/v1/products/0923568964/offers?retailer=amazon \
   -u <client_token>:
 ```
 
+> Example product offers response
+
+```shell
+{
+  "status": "completed",
+  "asin": "B007JR5304",
+  "offers": [
+    {
+      "seller": {
+        "num_ratings": null,
+        "percent_positive": null,
+        "first_party": false,
+        "name": "Amazon Warehouse",
+        "id": "A2L77EE7U53NWQ"
+      },
+      "marketplace_fulfilled": true,
+      "international": false,
+      "offer_id": "eMLzuculxk",
+      "available": true,
+      "handling_days": {
+        "max": 0,
+        "min": 0
+      },
+      "price": 928,
+      "prime_only": false,
+      "condition": "Used - Very Good",
+      "addon": false,
+      "shipping_options": [
+        {
+          "price": 0,
+          "delivery_days": {
+            "max": 4,
+            "min": 4
+          },
+          "name": "one-day"
+        }
+      ],
+      "minimum_quantity": null,
+    }
+  ],
+  "timestamp": 1543523165,
+  "retailer": "amazon"
+}
+```
+
 Get information about all the offers for a particular product, including seller name, item price, shipping price, condition, seller reputation, and more.
 
 To retrieve product offers and prices, make a GET request to the following URL, replacing `:product_id` with the retailer's unique identifier for a particular product and specifying the request attributes as query parameters in the URL.
@@ -208,33 +253,6 @@ Attribute | Type | Description
 max_age | Number | A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with `newer_than`.
 newer_than | Number | A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with `max_age`.
 async | Boolean | Determines whether the resulting response will be asynchronous. If set to `true`, then the API will not block waiting for a result. Instead, it will immediately return `status: "processing"` and you will be responsible for resending the request until the response is no longer `status: "processing"`. Defaults to `false`.
-
-> Example product offers response
-
-```shell
-{
-  "retailer": "amazon",
-  "status": "completed",
-  "offers":[
-    {
-      "addon": false,
-      "condition": "New",
-      "handling_days_max": 0,
-      "handling_days_min": 0,
-      "international": false,
-      "merchant_id": "ATVPDKIKX0DER",
-      "offerlisting_id": "lUai8vEbhC%2F2vYZDwaePlc4baWiHzAy9XJncUR%2FpQ9l4VOrs%2FfpYt4ZtreQaB%2BPL1xJwz5OpIc%2BJjyymHg3iv4YkZvWy5z7flil7n7lUDWNPY76YUhMNdw%3D%3D",
-      "price": 9.79,
-      "ship_price": 0
-      "prime": true,
-      "prime_only": false,
-      "seller_name": "Amazon.com",
-      "seller_num_ratings": 1000000,
-      "seller_percent_positive": 100
-    }
-  ]
-}
-```
 
 ### Response attributes
 
