@@ -78,7 +78,9 @@ curl "https://api.zinc.io/v1/orders" \
 }
 ```
 
-Zinc offers an API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order).
+Zinc offers an API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order). The following illustration shows the flow for a typical order.
+
+<center>![flow chart for making an order](images/ordering-flow.svg)</center>
 
 ### Required attributes
 
@@ -184,26 +186,6 @@ Since different items will have different shipping options, you can use a produc
 
 You may also use the [shipping parameter](#shipping-object) on an order to select a shipping option once a product has been selected. Instead of filtering by the different offers, like the seller selection criteria, the `shipping` parameter will choose the shipping speed on the selected offer. This is useful for ensuring the product will arrive by a specific day. For example, if you set `"max_days": 5` on the `shipping` parameter, the Zinc API would attempt to select the cheapest shipping method that took less than 5 days to arrive. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.
 
-## Order bundling
-
-The bundling feature groups orders together before placing them. This is often advantageous on retailers where larger orders are given free shipping. To use bundling, you only need to specify `bundled: true` when placing an order request. Bundling currently only works on the following retailers: `amazon`, `amazon_uk`.
-
-The bundling feature allows you to take advantage of free shipping over $50 (on Amazon) without having to change your Zinc integration. Bundling will take the shipping addresses, products, and quantities from separate orders and will group them together into a single order, making sure that each product is routed correctly. The order requests and responses remain exactly the same. The only difference is when the order is placed. The order bundling feature will wait for enough orders in the queue before launching a bundled order. The exact dynamics are as follows:
-
-1. The order bundler will wait until $55 in products have been purchased. As soon as more than $55 of products have been queued with `bundled: true`, the bundler will launch a new order.
-2. If the order bundler has waited for longer than 6 hours and has not yet obtained $55 in products, it will launch an order with whatever products are currently in the queue.
-
-Note that the order bundler will not group together two orders which have the same product ids.
-
-## Amazon Email Verification
-
-Amazon occasionally requires additional verification of account ownership by
-emailing you a code to enter during login. If this happens during an order, you
-will receive an `account_locked_verification_required` error. In this case,
-please check the email associated with the account and obtain the verification
-code. Then resubmit your order and supply the code as `verification_code` under
-the `retailer_credentials` object. Another option is to enable Two Factor Authentication on your account and supply the 'totp_2fa_key' with every order, which will skip Amazon email verification, for more detail review the info on ['retailer_credentials'](#retailer-credentials-object) 
-
 ## Aborting an order
 
 > Example order abort request
@@ -263,6 +245,15 @@ behavior if the order abort fails.
 
 Note that abortion is best effort, so we cannot guaranteed that you will be
 able to abort a request.
+
+## Amazon Email Verification
+
+Amazon occasionally requires additional verification of account ownership by
+emailing you a code to enter during login. If this happens during an order, you
+will receive an `account_locked_verification_required` error. In this case,
+please check the email associated with the account and obtain the verification
+code. Then resubmit your order and supply the code as `verification_code` under
+the `retailer_credentials` object. Another option is to enable Two Factor Authentication on your account and supply the `totp_2fa_key` with every order, which will skip Amazon email verification, for more detail review the info on ['retailer_credentials'](#retailer-credentials-object)
 
 ## Adding an Amazon Affiliate Tag
 
