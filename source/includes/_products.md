@@ -1,5 +1,7 @@
 # Product Data
 
+Zinc can get product details, product offers and search supported retailers. In general, these calls are tuned for throughput rather than latency. If you need responses quickly, we have [realtime versions](#realtime-product-data) of each call. Also, proper use of the optional `max_age` or `newer_than` query parameters will improve response times.
+
 ## Product Details
 
 > Example product details request

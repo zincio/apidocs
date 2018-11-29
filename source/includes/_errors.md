@@ -13,7 +13,7 @@
 
 If there is an error processing a request, the result endpoint will return an error object containing three fields: `code`, `message`, and `data`.
 
-The `code` field provides a short, unique error code describing the error situation. The `message` field provides a human readable message describing the error and is intended for the developer and not the end user. The `data` field contains specific information related to the error (for example, the maximum quantity allowed and the desired quantity would be shown for a `max_quantity_exceeded` error).
+The `code` field provides a short, unique error code describing the error situation. The `message` field provides a human readable message describing the error and is intended for the developer and not the end user. The `data` field contains specific information related to the error. For example, the maximum quantity allowed and the desired quantity would be shown for a `max_quantity_exceeded` error.
 
 The Zinc API uses the following errors:
 

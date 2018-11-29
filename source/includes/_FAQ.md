@@ -20,7 +20,7 @@
 
 * Internal errors are caused by either an outage on the retailer's side (e.g. Amazon or Walmart are having issues) or a temporary Zinc problem. Internal errors are safe to retry -- we recommend using exponential backoff to place another order if you receive an internal error.
 
-### My item has variants, how do I ensure I order the correct item with Zinc? 
+### My item has variants, how do I ensure I order the correct item with Zinc?
 
 * Each Amazon ASIN corresponds to a single variant. Please use our free Google Chrome extension [YakPal](https://chrome.google.com/webstore/detail/yakpal/gcjaibancpkbofjlkgihljhdheaokifb?hl=en) to look up variants for any product page on Amazon. Simply pass the ASIN to Zinc under product_id.
 
@@ -34,14 +34,14 @@
 
 ### My payment methods are saved in my Amazon account. Can I just pass Zinc the last 4 digits of my credit card during checkout?
 
-* You need to provide us the the full card because Amazon asks to verify it when shipping to new addresses. Alternative, you can select gift cards as your payment method (and you can use [Piranha](http://piranha.zinc.io) to both purchase gift cards as well as automatically load them onto your Amazon 
+* You need to provide us the the full card because Amazon asks to verify it when shipping to new addresses. Alternative, you can select gift cards as your payment method (and you can use [Piranha](http://piranha.zinc.io) to both purchase gift cards as well as automatically load them onto your Amazon
 accounts).
 
 ### When will my tracking number post?
 
 * Our algorithm checks at various times based on our knowledge of when tracking becomes available. We post this response via webhook.
 
-### What is the structure of the POST body sent to the webhooks? 
+### What is the structure of the POST body sent to the webhooks?
 
 * All webhook POST bodies are identical to the Order Response object outlined [here](http://docs.zincapi.com/#retrieving-an-order).
 
@@ -56,11 +56,3 @@ accounts).
 ### Why am I getting multiple POSTs to my “order_placed” or other webhook?
 
 * We will retry POSTing the webhook until you return a 200 status code, so make sure you are returning a 200 at your webhook endpoint.
-
-### The Product Details/Product Offers API is taking a long time to respond. How do I speed it up?
-
-* Our API is optimized for throughput, not latency, and we don't make any latency guarantees. If you want to do a real-time call (your users wait on the results of the call) it's best to try these things:
-
-  * If your users are using a limited number of products, cache the data on your end regularly, and then display it to them from your cache in real-time when they request it.
-  * Make sure you have set the [max_age](https://docs.zincapi.com/#product-details) parameter to the maximum value that's allowable for your needs.
-  * We have other techniques for speeding up the API--contact us for more details.

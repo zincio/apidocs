@@ -9,7 +9,7 @@ with Zinc using PayPal or wire transfer, which Zinc will then debit to place ord
 Managed accounts are currently available for Amazon and Amazon UK.
 
 Zinc Managed Accounts are currently available by invite only. Please contact
-sales@zinc.io and mention Managed Accounts. You can also contact this address if
+<sales@zinc.io> and mention Managed Accounts. You can also contact this address if
 you need more information to determine if Managed Accounts are right for you.
 
 ## Funding your account
@@ -21,7 +21,7 @@ curl "https://api.zinc.io/v1/addax/balance" -u <client_token>:
 curl "https://api.zinc.io/v1/addax/transactions?count=100&offset=0" -u <client_token>:
 ```
 
-Please contact sales@zinc.io. They'll help set up funding options taylored for
+Please contact <sales@zinc.io>. They'll help set up funding options taylored for
 your needs. Generally, funding is performed either through PayPal's Mass Pay
 option or via wire transfer directly to our bank.
 
