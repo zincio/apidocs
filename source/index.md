@@ -33,21 +33,20 @@ Zinc lets you buy things from popular online retailers, including Amazon.com, wi
 
 # Supported retailers
 
-The table below shows the endpoints available for each retailer. We can add additional retailers upon request -- fill out the form at the [bottom of our home page](https://zinc.io/#bottom) for a quote for a particular retailer.
+The table below shows the endpoints available for each retailer. We can add additional retailers upon request -- fill out the form at the [bottom of our home page](https://zinc.io/#contact) for a quote for a particular retailer.
 
 Name | Retailer Code | Orders | Product Details | Product Prices | Product Search
 ---- | ------------- | ------ | --------------- | -------------- | --------------
-AliExpress | aliexpress | Y | Y | Y | N
-Amazon† | amazon | Y | Y | Y | Y
-Amazon United Kingdom† | amazon_uk | Y | Y | Y | N
-Amazon Canada† | amazon_ca | Y | Y | Y | N
-Amazon Germany† | amazon_de | Y | Y | Y | Y
-Amazon Mexico† | amazon_mx | Y | Y | Y | N
-Costco | costco | Y | Y | Y | N
-Walmart | walmart | Y* | Y | Y | N
-Wayfair | wayfair | Y* | N | N | N
-Homedepot | homedepot | Y* | N | N | Y
-Lowes | lowes | N | N | Y | N
+Amazon† | amazon                     | Y | Y | Y | Y
+Amazon United Kingdom† | amazon_uk   | Y | Y | Y | Y
+Amazon Canada† | amazon_ca           | Y | Y | Y | Y
+Amazon Germany† | amazon_de          | Y | Y | Y | Y
+Amazon Mexico† | amazon_mx           | Y | Y | Y | Y
+Costco | costco                      | Y | Y | Y | N
+Walmart | walmart                    | Y* | Y | Y | N
+Homedepot | homedepot                | Y* | N | N | Y
+Lowes | lowes                        | N | N | Y | Y
+AliExpress | aliexpress              | Y | Y | Y | N
 
 ```*```Currently in unsupported beta.
 ```†```Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported
