@@ -247,7 +247,7 @@ behavior if the order abort fails.
 Note that abortion is best effort, so we cannot guaranteed that you will be
 able to abort a request.
 
-## Amazon Email Verification
+## Amazon email verification
 
 Occasionally, Amazon requires verification of account ownership and will email you a code during login.
 If this happens during an order, you will receive an `account_locked_verification_required` error.

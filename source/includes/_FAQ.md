@@ -30,7 +30,7 @@
 
 ### I am receiving an Amazon security code text asking me to verify my identity when placing the order.
 
-* This is common when placing orders on a new account for the first time, since we are accessing Amazon from a new IP address. See our documentation about [Amazon Email Verification](http://docs.zincapi.com/#amazon-email-verification).
+* This is common when placing orders on a new account for the first time, since we are accessing Amazon from a new IP address. See our documentation about [Amazon email verification](#amazon-email-verification).
 
 ### My payment methods are saved in my Amazon account. Can I just pass Zinc the last 4 digits of my credit card during checkout?
 
