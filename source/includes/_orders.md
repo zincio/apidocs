@@ -107,7 +107,8 @@ webhooks | Object | A [webhooks object](#webhooks-object) including URLs that wi
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
 promo_codes | Array | A list of promotion codes to use at checkout. See [promo code](#promo-code-object) object.
 po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
-bundled | Boolean | (Amazon only). If enabled, orders will be grouped together into batches and placed together. See the [order bundling](#order-bundling) section for more details.
+affiliate_info | Object | (Amazon only) Add an Amazon affiliate tag to your order. Example value `{"tag": "yourtag-20"}`
+
 
 ## Retrieving an order
 
@@ -248,24 +249,9 @@ able to abort a request.
 
 ## Amazon Email Verification
 
-Amazon occasionally requires additional verification of account ownership by
-emailing you a code to enter during login. If this happens during an order, you
-will receive an `account_locked_verification_required` error. In this case,
-please check the email associated with the account and obtain the verification
-code. Then resubmit your order and supply the code as `verification_code` under
-the `retailer_credentials` object. Another option is to enable Two Factor Authentication on your account and supply the `totp_2fa_key` with every order, which will skip Amazon email verification, for more detail review the info on ['retailer_credentials'](#retailer-credentials-object)
+Occasionally, Amazon requires verification of account ownership and will email you a code during login.
+If this happens during an order, you will receive an `account_locked_verification_required` error.
+There are a few options for resolving this issue.
 
-## Adding an Amazon Affiliate Tag
-
-> Example Affiliate Tag Snippet
-
-```shell
-curl "https://api.zinc.io/v1/orders" \
-  -u <client_token>: \
-  -d '{
-  "retailer": "amazon",
-  "affiliate_info": {"tag": "yourtag-20"},
-  ...
-  }
-  ```
-The API allows you to add an Amazon Affiliate tag if you so desire. However, Zinc doesn't recommend using the affiliate tag due to the high risk of your affiliate account being closed when a large number of orders are coming from a particular purchasing account.
+* Check the email associated with the account and obtain the verification code. Then resubmit your order and supply the code as `verification_code` under the [`retailer_credentials`](#retailer-credentials-object) object.
+* Enable Two Factor Authentication on your account and supply the `totp_2fa_key` with every order under the [`retailer_credentials`](#retailer-credentials-object) object.
