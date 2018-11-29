@@ -255,3 +255,4 @@ There are a few options for resolving this issue.
 
 * Check the email associated with the account and obtain the verification code. Then resubmit your order and supply the code as `verification_code` under the [`retailer_credentials`](#retailer-credentials-object) object.
 * Enable Two Factor Authentication on your account and supply the `totp_2fa_key` with every order under the [`retailer_credentials`](#retailer-credentials-object) object.
+* Use [Zinc Managed Accounts](#zinc-managed-accounts) where we manage keeping accounts open and unlocked.
