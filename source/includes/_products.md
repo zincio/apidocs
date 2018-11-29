@@ -1,4 +1,6 @@
-# Product Details
+# Product Data
+
+## Product Details
 
 > Example product details request
 
@@ -176,7 +178,7 @@ question_count | Number | (Amazon only) The number of questions on the Amazon qu
 asin | String | (Amazon only) The ASIN of the product
 item_number | String | (Costco only) The Costco item number of the product (may not contain variant details)
 
-# Product Offers
+## Product Offers
 
 > Example product offers request
 
@@ -240,7 +242,7 @@ status | String | Possible values are `processing`, `failed`, or `completed`. Yo
 retailer | String | The retailer for the product offers
 offers | Array | An array of [product offer objects](#product-offer-object) for a particular product on a retailer
 
-# Product Search
+## Product Search
 
 > Example product search request
 
