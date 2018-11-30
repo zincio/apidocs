@@ -80,7 +80,7 @@ curl "https://api.zinc.io/v1/orders" \
 
 Zinc offers an API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You'll receive a `request_id` in the POST body's response which you'll then use for [retrieving the status of the order](#retrieving-an-order). The following illustration shows the flow for a typical order.
 
-<center>![flow chart for making an order](images/ordering-flow.svg)</center>
+![flow chart for making an order](images/ordering-flow.svg)
 
 ### Required attributes
 
@@ -179,13 +179,17 @@ request | Object | The original request that was sent to the Zinc API
 delivery_dates | Array | An array of ordered products and their given delivery dates
 account_status | Array | (Amazon only) An [account status object](#account-status-object) that gives details about the ordering account
 
-## Selecting shipping
+## Selecting an offer & shipping
 
-Zinc provides a number of options to customize your shipping speed and cost formulas from the various options available from our supported retailers.
+When placing an order, each product will have multiple offers from different sellers each with their own shipping options. To address this, use a product's [seller selection criteria](#seller-selection-criteria-object) to filter offers and an order's [shipping parameter](#shipping-object) to specify shipping preferences. Below is an flowchart of the process used to filter offers and select a shipping option.
 
-Since different items will have different shipping options, you can use a product's [seller selection criteria](#seller-selection-criteria-object) to specify `handling_days_max`. This will filter the list of potential offers down to those that will ship within a certain number of days, which is useful when customers expect to see a tracking number within a certain amount of time. The Zinc API will then select the cheapest offer that matched all of your seller selection criteria to make a purchase. For example, if you specified `"handling_days_max": 6`, then any offer that won't ship in 6 days or less from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed shipping date 10 days away and the other seller has a guaranteed shipping date 5 days away, the second seller's offer would be selected. (Note: when no handling information is available, we use the longest projected arrival date of the product as the `handling_days_max`)
+![flow chart for making an order](images/select-offer.svg)
 
-You may also use the [shipping parameter](#shipping-object) on an order to select a shipping option once a product has been selected. Instead of filtering by the different offers, like the seller selection criteria, the `shipping` parameter will choose the shipping speed on the selected offer. This is useful for ensuring the product will arrive by a specific day. For example, if you set `"max_days": 5` on the `shipping` parameter, the Zinc API would attempt to select the cheapest shipping method that took less than 5 days to arrive. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.
+### Some examples
+
+* If you wanted to send your customer a tracking number within 5 days, you would set `handling_days_max` to 5 in your [seller selection criteria](#seller-selection-criteria-object). The Zinc API would then filter out all offers which would not ship and upload a tracking number within 5 days.
+* If you specified `"handling_days_max": 6` in your [seller selection criteria](#seller-selection-criteria-object), then any offer that won't ship in 6 days or less from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed shipping date 10 days away and the other seller has a guaranteed shipping date 5 days away, the second seller's offer would be selected. (Note: when no handling information is available, we use the longest projected arrival date of the product as the `handling_days_max`)
+* If you set `"max_days": 5` on the [shipping parameter](#shipping-object), the Zinc API would attempt to select the cheapest shipping method that took less than 5 days to arrive. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.
 
 ## Aborting an order
 
@@ -214,7 +218,7 @@ curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
 }
 ```
 
-> Example request processing order abort response
+> Example abort response that is still pending
 
 ```shell
 {
@@ -227,25 +231,9 @@ curl "https://api.zinc.io/v1/orders/<request_id>/abort" \
 
 ```
 
-The Zinc API allows you to abort uncompleted orders that are still
-in the `request_processing` stage. This functionality allows you to stop an
-order from going through if a mistake was made on the order, or if the order
-is taking too long to process.
+The Zinc API allows you to abort orders that are still in the `request_processing` stage. This functionality is intended to abort an order if was made by mistake or if it is taking too long to process.
 
-The response to this request will be a standard GET response for an order, which is
-either a `request_processing` response, an error response, or a successful order
-response. If we are able to successfully abort the order, an `aborted_request` error
-code will be returned for the order in question. If you receive back a
-`request_processing` response, you will need to continue to wait before the API is
-able to abort a request on an already running process.
-
-If you are using the `request_succeeded` and `request_failed` webhooks, you won't
-need to do anything with the order abort response. The API will hit the
-`request_failed` webhook if an order is aborted correctly, and will have normal
-behavior if the order abort fails.
-
-Note that abortion is best effort, so we cannot guaranteed that you will be
-able to abort a request.
+The response will be the same as if you were to [GET the order](#retrieving-an-order). If we were able to immediately abort the order, the order will have an error **code** of `aborted_request`. It can take time for an order to abort and success is not guaranteed. You can either periodically poll the order to check if it was aborted or use webhooks.
 
 ## Amazon email verification
 

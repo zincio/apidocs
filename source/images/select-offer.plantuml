@@ -1,0 +1,33 @@
+@startuml
+start
+
+:List of offers for the product|
+fork
+   :Offer #1|
+   if (Is offer valid according\nto the seller selection\ncriteria?) then (Yes)
+   else (No)
+      stop
+   endif
+fork again
+   :Offer #2|
+   if (Is offer valid according\nto the seller selection\ncriteria?) then (Yes)
+   else (No)
+      stop
+   endif
+fork again
+   :Offer #N|
+   if (Is offer valid according\nto the seller selection\ncriteria?) then (Yes)
+   else (No)
+      stop
+   endif
+end fork
+   :List of filtered offers for the product|
+   if (Is the list of filtered offers empty?) then (\nYes)
+      stop
+      note left: Order would error with the\n**code** "product_unavailable"
+   else (No)
+   endif
+   :Sort the list of filtered offers/shipping\noptions according to **order_by**\nin the shipping parameters;
+   :Order the top offer for the product;
+stop
+@enduml
