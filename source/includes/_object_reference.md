@@ -179,7 +179,7 @@ Attribute | Type | Description
 email | String | The email for the retailer account
 password | String | The password for the retailer account
 verification_code | String | (Optional) The verification code required by the retailer for logging in. Only required in cases where the retailer prevents a login with an `account_locked_verification_required` error code.
-totp_2fa_key | String | (Optional) The secret key used for two factor authentication. If you have two factor authentication enabled, you must provide this key. You can find the 64 digit Amazon key by enabling two factor authentication and clicking on the "Can't scan the barcode?" link. Note this is not the 6 digit time based code.
+totp_2fa_key | String | (Optional) The secret key used for two factor authentication. If you have two factor authentication enabled, you must provide this key. You can find the 64 digit Amazon key by enabling two factor authentication and <a href="images/amazon2fa.png" target="_blank">clicking on the "Can't scan the barcode?"</a> link. **Note: This is not the 6 digit time based code.**
 
 ## Promo code object
 
