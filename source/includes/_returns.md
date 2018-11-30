@@ -32,7 +32,7 @@ curl "https://api.zinc.io/v1/orders/<request_id>/return" \
 
 The Zinc API also supports generating return labels. Returns are only available
 on the following retailers: `amazon`, `amazon_uk`. You can create a return for
-an order by hitting the `https://api.zinc.io/v1/orders/<request_id>/return`
+an order by POSTING to the `https://api.zinc.io/v1/orders/<request_id>/return`
 route where `request_id` is the request id of the original order.
 
 ### Required attributes
