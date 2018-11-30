@@ -336,19 +336,29 @@ member_only | Boolean | (Costco only) Whether or not the purchase must be from a
 > Example tracking object
 
 ```shell
-{
-  "merchant_order_id": "112-1234567-7272727",
-  "carrier": "UPS",
-  "tracking_number": "1Z9999999999999999",
-  "tracking_url": "https://some-url.com/tracking-number/1Z9999999999999999",
-  "product_id": "0923568964"
-}
+    {
+      "merchant_order_id": "112-111111-6553065",
+      "carrier": "ZNLOGIC",
+      "tracking_number": "ZPYAA0051111007YQ",
+      "delivery_status": "InTransit",
+      "product_ids": [
+        "B000R31KH2"
+      ],
+      "tracking_url": "https://t.17track.net/en#nums=ZPYAA0051111007YQ",
+      "retailer_tracking_number": "TBA111189418000",
+      "retailer_tracking_url": "https://www.amazon.com/progress-tracker/package/ref=oh_aui_hz_st_btn?_encoding=UTF8&itemId=khlnkqmn1111n&orderId=112-111111-6553065",
+      "obtained_at": "2018-11-29T20:53:05.924Z"
+    }
 ```
 
 Attribute | Type | Description
 --------- | ---- | -----------
 merchant_order_id | String | The corresponding order identifier for which tracking was obtained.
-carrier | String | (Optional) The logistics carrier that was used to ship the package.
+carrier | String | (Optional) The logistics carrier that can track the package.
 tracking_number | String | (Optional) The tracking number from the logistics carrier.
+delivery_status | String | The current tracking status. Will be "Delivered" when the package is delivered.
 tracking_url | String | (Optional) The tracking url that can be used to find the carrier and tracking number for a package.
-product_id | String | (Optional) The corresponding product for which tracking was obtained.
+product_ids | String | The list of product ids in the shipment. Product ids will be repeated if more than one of the product is in the shipment.
+retailer_tracking_number | String | (Amazon only) (Optional) Amazon's tracking numbers are not publicly trackable but are printed on the package so we include them here.
+retailer_tracking_url | String | (Optional) A url provided by the retailer than can be used to track the package
+obtained_at | String | When tracking was last updated
