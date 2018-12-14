@@ -476,7 +476,7 @@ nextToken | Number | Not included for the initial request. For subsequent reques
 #### Optional request attributes
 Attribute | Type | Description
 --------- | ---- | -----------
-includeAddons | Boolean | If true addons will not be returned in search results
+includeAddons | Boolean | If `false` addons will not be returned in search results
 
 ### Response attributes
 
