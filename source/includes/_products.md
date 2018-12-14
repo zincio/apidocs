@@ -476,7 +476,7 @@ nextToken | Number | Not included for the initial request. For subsequent reques
 #### Optional request attributes
 Attribute | Type | Description
 --------- | ---- | -----------
-includeAddons | Boolean | If `false` addons will not be returned in search results
+includeAddons | Boolean | If `false` addons will not be returned in search results.
 
 ### Response attributes
 
@@ -490,7 +490,7 @@ results.title | String | The title of a search result
 results.image | String | A link to an image of the search result
 results.price | Number | The price of the item.
 results.product_details | Number | Additional data about product if any was found.
-
+results.addon | Boolean | Will be true if the best offer (aka BuyBox) is an addon. Rarely, this field will not be returned which simply means we were unable to determine addon status in timely manner.
 ## Realtime Details
 
 > Example realtime details request
