@@ -473,6 +473,11 @@ query | String | The query string you want to search for. Must be URL encoded.
 retailer | String | The retailer you are searching on. Currently, only amazon is supported.
 nextToken | Number | Not included for the initial request. For subsequent requests, provide the token returned by previous request.
 
+#### Optional request attributes
+Attribute | Type | Description
+--------- | ---- | -----------
+includeAddons | Boolean | If true addons will not be returned in search results
+
 ### Response attributes
 
 Attribute | Type | Description
