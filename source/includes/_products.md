@@ -341,7 +341,7 @@ results.price | Number | The price of the item
 
 # Realtime Product Data
 
-The calls documented above are tuned for throughput rather than latency and for most use cases they work well. There are some use cases (for example, catalog expansion) that have strict latency requirements. To satisfy those use cases we have developed a realtime version of our data calls. To ensure we meet our latency guarantees, we limit access to the realtime api. To get access to our realtime api contact <sales@zinc.io>.
+The calls documented above are tuned for throughput rather than latency, and for most use cases they work well. There are some use cases (for example, catalog expansion) that have strict latency requirements. To satisfy those use cases we have developed a realtime version of our data APIs. To ensure we meet our latency guarantees, we limit access to the realtime api. To get access to our realtime API, contact <sales@zinc.io>.
 
 ## Realtime Search
 
@@ -463,7 +463,7 @@ To retrieve search results, make a GET request to the following URL, replacing `
 
 `https://api.zinc.io/v1/realtime/search?query=<query>&retailer=<retailer_name>&nextToken=<token>`
 
-The first page should always return within 4 seconds and will contain 10 results. If you want to show more than 10 results, you should use AJAX to load additional pages for the best user experience. A demo of this can be found at <http://amazonsearchdemo.surge.sh/> ([source code](https://github.com/zincio/zinc-realtime-search-demo)).
+The first page should always return within 4 seconds and will contain 10 results. If you want to show more than 10 results, you should use AJAX to load additional pages for the best user experience. A demo of this can be found at <http://amazonsearchdemo.surge.sh/> ([source code](https://github.com/zincio/zinc-realtime-search-demo)). Note that you must contact <sales@zinc.io> first so we can enable this feature for you.
 
 ### Required request attributes
 
