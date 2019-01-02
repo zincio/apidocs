@@ -306,7 +306,6 @@ charity | string | Indicates if the account has a Charity associated
       "name": "one-day"
     }
   ],
-  "minimum_quantity": null
 }
 ```
 
@@ -327,7 +326,7 @@ seller.percent_positive | Number | Number between 0 and 100 denoting the percent
 shipping_options[].price | Number | The cost to ship the item in cents
 shipping_options[].delivery_days.min | Number | The minimum time in days it might take for the item to be delivered
 shipping_options[].delivery_days.max | Number | The maximum time in days it might take for the item to be delivered
-shipping_options[].name | Number | The name of the shipping option
+shipping_options[].name | String | The name of the shipping option
 prime_only | Boolean | (Amazon only). Whether or not the product only ships using Amazon Prime
 member_only | Boolean | (Costco only) Whether or not the purchase must be from a Costco Member
 
