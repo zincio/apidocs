@@ -185,6 +185,17 @@ When placing an order, each product will have multiple offers from different sel
 
 ![flow chart for making an order](images/select-offer.svg)
 
+### Default seller selection criteria
+
+If a seller selection criteria object is not explicitly provided, then the API will use the default:
+```
+{
+  "prime": true,
+  "handling_days_max": 6,
+  "condition_in": ["New"]
+}
+```
+
 ### Some examples
 
 * If you wanted to send your customer a tracking number within 5 days, you would set `handling_days_max` to 5 in your [seller selection criteria](#seller-selection-criteria-object). The Zinc API would then filter out all offers which would not ship and upload a tracking number within 5 days.
