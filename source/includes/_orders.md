@@ -94,19 +94,20 @@ shipping | Object | A [shipping object](#shipping-object) with information as to
 billing_address | Object | An [address object](#address-object) for the person associated with the credit card
 payment_method | Object |A [payment method](#payment-method-object) object containing payment information for the order
 retailer_credentials | Object | A [retailer credentials](#retailer-credentials-object) object for logging into the retailer with a preexisting account
-
+is_gift | Boolean | Whether or not this order should be placed as a gift. Typically, retailers will exclude the price of the items on the receipt if this is set.
+max_price | Number | The maximum price in cents for the order. If the final price exceeds this number, the order will not go through and will return a `max_price_exceeded` error.
 
 ### Optional attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
 gift_message | String | A message to include on the packing slip for the recipient. Must be no more than 240 characters, or 9 lines.
-is_gift | Boolean | Whether or not this order should be placed as a gift. Typically, retailers will exclude the price of the items on the receipt if this is set.
-max_price | Number | The maximum price in cents for the order. If the final price exceeds this number, the order will not go through and will return a `max_price_exceeded` error.
 webhooks | Object | A [webhooks object](#webhooks-object) including URLs that will receive POST requests after particular events have finished
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
 promo_codes | Array | A list of promotion codes to use at checkout. See [promo code](#promo-code-object) object.
-po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
+strict_expired_product_id | Boolean | Defaults to false. If true, we will fail orderes where the product_id is "expired" or "deprecated". If unset or false, Amazon redirects us to a valid product_id and we buy that one.
+po_number | Number | (Amazon business accounts only). Adds a purchase order number to
+the order.
 affiliate_info | Object | (Amazon only) Add an Amazon affiliate tag to your order. Example value `{"tag": "yourtag-20"}`
 
 
