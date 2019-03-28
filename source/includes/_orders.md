@@ -106,8 +106,7 @@ webhooks | Object | A [webhooks object](#webhooks-object) including URLs that wi
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
 promo_codes | Array | A list of promotion codes to use at checkout. See [promo code](#promo-code-object) object.
 strict_expired_product_id | Boolean | Defaults to false. If true, we will fail orderes where the product_id is "expired" or "deprecated". If unset or false, Amazon redirects us to a valid product_id and we buy that one.
-po_number | Number | (Amazon business accounts only). Adds a purchase order number to
-the order.
+po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
 affiliate_info | Object | (Amazon only) Add an Amazon affiliate tag to your order. Example value `{"tag": "yourtag-20"}`
 
 
