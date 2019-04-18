@@ -1,6 +1,8 @@
 # Supported retailers
 
-The table below shows the endpoints available for each retailer. We can add additional retailers upon request. Fill out the form at the [bottom of our home page](https://zinc.io/#contact) for a quote for a particular retailer.
+The table below shows the endpoints available for each retailer. 
+
+Note that this is a partial list. We support hundreds more retailers in beta. For details, please email support@zinc.io.
 
 Name | Retailer Code | Orders | Product Details | Product Offers | Product Search
 ---- | ------------- | ------ | --------------- | -------------- | --------------
@@ -15,5 +17,5 @@ Homedepot | homedepot                | Y* | N | N | Y
 Lowes | lowes                        | N | N | Y | Y
 AliExpress | aliexpress              | Y | Y | Y | N
 
-```*```Currently in unsupported beta.
+```*```Currently in beta.
 ```†```Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported
