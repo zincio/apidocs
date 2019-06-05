@@ -271,7 +271,9 @@ curl https://api.zinc.io/v1/search?query=fish%20oil&page=1&retailer=amazon \
   -u <client_token>:
 ```
 
-Get search results from a retailer based on a query term. Results include product id, title, image url, number of reviews, star rating, and price.
+Get search results from a retailer based on a query term. Results include product id, title, image url, number of reviews, star rating, and price as well as how many results are shown of all available. 
+
+The api is optimized for fast responses so results are paged. That means that if there are lots of results returned by your query, the response will be paged. You can retrieve more results by executing the query again with an increased page number. For example, if querying the first page lists `showing.start` as 1 and `showing.end` as 48 with a total amount of results as `showing.of` = 30000, you can expect 625 pages in total (30000/48). However, keep in mind that query results are not being cached on our server, so executing a query again with another page number could return different results and will also be billed as each query causes new workload. That means your application should allow the showing object for changes with each query you execute.
 
 To retrieve search results, make a GET request to the following URL, replacing :query with a url-encoded query string and specifying the request attributes as query parameters in the URL.
 
@@ -320,7 +322,12 @@ retailer | String | The retailer you are searching on.
       "fresh": false,
       "price": 1642
     }
-  ]
+  ],
+  "showing": {
+    "start": 1,
+    "end": 3,
+    "of": 121
+  }
 }
 ```
 
@@ -338,6 +345,9 @@ results.num_reviews | Number | The number of reviews the product has
 results.stars | String | The star rating of the item (e.g. '4.1 out of 5 stars')
 results.fresh | Bool | Whether or not the product is an Amazon Fresh item
 results.price | Number | The price of the item
+showing.start | Number | The number of the first item returned by this request
+showing.end | Number | The number of the last item returned by this request
+showing.of | Number | Total amount of items
 
 # Realtime Product Data
 
