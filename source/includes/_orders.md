@@ -89,7 +89,7 @@ Attribute | Type | Description
 retailer | String | The retailer code of the supported retailer
 products | List | A list of [product objects](#product-object) that should be ordered
 shipping_address | Object | An [address object](#address-object) to which the order will be delivered
-shipping_method | String | The desired shipping method for the object. Available methods are `cheapest` (always select the cheapest method available), `fastest` (always select the fastest method available), or `free` (which will fail for items without some sort of free shipping). You must provide either this or the `shipping` attribute, but not both.
+shipping_method | String | The desired shipping method for the object. Available methods are `cheapest` (always select the cheapest method available), `fastest` (always select the fastest method available), `amazon_day` (choose default from Amazon or use amazon_day attribute from order), or `free` (which will fail for items without some sort of free shipping). You must provide either this or the `shipping` attribute, but not both.
 shipping | Object | A [shipping object](#shipping-object) with information as to which shipping method to use. You must provide either this or the `shipping_method` attribute, but not both.
 billing_address | Object | An [address object](#address-object) for the person associated with the credit card
 payment_method | Object |A [payment method](#payment-method-object) object containing payment information for the order
@@ -108,6 +108,7 @@ promo_codes | Array | A list of promotion codes to use at checkout. See [promo c
 strict_expired_product_id | Boolean | Defaults to false. If true, we will fail orderes where the product_id is "expired" or "deprecated". If unset or false, Amazon redirects us to a valid product_id and we buy that one.
 po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
 affiliate_info | Object | (Amazon only) Add an Amazon affiliate tag to your order. Example value `{"tag": "yourtag-20"}`
+amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when shipp_method is set to `amazon_day`.
 
 
 ## Retrieving an order
