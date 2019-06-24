@@ -102,13 +102,14 @@ max_price | Number | The maximum price in cents for the order. If the final pric
 Attribute | Type | Description
 --------- | ---- | -----------
 gift_message | String | A message to include on the packing slip for the recipient. Must be no more than 240 characters, or 9 lines.
+require_gift | Boolean | If is_gift is true, setting require_gift to true will cause the order to fail if any items in the order do not include a gift option.
 webhooks | Object | A [webhooks object](#webhooks-object) including URLs that will receive POST requests after particular events have finished
 client_notes | Object | Any metadata to store on the request for future use. This object will be passed back in the response.
 promo_codes | Array | A list of promotion codes to use at checkout. See [promo code](#promo-code-object) object.
 strict_expired_product_id | Boolean | Defaults to false. If true, we will fail orderes where the product_id is "expired" or "deprecated". If unset or false, Amazon redirects us to a valid product_id and we buy that one.
 po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
 affiliate_info | Object | (Amazon only) Add an Amazon affiliate tag to your order. Example value `{"tag": "yourtag-20"}`
-amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when shipp_method is set to `amazon_day`.
+amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to `amazon_day`.
 
 
 ## Retrieving an order
