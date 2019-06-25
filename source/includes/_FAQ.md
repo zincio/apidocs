@@ -51,8 +51,12 @@ accounts).
 
 ### I am not receiving POSTs to the my webhook URLs.
 
-* Make sure that your server is configured to accept POST requests from any other server. To debug this, we recommend creating a [requestbin](https://requestb.in/) URL, passing that in as your webhook, and looking at what the data that we returns looks like. This will also confirm to you that our webhooks are working properly.
+* Make sure that your server is configured to accept POST requests from any other server. To debug this, we recommend creating a [requestbin](https://requestbin.com/) URL, passing that in as your webhook, and looking at what the data that we returns looks like. This will also confirm to you that our webhooks are working properly.
 
 ### Why am I getting multiple POSTs to my “order_placed” or other webhook?
 
 * We will retry POSTing the webhook until you return a 200 status code, so make sure you are returning a 200 at your webhook endpoint.
+
+### Do you have any sample code for using the API?
+
+* Sample code that includes an example of a bulk order query can be found in this github [repo](https://github.com/zincio/api-samples).

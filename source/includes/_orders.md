@@ -181,6 +181,30 @@ request | Object | The original request that was sent to the Zinc API
 delivery_dates | Array | An array of ordered products and their given delivery dates
 account_status | Array | (Amazon only) An [account status object](#account-status-object) that gives details about the ordering account
 
+## Retrieving a list of orders
+
+> Example query for all Amazon orders (up to 5000) for June 1, 2019 14:00 - July 1, 2019 14:00
+
+```shell
+curl "https://api.zinc.io/v1/orders?limit=5000&starting_after=1559397600000&ending_before=1561989600000&retailer=amazon" \
+  -u <client_token>:
+```
+To get a list of all orders within a specific timestamp range, use the order query and include these additional query parameters.
+
+### Order query parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+limit | Number | Maximum number of orders to return in the results (defaults to 10)
+skip | Number | Number of order responses to skip before including up to limit orders in results
+starting_after | Number | Timestamp of start of the range (inclusive)
+ending_before | Number | Timestamp of end of the range (exclusive)
+retailer | String | name of the retailer to include orders from
+
+The timestamps are unix timestamps in milliseconds, which you can read about here [unix timestamps](https://en.wikipedia.org/wiki/Unix_time). To easily convert a human-readable date / time to a unix timestamp, you can use this [converter](https://www.epochconverter.com/).
+
+Sample code that includes an example of a bulk order query can be found in this github [repo](https://github.com/zincio/api-samples).
+
 ## Selecting an offer & shipping
 
 When placing an order, each product will have multiple offers from different sellers each with their own shipping options. To address this, use a product's [seller selection criteria](#seller-selection-criteria-object) to filter offers and an order's [shipping parameter](#shipping-object) to specify shipping preferences. Below is an flowchart of the process used to filter offers and select a shipping option.
