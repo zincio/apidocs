@@ -143,8 +143,13 @@ async | Boolean | Determines whether the resulting response will be asynchronous
         "UPC: 048526054381 013513034066",
         "Item model number: 5438"
     ],
-    "question_count": 26,
-    "stars": 4.5,
+    "question_count": 44,
+    "stars": 4.4,
+    "fresh": false,
+    "pantry": false,
+    "handmade": false,
+    "digital": false,
+    "buyapi_hint": true,
     "price": 799
 }
 ```
@@ -178,6 +183,11 @@ review_count | Number | (Amazon only) The number of reviews of the product
 stars | Double | (Amazon only) The review score of the product
 question_count | Number | (Amazon only) The number of questions on the Amazon question section
 asin | String | (Amazon only) The ASIN of the product
+fresh | Boolean | (Amazon only) True if the item is an Amazon Fresh item
+pantry | Boolean | (Amazon only) True if the item is an Amazon Pantry item
+handmade | Boolean | (Amazon only) True if the item is an Amazon Handmade item
+digital | Boolean | (Amazon only) True if the item is a digital-only item (software subscription, downloadable software, digital video, game codes, etc.)
+buyapi_hint | Boolean | (Amazon only) False if the item cannot be ordered via the buyapi, True if it might be orderable
 item_number | String | (Costco only) The Costco item number of the product (may not contain variant details)
 
 ## Product Offers

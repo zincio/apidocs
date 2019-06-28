@@ -47,6 +47,7 @@ invalid_request_id | The provided request_id is invalid.
 invalid_security_code | The security code you entered was declined.
 invalid_shipping_method | The shipping method you selected was not valid.
 invalid_variant | One of the product variants you provided was not valid.
+item_not_supported | The item is not supported via the buyapi - likely a digital or handmade item
 manual_review_required | This order is under manual review by Zinc -- please check back later for the status of this order.
 max_price_exceeded | The retailers final price exceeds the maximum price.
 max_quantity_exceeded | You have exceeded the maximum quantity available for a specific product.
