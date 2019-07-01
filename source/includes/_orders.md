@@ -282,3 +282,23 @@ There are a few options for resolving this issue.
 * Enable Two Factor Authentication on your account and supply the `totp_2fa_key` with every order under the [`retailer_credentials`](#retailer-credentials-object) object.
 * Use [Zinc Managed Accounts](#zinc-managed-accounts) where we manage keeping accounts open and unlocked.
 * Forward all emails from your Amazon account's email to <email@quail.zinc.io>. AutoOrdering will automatically parse the incoming email and fill in the code. For instructions on how to forward from a Gmail account, [see this article](https://support.google.com/mail/answer/10957?hl=en).
+
+## Retrying an order
+
+Sometimes an order will fail for reasons that are temporary. In these situations, orders can be retried after the temporary conditions are resolved. A successful order retry response contains the request_id of the new order.
+
+> Example order retry request
+
+```shell
+curl "https://api.zinc.io/v1/orders/<request_id>/retry" \
+  -X POST \
+  -u <client_token>:
+```
+
+> Example successful order retry response
+
+```shell
+{
+  "request_id": "3f1c939065cf58e7b9f0aea70640dffc"
+}
+```
