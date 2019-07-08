@@ -108,7 +108,6 @@ client_notes | Object | Any metadata to store on the request for future use. Thi
 promo_codes | Array | A list of promotion codes to use at checkout. See [promo code](#promo-code-object) object.
 strict_expired_product_id | Boolean | Defaults to false. If true, we will fail orderes where the product_id is "expired" or "deprecated". If unset or false, Amazon redirects us to a valid product_id and we buy that one.
 po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
-affiliate_info | Object | (Amazon only) Add an Amazon affiliate tag to your order. Example value `{"tag": "yourtag-20"}`
 amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to `amazon_day`.
 
 
