@@ -64,3 +64,4 @@ shipping_address_refused | The shipping address you provided was refused by the 
 shipping_address_unavailable | The item(s) cannot be shipped to the selected shipping address.
 shipping_method_unavailable | The selected shipping_method is not available for the selected shipping_address.
 unauthorized_access | You are not authorized to make this API call. Please contact support@zinc.io. (Usually, attempting to use Addax before it has been enabled)
+unsupported_product_id | The item product_id is not specific enough. Choose a specific product_id to order.
