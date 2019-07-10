@@ -26,6 +26,7 @@ add_on_item | Add-on items cannot be ordered individually.
 additional_information_required | The retailer asked for additional account verification questions. If using the API, please add a field 'phone_number' in the billing address that matches your billing telephone number.
 billing_address_refused | The billing address you provided was refused by the retailer.
 brand_not_accepted | Your credit card brand is not accepted with this merchant.
+cannot_schedule_delivery | Item requires scheduled delivery options that Zinc does not support.
 credit_card_declined | The credit card you entered was declined.
 duplicate_order | This order is a duplicate.
 expired_product_id | The product_id you used is no longer supported by the retailer.
