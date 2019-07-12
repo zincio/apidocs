@@ -141,6 +141,8 @@ Webhooks let you register a URL that the Zinc API notifies whenever an event hap
 
 As an example, let's say you have just created an order via the Zinc API. Every time the order status changes, a `POST` request will be sent to the URL that you passed in the `status_updated` parameter of the webhooks object. The body will mimic the response received from the standard `GET https://api.zinc.io/v1/orders/<request_id>` request. A webhook will also be sent if order fails, gets placed, or if tracking gets updated.
 
+Note that the `case_updated` webhook is specifically for ZMA order cases.
+
 > Example webhooks object
 
 ```shell
@@ -148,7 +150,8 @@ As an example, let's say you have just created an order via the Zinc API. Every 
   "request_succeeded": "http://mywebsite.com/zinc/request_placed",
   "request_failed": "http://mywebsite.com/zinc/request_failed",
   "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained",
-  "status_updated": "http://mywebsite.com/zinc/status_updated"
+  "status_updated": "http://mywebsite.com/zinc/status_updated",
+  "case_updated": "http://mywebsite.com/zinc/case_updated"
 }
 ```
 
