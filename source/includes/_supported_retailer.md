@@ -14,7 +14,7 @@ Amazon Mexico† | amazon_mx           | Y | Y | Y | Y
 Costco | costco                      | Y | Y | Y | N
 Walmart | walmart                    | Y* | Y | Y | N
 Homedepot | homedepot                | Y* | N | N | Y
-Lowes | lowes                        | N | N | Y | Y
+Lowes | lowes                        | N | Y | N | N
 AliExpress | aliexpress              | Y | Y | Y | N
 
 ```*```Currently in beta.
