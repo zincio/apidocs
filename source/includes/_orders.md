@@ -109,7 +109,7 @@ promo_codes | Array | A list of promotion codes to use at checkout. See [promo c
 strict_expired_product_id | Boolean | Defaults to false. If true, we will fail orders where the product_id is "expired" or "deprecated". If unset or false, Amazon redirects us to a valid product_id and we buy that one.
 po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
 amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to `amazon_day`.
-fail_if_taxed | Boolean | Defaults to false. If true, we will fail orders where taxes are included in the total. Useful for ZMA orders that are hoping to be placed tax-exempt.
+fail_if_taxed | Boolean | Defaults to false. If true, we will fail orders where taxes are included in the total. Useful for ZMA orders must be placed tax-exempt.
 
 
 ## Retrieving an order
