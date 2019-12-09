@@ -16,6 +16,7 @@ includes:
   - returns
   - products
   - addax
+  - proxies
   - object_reference
   - errors
   - FAQ
