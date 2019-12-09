@@ -32,7 +32,7 @@ curl "https://api.zinc.io/v1/proxies/byop" \
 
 ## Query ZincAPI for current BYOP details
 
-You can also query the Zinc API for the current BYOP configuration of a specific retailer account. If the account is configured for BYOP, the full proxy information will be returned in the JSON response. If the account is configured for one of our internall proxies, the response will be successful (200) with an empty JSON body.
+You can also query the Zinc API for the current BYOP configuration of a specific retailer account. If the account is configured for BYOP, the full proxy information will be returned in the JSON response. If the account is configured for one of our internal proxies, the response will be successful (200) with an empty JSON body.
 
 > Example query of existing BYOP configuration
 
