@@ -46,6 +46,12 @@ documentation.
 Successful orders will result in a transaction decreasing your account balance
 for the currency of the market. Failed orders will not cost you anything.
 
+## Set your discount
+
+If processing order very quickly is especially important, you can use zma_discount to offer above face value for an order. Above-face-value orders get priority in the queue. zma_discount sets the percent below (or above, if negative) face value that you will be charged for this order. Can range from -50 to 0. Lower discount orders will be processed before higher discount orders. If discount is too high and we are unable to secure ordering at that discount, the order will time out with zma_temporarily_overloaded. Defaults to 0%.
+
+For example, setting zma_discount to -6 would offer $106 for a $100 order, which would be processed before a similar order that offered -5 or -4, etc.
+
 ## Cases
 
 In some cases, a Managed Account order might initially succeed (and thus charge
