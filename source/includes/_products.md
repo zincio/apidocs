@@ -277,7 +277,7 @@ offers | Array | An array of [product offer objects](#product-offer-object) for 
 > Example product search request
 
 ```shell
-curl https://api.zinc.io/v1/search?query=fish%20oil&page=1&retailer=amazon \
+curl 'https://api.zinc.io/v1/search?query=fish%20oil&page=1&retailer=amazon' \
   -u <client_token>:
 ```
 
