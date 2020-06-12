@@ -111,6 +111,8 @@ po_number | Number | (Amazon business accounts only). Adds a purchase order numb
 amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to `amazon_day`.
 fail_if_taxed | Boolean | Defaults to false. If true, we will fail orders where taxes are included in the total. This is useful for ZMA orders which should not be placed if no tax exempt account is available.
 zma_discount | Number | The percent below (or above, if negative) face value that you will be charged for this order. Can range from -50 to 0. Lower discount orders will be processed before higher discount orders. If discount is too high and we are unable to secure ordering at that discount, the order will time out with zma_temporarily_overloaded. Defaults to 0%.
+addax_queue_timeout | Number | Defaults to 14400. Number of seconds an order will stay in the ZMA queue before timing out with `zma_temporarily_overloaded`.
+
 
 
 ## Retrieving an order
