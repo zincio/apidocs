@@ -49,7 +49,7 @@ for the currency of the market. Failed orders will not cost you anything.
 ZMA orders go into a queue until a fulfillment account that meets the requirements
 of the order is available. If an order is queued for too long without an account
 becoming available, the order will fail with a `zma_temporarily_overloaded` error.
-The default queue timeout value is 4 hours (14400 seconds). The change this value,
+The default queue timeout value is 4 hours (14400 seconds). To change this value,
 add `"addax_queue_timeout": 14400` to your order, replacing the `14400` with your
 preferred timeout. Note: decreasing the timeout will not improve your chances of
 getting your order placed. If you timeout after one hour and then resubmit the
