@@ -97,7 +97,7 @@ retailer_credentials | Object | A [retailer credentials](#retailer-credentials-o
 is_gift | Boolean | Whether or not this order should be placed as a gift. Typically, retailers will exclude the price of the items on the receipt if this is set.
 max_price | Number | The maximum price in cents for the order. If the final price exceeds this number, the order will not go through and will return a `max_price_exceeded` error.
 
-### Optional attributes
+### Optional attributes for all orders
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -110,10 +110,13 @@ strict_expired_product_id | Boolean | Defaults to false. If true, we will fail o
 po_number | Number | (Amazon business accounts only). Adds a purchase order number to the order.
 amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to `amazon_day`.
 fail_if_taxed | Boolean | Defaults to false. If true, we will fail orders where taxes are included in the total. This is useful for ZMA orders which should not be placed if no tax exempt account is available.
+
+### Optional attributes for ZMA orders
+Attribute | Type | Description
+--------- | ---- | -----------
 zma_discount | Number | The percent below (or above, if negative) face value that you will be charged for this order. Can range from -50 to 0. Lower discount orders will be processed before higher discount orders. If discount is too high and we are unable to secure ordering at that discount, the order will time out with zma_temporarily_overloaded. Defaults to 0%.
 addax_queue_timeout | Number | Defaults to 14400. Number of seconds an order will stay in the ZMA queue before timing out with `zma_temporarily_overloaded`.
-
-
+zma_prime_optout | Boolean | Defaults to `false`. Set this value to `true` to force your ZMA order to use a non-prime fulfillment account.
 
 ## Retrieving an order
 
