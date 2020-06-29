@@ -21,6 +21,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
@@ -31,10 +32,13 @@ jobs:
         export PATH=$PATH:$GEM_HOME/bin
         gem install bundle
         bundle install
-
     - name: Publish docs
       if: always()
       run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
         rake publish
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
