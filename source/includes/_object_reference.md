@@ -223,7 +223,7 @@ cost_override | Number | (Optional) If supplied, we will assume all offers by th
 Attribute | Type | Description
 --------- | ---- | -----------
 shipping | Number | The price for shipping
-product_subtotals | Array | A list of the price for each product_id in the order
+products | Array | A list of the price, quantity, and seller_id for each product_id in the order
 subtotal | Number | The total price of the order before tax and other price adjustments
 tax | Number | The tax collected on the order
 total | Number | The total price paid for the order
