@@ -26,7 +26,6 @@ jobs:
       with:
         ruby-version: 2.6
     - name: Install prerequisites
-      env:
       run: |
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
