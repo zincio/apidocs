@@ -15,16 +15,19 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6
     - name: Install prerequisites
+      env:
       run: |
-        sudo apt-get install ruby ruby-dev
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
         gem install bundle
