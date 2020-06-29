@@ -24,7 +24,7 @@ jobs:
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.3
+        ruby-version: 2.5
     - name: Install prerequisites
       run: |
         export GEM_HOME=$HOME/.gems
@@ -33,6 +33,7 @@ jobs:
         bundle install
 
     - name: Publish docs
+      if: always()
       run: |
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
