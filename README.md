@@ -7,6 +7,8 @@ Public API documentation for the Zinc API.
 Deploying
 ====
 
+Create a PR from the master to the prod branch
+
 
 ### 1. Install prerequisites (first time only) ###
 
