@@ -40,4 +40,4 @@ jobs:
         echo "::set-env name=GIT_USER::${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
-        bundle exec rake publish REMOTE_NAME="https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git"
+        bundle exec rake publish REMOTE_NAME="origin https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git"
