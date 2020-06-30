@@ -26,7 +26,7 @@ search: true
 
 # Introduction
 
-Zinc lets you buy things from popular online retailers, including Amazon.com, with  a single POST request. Zinc also lets you get prices and descriptive information about products from supported retailers.
+The Zinc API lets you buy things from popular online retailers, including Amazon.com, with  a single POST request. Zinc also lets you get prices and descriptive information about products from supported retailers.
 
 The Zinc API is organized around REST. Our API has predictable, resource-oriented URLs.
 
