@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    # bundle exec rake publish REMOTE_NAME="origin https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git"
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
@@ -34,10 +34,13 @@ jobs:
     - name: Build and publish docs
       if: always()
       run: |
-        git config --global user.email "github-action@users.noreply.github.com"
-        git config --global user.name "GitHub Action"
-        git config --global user.password "${{secrets.GITHUB_TOKEN}}"
-        echo "::set-env name=GIT_USER::${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
-        bundle exec rake publish REMOTE_NAME="origin https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git"
+        bundle exec rake build
+        cd build
+        git config user.email "github-action@users.noreply.github.com"
+        git config user.name "GitHub Action"
+        git init
+        git add .
+        echo -n 'Files:'
+        ls -l | wc -l
