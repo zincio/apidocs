@@ -5,8 +5,6 @@ name: CI
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  push:
-    branches: [ prod ]
   pull_request:
     branches: [ prod ]
 
@@ -43,4 +41,4 @@ jobs:
         git init
         git add .
         git commit -m "Github Action build from ${GITHUB_ACTOR}" -a
-        git push --force https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git master:action-test
+        git push --force https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git master:gh-pages
