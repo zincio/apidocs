@@ -34,9 +34,9 @@ jobs:
     - name: Build and publish docs
       if: always()
       run: |
-        git config user.email 'github-action@users.noreply.github.com'
-        git config user.name 'GitHub Action'
-        git config user.password "${{ secrets.GITHUB_TOKEN }}"
+        git config --global user.email "github-action@users.noreply.github.com"
+        git config --global user.name "GitHub Action"
+        git config --global user.password "${{ secrets.GITHUB_TOKEN }}"
         echo "::set-env name=GIT_USER::${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
