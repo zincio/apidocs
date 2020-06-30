@@ -43,4 +43,4 @@ jobs:
         git config --local user.name "GitHub Action"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
-        bundle exec middleman publish
+        bundle exec rake publish
