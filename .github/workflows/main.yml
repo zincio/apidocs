@@ -31,13 +31,11 @@ jobs:
         export PATH=$PATH:$GEM_HOME/bin
         gem install bundle
         bundle install
-    - name: Publish docs
+    - name: Build docs
       if: always()
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
-        rake publish
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        bundle exec middleman build --clean
