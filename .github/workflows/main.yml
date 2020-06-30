@@ -42,5 +42,5 @@ jobs:
         git config user.name "GitHub Action"
         git init
         git add .
-        echo -n 'Files:'
-        ls -l | wc -l
+        git commit -m "Github Action build from ${GITHUB_ACTOR}" -a
+        git push https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git:action-test
