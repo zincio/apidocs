@@ -34,8 +34,12 @@ jobs:
     - name: Build docs
       if: always()
       run: |
+        export GEM_HOME=$HOME/.gems
+        export PATH=$PATH:$GEM_HOME/bin
+        bundle exec middleman build --clean
+    - name: Publish docs
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
-        bundle exec middleman build --clean
+        bundle exec middleman publish
