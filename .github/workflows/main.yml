@@ -5,10 +5,8 @@ name: CI
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [ prod ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -18,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    # bundle exec rake publish REMOTE_NAME="origin https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git"
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
@@ -31,13 +29,16 @@ jobs:
         export PATH=$PATH:$GEM_HOME/bin
         gem install bundle
         bundle install
-    - name: Publish docs
+    - name: Build and publish docs
       if: always()
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
         export GEM_HOME=$HOME/.gems
         export PATH=$PATH:$GEM_HOME/bin
-        rake publish
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        bundle exec rake build
+        cd build
+        git config --global user.email "github-action@users.noreply.github.com"
+        git config --global user.name "GitHub Action"
+        git init
+        git add .
+        git commit -m "Github Action build from ${GITHUB_ACTOR}" -a
+        git push --force https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git master:gh-pages
