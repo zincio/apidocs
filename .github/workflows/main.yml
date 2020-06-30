@@ -38,8 +38,8 @@ jobs:
         export PATH=$PATH:$GEM_HOME/bin
         bundle exec rake build
         cd build
-        git config user.email "github-action@users.noreply.github.com"
-        git config user.name "GitHub Action"
+        git config --global user.email "github-action@users.noreply.github.com"
+        git config --global user.name "GitHub Action"
         git init
         git add .
         git commit -m "Github Action build from ${GITHUB_ACTOR}" -a
