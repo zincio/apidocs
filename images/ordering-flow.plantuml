@@ -1,0 +1,19 @@
+@startuml
+start
+
+:POST an Order;
+:GET Order;
+note right: Using the returned\n**request_id**
+while (Is **code** "request_processing"?) is (\nYes: Request is\nStill Processing)
+   :Wait;
+   :GET Order;
+endwhile (No: Request is\nDone Processing )
+
+if (Is **_type** "error"?) then (Yes)
+   :Check **code** to determine\nwhy the order failed;
+else (No)
+   :Check response JSON\nfor order details;
+endif
+
+stop
+@enduml
