@@ -91,7 +91,8 @@ max_price | Number | The maximum price in cents allowed for the shipping cost of
   "city": "Cambridge",
   "state": "MA",
   "country": "US",
-  "phone_number": "5551230101"
+  "phone_number": "5551230101",
+  "instructions": "Place packages inside blue garage door."
 }
 ```
 
@@ -106,6 +107,7 @@ city | String | The city of the address
 state | String | The USPS abbreviation for the state of the address (e.g. AK)
 country | String | The ISO abbreviation for the country of the address (e.g. US). A list of all available two-letter country codes can be found [here](http://www.theodora.com/country_digraphs.html).
 phone_number | String | The phone number associated with the address
+instructions | String | Optional instructions to include with the shipping addresses
 
 ## Payment method object
 
