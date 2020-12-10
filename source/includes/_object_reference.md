@@ -215,6 +215,9 @@ cost_override | Number | (Optional) If supplied, we will assume all offers by th
 
 ```shell
 {
+  "converted_payment_total": 1999,
+  "currency": "USD",
+  "payment_currency": "USD",
   "shipping" : 0,
   "subtotal" : 1999,
   "tax" : 0,
@@ -228,8 +231,11 @@ shipping | Number | The price for shipping
 products | Array | A list of the price, quantity, and seller_id for each product_id in the order
 subtotal | Number | The total price of the order before tax and other price adjustments
 tax | Number | The tax collected on the order
-total | Number | The total price paid for the order
+total | Number | The total price paid for the order in the currency specify by the currency attribute
 gift_certificate | Number | (Optional) The amount of value used on a gift certificate placed on the account
+currency | String | Currency of all attributes except converted_payment_total
+payment_currency | String | Currency used in the payment transaction
+converted_payment_total | Number | Total payment in payment_currency currency
 
 ## Merchant order ids object
 

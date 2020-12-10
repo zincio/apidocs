@@ -146,6 +146,9 @@ To see the status of an order, append the 'request_id' returned from your order 
 {
   "_type" : "order_response",
   "price_components" : {
+    "converted_payment_total": 1999,
+    "currency": "USD",
+    "payment_currency": "USD",
     "shipping" : 0,
     "subtotal" : 1999,
     "tax" : 0,
