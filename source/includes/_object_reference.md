@@ -56,6 +56,7 @@ merchant_id_not_in | Array | (Amazon only) An array of merchant ids that the Zin
 min_seller_num_ratings | Number | (Amazon only) The minimum number of ratings required for an Amazon seller's offer to be selected
 min_seller_percent_positive_feedback | Number | (Amazon only) The minimum percentage of positive ratings of an Amazon seller for their offer to be selected
 prime | Boolean | (Amazon only) Specifies whether the selected offer should be an Amazon Prime offer
+allow_oos | Boolean | (Amazon only) Specifies whether we should still attempt to complete ordering with the cheapest offer if all offers appear unavailable
 
 ## Shipping object
 
