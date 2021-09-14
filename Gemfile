@@ -8,4 +8,4 @@ gem 'middleman-autoprefixer', '~> 2.5.0'
 gem 'rouge', '~> 1.9.1'
 gem 'redcarpet', '~> 3.3.2'
 
-gem 'rake', '~> 10.4.2'
+gem 'rake', '~> 13.0.6'
