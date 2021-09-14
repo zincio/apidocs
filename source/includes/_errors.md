@@ -52,6 +52,7 @@ item_not_supported | The item is not supported via the buyapi - likely a digital
 manual_review_required | This order is under manual review by Zinc -- please check back later for the status of this order.
 max_price_exceeded | The retailers final price exceeds the maximum price.
 max_quantity_exceeded | You have exceeded the maximum quantity available for a specific product.
+max_delivery_days_exceeded | This retailers estimated delivery date exceeds the max_delivery_days parameter.
 no_free_shipping | Free shipping is not available for the item(s) you selected.
 no_gift_shipping | No gift shipping was available on this order.
 no_two_day_shipping | Two day shipping (or faster) is not available for the item(s) you selected.
