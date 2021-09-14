@@ -1,42 +1,302 @@
+
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="google-site-verification" content="ZxKSonHR9fGKxGY0pK48MMg1-0Zm4bMEyZAmhbmQys0">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Zinc API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-88890615-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
 
-      <script src="javascripts/all.js" type="text/javascript"></script>
-
-      <script>
-        $(function() {
-          setupLanguages(["shell"]);
-        });
-      </script>
   </head>
 
-  <body class="index">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" />
+        <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
-    <div class="tocify-wrapper">
-      <img src="images/zinc-light.png" />
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -44,8 +304,229 @@
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc">
-      </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#quick-start" class="toc-h2 toc-link" data-title="Quick start">Quick start</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#idempotency-keys" class="toc-h1 toc-link" data-title="Idempotency Keys">Idempotency Keys</a>
+          </li>
+          <li>
+            <a href="#supported-retailers" class="toc-h1 toc-link" data-title="Supported retailers">Supported retailers</a>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                  </li>
+                  <li>
+                    <a href="#retrieving-an-order" class="toc-h2 toc-link" data-title="Retrieving an order">Retrieving an order</a>
+                  </li>
+                  <li>
+                    <a href="#retrieving-a-list-of-orders" class="toc-h2 toc-link" data-title="Retrieving a list of orders">Retrieving a list of orders</a>
+                  </li>
+                  <li>
+                    <a href="#selecting-an-offer-amp-shipping" class="toc-h2 toc-link" data-title="Selecting an offer &amp; shipping">Selecting an offer &amp; shipping</a>
+                  </li>
+                  <li>
+                    <a href="#aborting-an-order" class="toc-h2 toc-link" data-title="Aborting an order">Aborting an order</a>
+                  </li>
+                  <li>
+                    <a href="#amazon-email-verification" class="toc-h2 toc-link" data-title="Amazon email verification">Amazon email verification</a>
+                  </li>
+                  <li>
+                    <a href="#retrying-an-order" class="toc-h2 toc-link" data-title="Retrying an order">Retrying an order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cancellations" class="toc-h1 toc-link" data-title="Cancellations">Cancellations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#initiate-a-cancellation" class="toc-h2 toc-link" data-title="Initiate a cancellation">Initiate a cancellation</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-cancellation" class="toc-h2 toc-link" data-title="Retrieve a cancellation">Retrieve a cancellation</a>
+                  </li>
+                  <li>
+                    <a href="#attempting-to-cancel" class="toc-h2 toc-link" data-title="Attempting to cancel">Attempting to cancel</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#returns" class="toc-h1 toc-link" data-title="Returns">Returns</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-return" class="toc-h2 toc-link" data-title="Create a Return">Create a Return</a>
+                  </li>
+                  <li>
+                    <a href="#retrieving-a-return" class="toc-h2 toc-link" data-title="Retrieving a return">Retrieving a return</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#product-data" class="toc-h1 toc-link" data-title="Product Data">Product Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#product-details" class="toc-h2 toc-link" data-title="Product Details">Product Details</a>
+                  </li>
+                  <li>
+                    <a href="#product-offers" class="toc-h2 toc-link" data-title="Product Offers">Product Offers</a>
+                  </li>
+                  <li>
+                    <a href="#product-search" class="toc-h2 toc-link" data-title="Product Search">Product Search</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#realtime-product-data" class="toc-h1 toc-link" data-title="Realtime Product Data">Realtime Product Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#realtime-search" class="toc-h2 toc-link" data-title="Realtime Search">Realtime Search</a>
+                  </li>
+                  <li>
+                    <a href="#realtime-details" class="toc-h2 toc-link" data-title="Realtime Details">Realtime Details</a>
+                  </li>
+                  <li>
+                    <a href="#realtime-offers" class="toc-h2 toc-link" data-title="Realtime Offers">Realtime Offers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#zinc-managed-accounts" class="toc-h1 toc-link" data-title="Zinc Managed Accounts">Zinc Managed Accounts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#funding-your-account" class="toc-h2 toc-link" data-title="Funding your account">Funding your account</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                  </li>
+                  <li>
+                    <a href="#cases" class="toc-h2 toc-link" data-title="Cases">Cases</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#proxies" class="toc-h1 toc-link" data-title="Proxies">Proxies</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#configure-zincapi-for-your-own-proxy-byop" class="toc-h2 toc-link" data-title="Configure ZincAPI for your own proxy (BYOP)">Configure ZincAPI for your own proxy (BYOP)</a>
+                  </li>
+                  <li>
+                    <a href="#query-zincapi-for-current-byop-details" class="toc-h2 toc-link" data-title="Query ZincAPI for current BYOP details">Query ZincAPI for current BYOP details</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#object-reference" class="toc-h1 toc-link" data-title="Object reference">Object reference</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#product-object" class="toc-h2 toc-link" data-title="Product object">Product object</a>
+                  </li>
+                  <li>
+                    <a href="#seller-selection-criteria-object" class="toc-h2 toc-link" data-title="Seller selection criteria object">Seller selection criteria object</a>
+                  </li>
+                  <li>
+                    <a href="#shipping-object" class="toc-h2 toc-link" data-title="Shipping object">Shipping object</a>
+                  </li>
+                  <li>
+                    <a href="#address-object" class="toc-h2 toc-link" data-title="Address object">Address object</a>
+                  </li>
+                  <li>
+                    <a href="#payment-method-object" class="toc-h2 toc-link" data-title="Payment method object">Payment method object</a>
+                  </li>
+                  <li>
+                    <a href="#webhooks-object" class="toc-h2 toc-link" data-title="Webhooks object">Webhooks object</a>
+                  </li>
+                  <li>
+                    <a href="#retailer-credentials-object" class="toc-h2 toc-link" data-title="Retailer credentials object">Retailer credentials object</a>
+                  </li>
+                  <li>
+                    <a href="#promo-code-object" class="toc-h2 toc-link" data-title="Promo code object">Promo code object</a>
+                  </li>
+                  <li>
+                    <a href="#price-components-object" class="toc-h2 toc-link" data-title="Price components object">Price components object</a>
+                  </li>
+                  <li>
+                    <a href="#merchant-order-ids-object" class="toc-h2 toc-link" data-title="Merchant order ids object">Merchant order ids object</a>
+                  </li>
+                  <li>
+                    <a href="#account-status-object" class="toc-h2 toc-link" data-title="Account status object">Account status object</a>
+                  </li>
+                  <li>
+                    <a href="#product-offer-object" class="toc-h2 toc-link" data-title="Product offer object">Product offer object</a>
+                  </li>
+                  <li>
+                    <a href="#tracking-object" class="toc-h2 toc-link" data-title="Tracking object">Tracking object</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="Frequently Asked Questions">Frequently Asked Questions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#if-we-wish-to-place-a-large-quantity-of-orders-is-it-best-to-place-a-large-number-of-orders-with-one-product-per-order-or-a-smaller-number-of-orders-with-multiple-products-in-each" class="toc-h2 toc-link" data-title="If we wish to place a large quantity of orders, is it best to place a large number of orders with one product per order or a smaller number of orders with multiple products in each?">If we wish to place a large quantity of orders, is it best to place a large number of orders with one product per order or a smaller number of orders with multiple products in each?</a>
+                  </li>
+                  <li>
+                    <a href="#will-placing-many-orders-in-short-succession-cause-the-retailer-to-lock-our-account" class="toc-h2 toc-link" data-title="Will placing many orders in short succession cause the retailer to lock our account?">Will placing many orders in short succession cause the retailer to lock our account?</a>
+                  </li>
+                  <li>
+                    <a href="#what-products-can-i-buy-with-the-automatic-ordering-api" class="toc-h2 toc-link" data-title="What products can I buy with the Automatic Ordering API?">What products can I buy with the Automatic Ordering API?</a>
+                  </li>
+                  <li>
+                    <a href="#i-submitted-a-lot-of-orders-at-once-why-are-they-processing-slower" class="toc-h2 toc-link" data-title="I submitted a lot of orders at once, why are they processing slower?">I submitted a lot of orders at once, why are they processing slower?</a>
+                  </li>
+                  <li>
+                    <a href="#i-received-an-internal_error-response-from-the-automatic-ordering-api-how-do-i-handle-this" class="toc-h2 toc-link" data-title="I received an internal_error response from the Automatic Ordering API. How do I handle this?">I received an internal_error response from the Automatic Ordering API. How do I handle this?</a>
+                  </li>
+                  <li>
+                    <a href="#my-item-has-variants-how-do-i-ensure-i-order-the-correct-item-with-zinc" class="toc-h2 toc-link" data-title="My item has variants, how do I ensure I order the correct item with Zinc?">My item has variants, how do I ensure I order the correct item with Zinc?</a>
+                  </li>
+                  <li>
+                    <a href="#how-can-i-disable-using-a-max_price" class="toc-h2 toc-link" data-title="How can I disable using a max_price?">How can I disable using a max_price?</a>
+                  </li>
+                  <li>
+                    <a href="#i-am-receiving-an-amazon-security-code-text-asking-me-to-verify-my-identity-when-placing-the-order" class="toc-h2 toc-link" data-title="I am receiving an Amazon security code text asking me to verify my identity when placing the order.">I am receiving an Amazon security code text asking me to verify my identity when placing the order.</a>
+                  </li>
+                  <li>
+                    <a href="#my-payment-methods-are-saved-in-my-amazon-account-can-i-just-pass-zinc-the-last-4-digits-of-my-credit-card-during-checkout" class="toc-h2 toc-link" data-title="My payment methods are saved in my Amazon account. Can I just pass Zinc the last 4 digits of my credit card during checkout?">My payment methods are saved in my Amazon account. Can I just pass Zinc the last 4 digits of my credit card during checkout?</a>
+                  </li>
+                  <li>
+                    <a href="#when-will-my-tracking-number-post" class="toc-h2 toc-link" data-title="When will my tracking number post?">When will my tracking number post?</a>
+                  </li>
+                  <li>
+                    <a href="#what-is-the-structure-of-the-post-body-sent-to-the-webhooks" class="toc-h2 toc-link" data-title="What is the structure of the POST body sent to the webhooks?">What is the structure of the POST body sent to the webhooks?</a>
+                  </li>
+                  <li>
+                    <a href="#can-i-authenticate-zinc-webhooks" class="toc-h2 toc-link" data-title="Can I authenticate Zinc webhooks?">Can I authenticate Zinc webhooks?</a>
+                  </li>
+                  <li>
+                    <a href="#i-am-not-receiving-posts-to-the-my-webhook-urls" class="toc-h2 toc-link" data-title="I am not receiving POSTs to the my webhook URLs.">I am not receiving POSTs to the my webhook URLs.</a>
+                  </li>
+                  <li>
+                    <a href="#why-am-i-getting-multiple-posts-to-my-order_placed-or-other-webhook" class="toc-h2 toc-link" data-title="Why am I getting multiple POSTs to my “order_placed” or other webhook?">Why am I getting multiple POSTs to my “order_placed” or other webhook?</a>
+                  </li>
+                  <li>
+                    <a href="#do-you-have-any-sample-code-for-using-the-api" class="toc-h2 toc-link" data-title="Do you have any sample code for using the API?">Do you have any sample code for using the API?</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
         <ul class="toc-footer">
             <li><a href='http://dash.zinc.io/signup'>Sign Up for a Zinc account</a></li>
         </ul>
@@ -53,55 +534,44 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
-
+        <h1 id='introduction'>Introduction</h1>
 <p>The Zinc API lets you buy things from popular online retailers, including Amazon.com, with  a single POST request. Zinc also lets you get prices and descriptive information about products from supported retailers.</p>
 
 <p>The Zinc API is organized around REST. Our API has predictable, resource-oriented URLs.</p>
-
-<h3 id="quick-start">Quick start</h3>
-
+<h3 id='quick-start'>Quick start</h3>
 <ol>
 <li>Make an account at <a href="https://dash.zinc.io/signup">dash.zinc.io</a>.</li>
 <li>Follow the instructions in the <a href="#create-an-order">create an order</a> section from the documentation below to place your first order.</li>
 </ol>
-
-          <h1 id="authentication">Authentication</h1>
-
+<h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Example authentication request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl https://api.zinc.io/v1/orders <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/orders <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <p>You can authenticate your account by including your client token in your request. Authentication is performed through HTTP Basic Auth, where the client token is the basic auth username value. You do not need to provide a password.</p>
 
-<p>Make sure that you don&rsquo;t share your client token and that you keep it away from publicly accessible areas such as Github, client-side code, etc. Client tokens are tied to your account, so you will be charged for any orders or requests made with your client token. If you believe your client token has been compromised, please contact support@zinc.io immediately.</p>
-
-          <h1 id="idempotency-keys">Idempotency Keys</h1>
-
+<p>Make sure that you don&#39;t share your client token and that you keep it away from publicly accessible areas such as Github, client-side code, etc. Client tokens are tied to your account, so you will be charged for any orders or requests made with your client token. If you believe your client token has been compromised, please contact support@zinc.io immediately.</p>
+<h1 id='idempotency-keys'>Idempotency Keys</h1>
 <blockquote>
 <p>Example idempontency key request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders"</span> <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders"</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
   "idempotency_key": &lt;idempotency_key&gt;,
   "retailer": "amazon",
   "max_price": 2300,
   ...
   }'</span>
-</code></pre>
-
+</code></pre></div>
 <p>The Zinc API does not provide out of the box deduplication of orders. Each time you send a new order request, the Zinc API will attempt to place a new order. However, the API supports idempotency for safely retrying requests without accidentally performing the same operation twice. For example, if an order request fails due to a network connection error, you can retry the request with the same idempotency key to guarantee that only a single order is created.</p>
 
-<p>To perform an idempotent request, attach a unique key to request body of any POST request with the parameter <code class="prettyprint">&quot;idempotency_key&quot;: &lt;idempotency_key&gt;</code>. How you create unique keys is completely up to you. We suggest using random strings or UUIDs. We&rsquo;ll always send back the same response for requests made with the same key. If you receive an error on a request, you can retry by sending another request with a different idempotency key. Once you receive an error or success response, the order will no longer change.</p>
+<p>To perform an idempotent request, attach a unique key to request body of any POST request with the parameter <code>&quot;idempotency_key&quot;: &lt;idempotency_key&gt;</code>. How you create unique keys is completely up to you. We suggest using random strings or UUIDs. We&#39;ll always send back the same response for requests made with the same key. If you receive an error on a request, you can retry by sending another request with a different idempotency key. Once you receive an error or success response, the order will no longer change.</p>
 
-<p>Idempotency keys are <strong>strongly</strong> recommended. In the unlikely event that an API request returns a 5XX status code, duplicate requests could occur if you reattempt the request. We can&rsquo;t be sure of the state of the request when we return a 5XX status code, so it&rsquo;s best to attempt requests with an idempotency key. If you aren&rsquo;t using an idempotency key and you retry orders with a 5XX error code, Zinc will not refund you for duplicate orders.</p>
-
-          <h1 id="supported-retailers">Supported retailers</h1>
-
+<p>Idempotency keys are <strong>strongly</strong> recommended. In the unlikely event that an API request returns a 5XX status code, duplicate requests could occur if you reattempt the request. We can&#39;t be sure of the state of the request when we return a 5XX status code, so it&#39;s best to attempt requests with an idempotency key. If you aren&#39;t using an idempotency key and you retry orders with a 5XX error code, Zinc will not refund you for duplicate orders.</p>
+<h1 id='supported-retailers'>Supported retailers</h1>
 <p>The table below shows the endpoints available for each retailer. </p>
 
 <p>Note that this is a partial list. We support hundreds more retailers in beta. For details, please email support@zinc.io.</p>
@@ -198,19 +668,15 @@
 </tr>
 </tbody></table>
 
-<p><code class="prettyprint">*</code>Currently in beta.
-<code class="prettyprint">†</code>Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported</p>
-
-          <h1 id="orders">Orders</h1>
-
-<h2 id="create-an-order">Create an order</h2>
-
+<p><code>*</code>Currently in beta.
+<code>†</code>Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported</p>
+<h1 id='orders'>Orders</h1><h2 id='create-an-order'>Create an order</h2>
 <blockquote>
 <p>Example create an order request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders"</span> <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders"</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
   "retailer": "amazon",
   "products": [
     {
@@ -271,22 +737,18 @@
     "any_other_field": ["any value"]
   }
 }'</span>
-</code></pre>
-
+</code></pre></div>
 <blockquote>
 <p>Example create an order response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"request_id"</span>: <span class="s2">"3f1c939065cf58e7b9f0aea70640dffc"</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
+<p>Zinc offers an API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You&#39;ll receive a <code>request_id</code> in the POST body&#39;s response which you&#39;ll then use for <a href="#retrieving-an-order">retrieving the status of the order</a>. The following illustration shows the flow for a typical order.</p>
 
-<p>Zinc offers an API for apps that need real-time order placing capabilities. With a single POST request, you can order an item from one of our supported retailers. Making an order request will start an order. You&rsquo;ll receive a <code class="prettyprint">request_id</code> in the POST body&rsquo;s response which you&rsquo;ll then use for <a href="#retrieving-an-order">retrieving the status of the order</a>. The following illustration shows the flow for a typical order.</p>
-
-<p><img alt="flow chart for making an order" src="images/ordering-flow.svg" /></p>
-
-<h3 id="required-attributes">Required attributes</h3>
-
+<p><img src="images/ordering-flow-4adb8114.svg" alt="flow chart for making an order" /></p>
+<h3 id='required-attributes'>Required attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -312,12 +774,12 @@
 <tr>
 <td>shipping_method</td>
 <td>String</td>
-<td>The desired shipping method for the object. Available methods are <code class="prettyprint">cheapest</code> (always select the cheapest method available), <code class="prettyprint">fastest</code> (always select the fastest method available), <code class="prettyprint">amazon_day</code> (choose default from Amazon or use amazon_day attribute from order), or <code class="prettyprint">free</code> (which will fail for items without some sort of free shipping). You must provide either this or the <code class="prettyprint">shipping</code> attribute, but not both.</td>
+<td>The desired shipping method for the object. Available methods are <code>cheapest</code> (always select the cheapest method available), <code>fastest</code> (always select the fastest method available), <code>amazon_day</code> (choose default from Amazon or use amazon_day attribute from order), or <code>free</code> (which will fail for items without some sort of free shipping). You must provide either this or the <code>shipping</code> attribute, but not both.</td>
 </tr>
 <tr>
 <td>shipping</td>
 <td>Object</td>
-<td>A <a href="#shipping-object">shipping object</a> with information as to which shipping method to use. You must provide either this or the <code class="prettyprint">shipping_method</code> attribute, but not both.</td>
+<td>A <a href="#shipping-object">shipping object</a> with information as to which shipping method to use. You must provide either this or the <code>shipping_method</code> attribute, but not both.</td>
 </tr>
 <tr>
 <td>billing_address</td>
@@ -342,12 +804,10 @@
 <tr>
 <td>max_price</td>
 <td>Number</td>
-<td>The maximum price in cents for the order. If the final price exceeds this number, the order will not go through and will return a <code class="prettyprint">max_price_exceeded</code> error.</td>
+<td>The maximum price in cents for the order. If the final price exceeds this number, the order will not go through and will return a <code>max_price_exceeded</code> error.</td>
 </tr>
 </tbody></table>
-
-<h3 id="optional-attributes-for-all-orders">Optional attributes for all orders</h3>
-
+<h3 id='optional-attributes-for-all-orders'>Optional attributes for all orders</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -383,7 +843,7 @@
 <tr>
 <td>strict_expired_product_id</td>
 <td>Boolean</td>
-<td>Defaults to false. If true, we will fail orders where the product_id is &ldquo;expired&rdquo; or &ldquo;deprecated&rdquo;. If unset or false, Amazon redirects us to a valid product_id and we buy that one.</td>
+<td>Defaults to false. If true, we will fail orders where the product_id is &quot;expired&quot; or &quot;deprecated&quot;. If unset or false, Amazon redirects us to a valid product_id and we buy that one.</td>
 </tr>
 <tr>
 <td>po_number</td>
@@ -393,17 +853,20 @@
 <tr>
 <td>amazon_day</td>
 <td>String</td>
-<td>(Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to <code class="prettyprint">amazon_day</code>.</td>
+<td>(Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to <code>amazon_day</code>.</td>
 </tr>
 <tr>
 <td>fail_if_taxed</td>
 <td>Boolean</td>
 <td>Defaults to false. If true, we will fail orders where taxes are included in the total. This is useful for ZMA orders which should not be placed if no tax exempt account is available.</td>
 </tr>
+<tr>
+<td>max_delivery_days</td>
+<td>Number</td>
+<td>(Amazon only) Defaults to unlimited. If set, we will fail orders with error max_delivery_days_exceeded if the retailer estimates delivery more than this many days in the future.</td>
+</tr>
 </tbody></table>
-
-<h3 id="optional-attributes-for-zma-orders">Optional attributes for ZMA orders</h3>
-
+<h3 id='optional-attributes-for-zma-orders'>Optional attributes for ZMA orders</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -419,43 +882,42 @@
 <tr>
 <td>addax_queue_timeout</td>
 <td>Number</td>
-<td>Defaults to 14400. Number of seconds an order will stay in the ZMA queue before timing out with <code class="prettyprint">zma_temporarily_overloaded</code>.</td>
+<td>Defaults to 14400. Number of seconds an order will stay in the ZMA queue before timing out with <code>zma_temporarily_overloaded</code>.</td>
 </tr>
 <tr>
 <td>zma_prime_optout</td>
 <td>Boolean</td>
-<td>Defaults to <code class="prettyprint">false</code>. Set this value to <code class="prettyprint">true</code> to force your ZMA order to use a non-prime fulfillment account.</td>
+<td>Defaults to <code>false</code>. Set this value to <code>true</code> to force your ZMA order to use a non-prime fulfillment account.</td>
 </tr>
 </tbody></table>
-
-<h2 id="retrieving-an-order">Retrieving an order</h2>
-
+<h2 id='retrieving-an-order'>Retrieving an order</h2>
 <blockquote>
 <p>Example retrieve an order request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/3f1c939065cf58e7b9f0aea70640dffc"</span> <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
-<p>To see the status of an order, append the &lsquo;request_id&rsquo; returned from your order query to the order URL and place GET request. Orders usually take a while to process. While your order is processing, the response will return an error with code type <code class="prettyprint">request_processing</code>.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/3f1c939065cf58e7b9f0aea70640dffc"</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>To see the status of an order, append the &#39;request_id&#39; returned from your order query to the order URL and place GET request. Orders usually take a while to process. While your order is processing, the response will return an error with code type <code>request_processing</code>.</p>
 
 <blockquote>
 <p>Example retrieve an order response (request processing)</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"error"</span>,
   <span class="s2">"code"</span>: <span class="s2">"request_processing"</span>,
   <span class="s2">"message"</span>: <span class="s2">"Request is currently processing and will complete soon."</span>,
   <span class="s2">"data"</span>: <span class="o">{}</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <blockquote>
 <p>Example retrieve an order response (order response)</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span> : <span class="s2">"order_response"</span>,
   <span class="s2">"price_components"</span> : <span class="o">{</span>
+    <span class="s2">"converted_payment_total"</span>: 1999,
+    <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+    <span class="s2">"payment_currency"</span>: <span class="s2">"USD"</span>,
     <span class="s2">"shipping"</span> : 0,
     <span class="s2">"subtotal"</span> : 1999,
     <span class="s2">"tax"</span> : 0,
@@ -482,12 +944,9 @@
     ...
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-
-<p>Once the request process completes, the retrieve an order response should either return a response of type <code class="prettyprint">order_response</code>, with the details of the successfully placed order or <code class="prettyprint">error</code>. An error response body will contain a <code class="prettyprint">code</code> and a <code class="prettyprint">message</code>. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the <code class="prettyprint">data</code> object. For a full list of errors, see the <a href="#errors">Errors section</a>.</p>
-
-<h3 id="order-response-attributes">Order response attributes</h3>
-
+</code></pre></div>
+<p>Once the request process completes, the retrieve an order response should either return a response of type <code>order_response</code>, with the details of the successfully placed order or <code>error</code>. An error response body will contain a <code>code</code> and a <code>message</code>. The code indicates the error that occurred, while the message provides a more detailed description of the error. Any extra details about the error will be provided in the <code>data</code> object. For a full list of errors, see the <a href="#errors">Errors section</a>.</p>
+<h3 id='order-response-attributes'>Order response attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -503,12 +962,12 @@
 <tr>
 <td>merchant_order_ids</td>
 <td>Array</td>
-<td>A <a href="#merchant-order-ids-object">merchant order ids object</a> which contains details about the retailer&rsquo;s order identifiers</td>
+<td>A <a href="#merchant-order-ids-object">merchant order ids object</a> which contains details about the retailer&#39;s order identifiers</td>
 </tr>
 <tr>
 <td>tracking</td>
 <td>Array</td>
-<td>An array of <a href="#tracking-object">tracking objects</a> that contain the order&rsquo;s tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the <code class="prettyprint">tracking_obtained</code> field of the <a href="#webhooks-object">webhooks object</a> from the request if set.</td>
+<td>An array of <a href="#tracking-object">tracking objects</a> that contain the order&#39;s tracking information. In most cases, this field will not be populated immediately after the order is placed and will only be available later after tracking is updated by the retailer. Once tracking has been obtained, a POST request will be sent to the <code>tracking_obtained</code> field of the <a href="#webhooks-object">webhooks object</a> from the request if set.</td>
 </tr>
 <tr>
 <td>request</td>
@@ -526,20 +985,15 @@
 <td>(Amazon only) An <a href="#account-status-object">account status object</a> that gives details about the ordering account</td>
 </tr>
 </tbody></table>
-
-<h2 id="retrieving-a-list-of-orders">Retrieving a list of orders</h2>
-
+<h2 id='retrieving-a-list-of-orders'>Retrieving a list of orders</h2>
 <blockquote>
 <p>Example query for all Amazon orders (up to 5000) for June 1, 2019 14:00 - July 1, 2019 14:00</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders?limit=5000&amp;starting_after=1559397600000&amp;ending_before=1561989600000&amp;retailer=amazon"</span> <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders?limit=5000&amp;starting_after=1559397600000&amp;ending_before=1561989600000&amp;retailer=amazon"</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <p>To get a list of all orders within a specific timestamp range, use the order query and include these additional query parameters.</p>
-
-<h3 id="order-query-parameters">Order query parameters</h3>
-
+<h3 id='order-query-parameters'>Order query parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -577,46 +1031,37 @@
 <p>The timestamps are unix timestamps in milliseconds, which you can read about here <a href="https://en.wikipedia.org/wiki/Unix_time">unix timestamps</a>. To easily convert a human-readable date / time to a unix timestamp, you can use this <a href="https://www.epochconverter.com/">converter</a>.</p>
 
 <p>Sample code that includes an example of a bulk order query can be found in this github <a href="https://github.com/zincio/api-samples">repo</a>.</p>
+<h2 id='selecting-an-offer-amp-shipping'>Selecting an offer &amp; shipping</h2>
+<p>When placing an order, each product will have multiple offers from different sellers each with their own shipping options. To address this, use a product&#39;s <a href="#seller-selection-criteria-object">seller selection criteria</a> to filter offers and an order&#39;s <a href="#shipping-object">shipping parameter</a> to specify shipping preferences. Below is an flowchart of the process used to filter offers and select a shipping option.</p>
 
-<h2 id="selecting-an-offer-amp-shipping">Selecting an offer &amp; shipping</h2>
-
-<p>When placing an order, each product will have multiple offers from different sellers each with their own shipping options. To address this, use a product&rsquo;s <a href="#seller-selection-criteria-object">seller selection criteria</a> to filter offers and an order&rsquo;s <a href="#shipping-object">shipping parameter</a> to specify shipping preferences. Below is an flowchart of the process used to filter offers and select a shipping option.</p>
-
-<p><img alt="flow chart for making an order" src="images/select-offer.svg" /></p>
-
-<h3 id="default-seller-selection-criteria">Default seller selection criteria</h3>
-
+<p><img src="images/select-offer-655ab8fe.svg" alt="flow chart for making an order" /></p>
+<h3 id='default-seller-selection-criteria'>Default seller selection criteria</h3>
 <p>If a seller selection criteria object is not explicitly provided, then the API will use the default:
-<code class="prettyprint">
+<code>
 {
   &quot;prime&quot;: true,
   &quot;handling_days_max&quot;: 6,
   &quot;condition_in&quot;: [&quot;New&quot;]
 }
 </code></p>
-
-<h3 id="some-examples">Some examples</h3>
-
+<h3 id='some-examples'>Some examples</h3>
 <ul>
-<li>If you wanted to send your customer a tracking number within 5 days, you would set <code class="prettyprint">handling_days_max</code> to 5 in your <a href="#seller-selection-criteria-object">seller selection criteria</a>. The Zinc API would then filter out all offers which would not ship and upload a tracking number within 5 days.</li>
-<li>If you specified <code class="prettyprint">&quot;handling_days_max&quot;: 6</code> in your <a href="#seller-selection-criteria-object">seller selection criteria</a>, then any offer that won&rsquo;t ship in 6 days or less from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed shipping date 10 days away and the other seller has a guaranteed shipping date 5 days away, the second seller&rsquo;s offer would be selected. (Note: when no handling information is available, we use the longest projected arrival date of the product as the <code class="prettyprint">handling_days_max</code>)</li>
-<li>If you set <code class="prettyprint">&quot;max_days&quot;: 5</code> on the <a href="#shipping-object">shipping parameter</a>, the Zinc API would attempt to select the cheapest shipping method that took less than 5 days to arrive. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.</li>
+<li>If you wanted to send your customer a tracking number within 5 days, you would set <code>handling_days_max</code> to 5 in your <a href="#seller-selection-criteria-object">seller selection criteria</a>. The Zinc API would then filter out all offers which would not ship and upload a tracking number within 5 days.</li>
+<li>If you specified <code>&quot;handling_days_max&quot;: 6</code> in your <a href="#seller-selection-criteria-object">seller selection criteria</a>, then any offer that won&#39;t ship in 6 days or less from now would be excluded from your buying selection. Thus, if two sellers are offering the same product, but one has a guaranteed shipping date 10 days away and the other seller has a guaranteed shipping date 5 days away, the second seller&#39;s offer would be selected. (Note: when no handling information is available, we use the longest projected arrival date of the product as the <code>handling_days_max</code>)</li>
+<li>If you set <code>&quot;max_days&quot;: 5</code> on the <a href="#shipping-object">shipping parameter</a>, the Zinc API would attempt to select the cheapest shipping method that took less than 5 days to arrive. Thus, if there was a shipping method that took 3 days and cost $10 and another shipping method that took 7 days but cost $2, the first shipping option would be selected.</li>
 </ul>
-
-<h2 id="aborting-an-order">Aborting an order</h2>
-
+<h2 id='aborting-an-order'>Aborting an order</h2>
 <blockquote>
 <p>Example order abort request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/abort"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/abort"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <blockquote>
 <p>Example successful order abort response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"error"</span>,
   <span class="s2">"code"</span>: <span class="s2">"aborted_request"</span>,
   <span class="s2">"message"</span>: <span class="s2">"The request was aborted before it completed."</span>,
@@ -628,12 +1073,11 @@
     ...
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <blockquote>
 <p>Example abort response that is still pending</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"error"</span>,
   <span class="s2">"code"</span>: <span class="s2">"request_processing"</span>,
   <span class="s2">"message"</span>: <span class="s2">"Request is currently processing and will complete soon."</span>,
@@ -641,90 +1085,74 @@
   <span class="s2">"request_id"</span>: <span class="s2">"3f1c939065cf58e7b9f0aea70640dffc"</span>,
 <span class="o">}</span>
 
-</code></pre>
+</code></pre></div>
+<p>The Zinc API allows you to abort orders that are still in the <code>request_processing</code> stage. This functionality is intended to abort an order if was made by mistake or if it is taking too long to process.</p>
 
-<p>The Zinc API allows you to abort orders that are still in the <code class="prettyprint">request_processing</code> stage. This functionality is intended to abort an order if was made by mistake or if it is taking too long to process.</p>
-
-<p>The response will be the same as if you were to <a href="#retrieving-an-order">GET the order</a>. If we were able to immediately abort the order, the order will have an error <strong>code</strong> of <code class="prettyprint">aborted_request</code>. It can take time for an order to abort and success is not guaranteed. You can either periodically poll the order to check if it was aborted or use webhooks.</p>
-
-<h2 id="amazon-email-verification">Amazon email verification</h2>
-
+<p>The response will be the same as if you were to <a href="#retrieving-an-order">GET the order</a>. If we were able to immediately abort the order, the order will have an error <strong>code</strong> of <code>aborted_request</code>. It can take time for an order to abort and success is not guaranteed. You can either periodically poll the order to check if it was aborted or use webhooks.</p>
+<h2 id='amazon-email-verification'>Amazon email verification</h2>
 <p>Occasionally, Amazon requires verification of account ownership and will email you a code during login.
-If this happens during an order, you will receive an <code class="prettyprint">account_locked_verification_required</code> error.
+If this happens during an order, you will receive an <code>account_locked_verification_required</code> error.
 There are a few options for resolving this issue.</p>
 
 <ul>
-<li>Check the email associated with the account and obtain the verification code. Then resubmit your order and supply the code as <code class="prettyprint">verification_code</code> under the <a href="#retailer-credentials-object"><code class="prettyprint">retailer_credentials</code></a> object.</li>
-<li>Enable Two Factor Authentication on your account and supply the <code class="prettyprint">totp_2fa_key</code> with every order under the <a href="#retailer-credentials-object"><code class="prettyprint">retailer_credentials</code></a> object.</li>
+<li>Check the email associated with the account and obtain the verification code. Then resubmit your order and supply the code as <code>verification_code</code> under the <a href="#retailer-credentials-object"><code>retailer_credentials</code></a> object.</li>
+<li>Enable Two Factor Authentication on your account and supply the <code>totp_2fa_key</code> with every order under the <a href="#retailer-credentials-object"><code>retailer_credentials</code></a> object.</li>
 <li>Use <a href="#zinc-managed-accounts">Zinc Managed Accounts</a> where we manage keeping accounts open and unlocked.</li>
-<li>Forward all emails from your Amazon account&rsquo;s email to <a href="mailto:email@quail.zinc.io">email@quail.zinc.io</a>. AutoOrdering will automatically parse the incoming email and fill in the code. For instructions on how to forward from a Gmail account, <a href="https://support.google.com/mail/answer/10957?hl=en">see this article</a>.</li>
+<li>Forward all emails from your Amazon account&#39;s email to <a href="mailto:email@quail.zinc.io">email@quail.zinc.io</a>. AutoOrdering will automatically parse the incoming email and fill in the code. For instructions on how to forward from a Gmail account, <a href="https://support.google.com/mail/answer/10957?hl=en">see this article</a>.</li>
 </ul>
-
-<h2 id="retrying-an-order">Retrying an order</h2>
-
+<h2 id='retrying-an-order'>Retrying an order</h2>
 <p>Sometimes an order will fail for reasons that are temporary. In these situations, orders can be retried after the temporary conditions are resolved. A successful order retry response contains the request_id of the new order.</p>
 
 <blockquote>
 <p>Example order retry request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/retry"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/retry"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <blockquote>
 <p>Example successful order retry response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"request_id"</span>: <span class="s2">"3f1c939065cf58e7b9f0aea70640dffc"</span>
 <span class="o">}</span>
-</code></pre>
-
-          <h1 id="cancellations">Cancellations</h1>
-
-<h2 id="initiate-a-cancellation">Initiate a cancellation</h2>
-
+</code></pre></div><h1 id='cancellations'>Cancellations</h1><h2 id='initiate-a-cancellation'>Initiate a cancellation</h2>
 <blockquote>
 <p>Example cancellation</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+</code></pre></div>
 <blockquote>
 <p>Example advanced cancellation</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "merchant_order_id": "112-1234567-7272727",
     "webhooks": {
       "request_succeeded": "https://www.example.com/webhooks/success",
       "request_failed": "https://www.example.com/webhooks/failed"
      }
    }'</span>
-</code></pre>
-
+</code></pre></div>
 <blockquote>
 <p>Example cancellation response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"request_id"</span>: <span class="s2">"3f1c939065cf58e7b9f0aea70640dffc"</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <p>The Zinc API supports pre-shipment order cancellation on Amazon.com and
-Amazon.co.uk. Simply POST to the cancellation endpoint, <code class="prettyprint">https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel</code>. Note that cancelling an order
+Amazon.co.uk. Simply POST to the cancellation endpoint, <code>https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel</code>. Note that cancelling an order
 occurs after an order has been successfully placed on the API. This is distinct from
 aborting an order, which occurs while the order is still in progress. Cancellations
 will send a cancellation request to the retailer and attempt to stop the order from
 shipping and can only be initiated for order requests that were successful.</p>
-
-<h3 id="required-attributes">Required attributes</h3>
-
+<h3 id='required-attributes'>Required attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -735,12 +1163,10 @@ shipping and can only be initiated for order requests that were successful.</p>
 <tr>
 <td>merchant_order_id</td>
 <td>String</td>
-<td>The merchant order id of the order that you would like to cancel. If the order has multiple <code class="prettyprint">merchant_order_id</code>s you must cancel each separately.</td>
+<td>The merchant order id of the order that you would like to cancel. If the order has multiple <code>merchant_order_id</code>s you must cancel each separately.</td>
 </tr>
 </tbody></table>
-
-<h3 id="optional-cancellation-attributes">Optional cancellation attributes</h3>
-
+<h3 id='optional-cancellation-attributes'>Optional cancellation attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -751,35 +1177,29 @@ shipping and can only be initiated for order requests that were successful.</p>
 <tr>
 <td>webhooks</td>
 <td>Object</td>
-<td>A <a href="#webhooks-object">webhooks object</a> including URLs that will receive POST requests after <code class="prettyprint">request_succeeded</code> and <code class="prettyprint">request_failed</code></td>
+<td>A <a href="#webhooks-object">webhooks object</a> including URLs that will receive POST requests after <code>request_succeeded</code> and <code>request_failed</code></td>
 </tr>
 </tbody></table>
-
-<h2 id="retrieve-a-cancellation">Retrieve a cancellation</h2>
-
+<h2 id='retrieve-a-cancellation'>Retrieve a cancellation</h2>
 <blockquote>
 <p>Example cancellation retrieval request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/cancellations/&lt;request_id&gt;"</span> <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/cancellations/&lt;request_id&gt;"</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <blockquote>
 <p>Example cancellation retrieval response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"cancellation_response"</span>,
   <span class="s2">"merchant_order_id"</span>: <span class="s2">"112-1234567-7272727"</span>,
   <span class="s2">"request"</span>: <span class="o">{</span>
     ...
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-
-<p>To retrieve a cancellation response given a cancellation request id, simply make a GET request to the cancellation URL <code class="prettyprint">&quot;https://api.zinc.io/v1/cancellations/&lt;request_id&gt;&quot;.</code> You will receive either a <code class="prettyprint">request_processing</code> response, an error response, or a successful cancellation response of type &ldquo;cancellation_response&rdquo;.</p>
-
-<h3 id="cancellation-response-attributes">Cancellation response attributes</h3>
-
+</code></pre></div>
+<p>To retrieve a cancellation response given a cancellation request id, simply make a GET request to the cancellation URL <code>&quot;https://api.zinc.io/v1/cancellations/&lt;request_id&gt;&quot;.</code> You will receive either a <code>request_processing</code> response, an error response, or a successful cancellation response of type &quot;cancellation_response&quot;.</p>
+<h3 id='cancellation-response-attributes'>Cancellation response attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -798,13 +1218,11 @@ shipping and can only be initiated for order requests that were successful.</p>
 <td>The original request that was sent to the Zinc API</td>
 </tr>
 </tbody></table>
-
-<h2 id="attempting-to-cancel">Attempting to cancel</h2>
-
+<h2 id='attempting-to-cancel'>Attempting to cancel</h2>
 <blockquote>
-<p>Example <code class="prettyprint">attempting_to_cancel</code> cancellation response</p>
+<p>Example <code>attempting_to_cancel</code> cancellation response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"error"</span>,
   <span class="s2">"code"</span>: <span class="s2">"attempting_to_cancel"</span>,
   <span class="s2">"message"</span>: <span class="s2">"The retailer is attempting to cancel the order."</span>,
@@ -815,38 +1233,33 @@ shipping and can only be initiated for order requests that were successful.</p>
     ...
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <p>In about 50% of cases, Amazon is unable to immediately cancel an order. Instead,
-they tell Zinc that they&rsquo;re &ldquo;Attempting to Cancel&rdquo; the order. This currently
-results in the <em>failure</em> code <code class="prettyprint">attempting_to_cancel</code> in the API. This status will
+they tell Zinc that they&#39;re &quot;Attempting to Cancel&quot; the order. This currently
+results in the <em>failure</em> code <code>attempting_to_cancel</code> in the API. This status will
 be updated when the order is either cancelled successfully or if the cancellation
 fails. The Zinc API will continue to poll the retailer and attempt to figure out
 the status of the order, but no guarantees can be made for how long this will take.
-Once Zinc determines the actual status of the cancellation, the <code class="prettyprint">attempting_to_cancel</code>
+Once Zinc determines the actual status of the cancellation, the <code>attempting_to_cancel</code>
 error code will be removed and the updated response will take its place.</p>
 
-<p>The <code class="prettyprint">request_failed</code> webhook will be hit if the cancellation goes into the
-<code class="prettyprint">attempting_to_cancel</code> state. If it moves out of this state and into an error
-state, the <code class="prettyprint">request_failed</code> webhook will be hit again with the updated
+<p>The <code>request_failed</code> webhook will be hit if the cancellation goes into the
+<code>attempting_to_cancel</code> state. If it moves out of this state and into an error
+state, the <code>request_failed</code> webhook will be hit again with the updated
 cancellation response. If the cancellation moves into a successful state, the
-<code class="prettyprint">request_succeeded</code> webhook will be hit with the updated cancellation response.
-Thus if you are using the <code class="prettyprint">request_succeeded</code> and <code class="prettyprint">request_failed</code> webhooks,
-you won&rsquo;t need to poll the cancellation request id to learn about changes from
-the <code class="prettyprint">attempting_to_cancel</code> state.</p>
-
-          <h1 id="returns">Returns</h1>
-
-<h2 id="create-a-return">Create a Return</h2>
-
+<code>request_succeeded</code> webhook will be hit with the updated cancellation response.
+Thus if you are using the <code>request_succeeded</code> and <code>request_failed</code> webhooks,
+you won&#39;t need to poll the cancellation request id to learn about changes from
+the <code>attempting_to_cancel</code> state.</p>
+<h1 id='returns'>Returns</h1><h2 id='create-a-return'>Create a Return</h2>
 <blockquote>
 <p>Example return label request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/return"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/return"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "webhooks": {
       "request_succeeded": "https://www.exaple.com/webhooks/return/success",
       "request_failed": "https://www.exaple.com/webhooks/return/failed",
@@ -857,23 +1270,19 @@ the <code class="prettyprint">attempting_to_cancel</code> state.</p>
     "explanation": "Additional details for Amazon seller",
     "cancel_pending": false
   }'</span>
-</code></pre>
-
+</code></pre></div>
 <blockquote>
 <p>Example return label response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"request_id"</span>: <span class="s2">"3f1c939065cf58e7b9f0aea70640dffc"</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <p>The Zinc API also supports generating return labels. Returns are only available
-on the following retailers: <code class="prettyprint">amazon</code>, <code class="prettyprint">amazon_uk</code>. You can create a return for
-an order by POSTING to the <code class="prettyprint">https://api.zinc.io/v1/orders/&lt;request_id&gt;/return</code>
-route where <code class="prettyprint">request_id</code> is the request id of the original order.</p>
-
-<h3 id="required-attributes">Required attributes</h3>
-
+on the following retailers: <code>amazon</code>, <code>amazon_uk</code>. You can create a return for
+an order by POSTING to the <code>https://api.zinc.io/v1/orders/&lt;request_id&gt;/return</code>
+route where <code>request_id</code> is the request id of the original order.</p>
+<h3 id='required-attributes'>Required attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -889,12 +1298,12 @@ route where <code class="prettyprint">request_id</code> is the request id of the
 <tr>
 <td>reason_code</td>
 <td>String</td>
-<td>The reason for the return. This is passed directly to Amazon. Reason codes will vary depending on Amazon country. Many users have had success using &ldquo;inaccurate website description&rdquo; for Amazon.com and &ldquo;description on website was not accurate&rdquo; for Amazon.co.uk. Note that the reason_code must be an exact match with the reason code dropdown available on Amazon.</td>
+<td>The reason for the return. This is passed directly to Amazon. Reason codes will vary depending on Amazon country. Many users have had success using &quot;inaccurate website description&quot; for Amazon.com and &quot;description on website was not accurate&quot; for Amazon.co.uk. Note that the reason_code must be an exact match with the reason code dropdown available on Amazon.</td>
 </tr>
 <tr>
 <td>method_code</td>
 <td>String</td>
-<td>The method of returning the specified products. This is passed directly to Amazon. The available options may vary based on Amazon country and customer address. Note that <code class="prettyprint">UPS Dropoff</code> is the only method supported for automatic refunds on Zinc Managed Account orders. If you&rsquo;d like to use a different method, you&rsquo;ll need to manually request a refund.</td>
+<td>The method of returning the specified products. This is passed directly to Amazon. The available options may vary based on Amazon country and customer address. Note that <code>UPS Dropoff</code> is the only method supported for automatic refunds on Zinc Managed Account orders. If you&#39;d like to use a different method, you&#39;ll need to manually request a refund.</td>
 </tr>
 <tr>
 <td>explanation</td>
@@ -902,9 +1311,7 @@ route where <code class="prettyprint">request_id</code> is the request id of the
 <td>Any extra information that will be passed to Amazon or the Amazon seller. It is required for some return reasons.</td>
 </tr>
 </tbody></table>
-
-<h3 id="optional-attributes">Optional attributes</h3>
-
+<h3 id='optional-attributes'>Optional attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -920,7 +1327,7 @@ route where <code class="prettyprint">request_id</code> is the request id of the
 <tr>
 <td>cancel_pending</td>
 <td>Boolean</td>
-<td>Whether or not this request should cancel any pending returns while creating a new return. If false, the request will return a <code class="prettyprint">return_in_progress</code> error code if a pending return already exists. Defaults to false.</td>
+<td>Whether or not this request should cancel any pending returns while creating a new return. If false, the request will return a <code>return_in_progress</code> error code if a pending return already exists. Defaults to false.</td>
 </tr>
 <tr>
 <td>return_address</td>
@@ -928,20 +1335,17 @@ route where <code class="prettyprint">request_id</code> is the request id of the
 <td>An <a href="#address-object">address object</a> from which the return is sent. If not provided, the default return address from Amazon will be used.</td>
 </tr>
 </tbody></table>
-
-<h2 id="retrieving-a-return">Retrieving a return</h2>
-
+<h2 id='retrieving-a-return'>Retrieving a return</h2>
 <blockquote>
 <p>Example return retrieval request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/returns/&lt;request_id&gt;"</span> <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/returns/&lt;request_id&gt;"</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <blockquote>
 <p>Example return retrieval response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"return_response"</span>,
   <span class="s2">"merchant_return_id"</span>: <span class="s2">"12345678-abcd-efgh-1234-abcde1234567"</span>,
   <span class="s2">"return_by"</span>: <span class="s2">"2018-02-01T00:00:00"</span>,
@@ -952,12 +1356,11 @@ route where <code class="prettyprint">request_id</code> is the request id of the
     ...
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <blockquote>
-<p>Example <code class="prettyprint">return_in_progress</code> return retrieval response</p>
+<p>Example <code>return_in_progress</code> return retrieval response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"error"</span>,
   <span class="s2">"code"</span>: <span class="s2">"return_in_progress"</span>,
   <span class="s2">"message"</span>: <span class="s2">"A return is currently in progress for the items you specified."</span>,
@@ -972,12 +1375,9 @@ route where <code class="prettyprint">request_id</code> is the request id of the
     ...
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-
-<p>To retrieve a return response given a return request id, simply make a GET request to the return URL &ldquo;https://api.zinc.io/v1/returns/<request_id>&rdquo;. You will receive either a <code class="prettyprint">request_processing</code> response, an error response, or a successful cancellation response of type &ldquo;return_response&rdquo;.</p>
-
-<h3 id="return-response-attributes">Return response attributes</h3>
-
+</code></pre></div>
+<p>To retrieve a return response given a return request id, simply make a GET request to the return URL &quot;https://api.zinc.io/v1/returns/<request_id>&quot;. You will receive either a <code>request_processing</code> response, an error response, or a successful cancellation response of type &quot;return_response&quot;.</p>
+<h3 id='return-response-attributes'>Return response attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1007,33 +1407,26 @@ route where <code class="prettyprint">request_id</code> is the request id of the
 </tr>
 </tbody></table>
 
-<p>You can use the <code class="prettyprint">return_in_progress</code> error to check the status of your return.
-Just supply an invalid <code class="prettyprint">method_code</code> like &ldquo;Dummy Method Code&rdquo;. If the return is
-in progress, you&rsquo;ll get the status back with the error. If the return
-is not yet started, we&rsquo;ll be unable to start a return because the method code
+<p>You can use the <code>return_in_progress</code> error to check the status of your return.
+Just supply an invalid <code>method_code</code> like &quot;Dummy Method Code&quot;. If the return is
+in progress, you&#39;ll get the status back with the error. If the return
+is not yet started, we&#39;ll be unable to start a return because the method code
 does not exist.</p>
-
-          <h1 id="product-data">Product Data</h1>
-
-<p>Zinc can get product details, product offers and search supported retailers. In general, these calls are tuned for throughput rather than latency. If you need responses quickly, we have <a href="#realtime-product-data">realtime versions</a> of each call. Also, proper use of the optional <code class="prettyprint">max_age</code> or <code class="prettyprint">newer_than</code> query parameters will improve response times.</p>
-
-<h2 id="product-details">Product Details</h2>
-
+<h1 id='product-data'>Product Data</h1>
+<p>Zinc can get product details, product offers and search supported retailers. In general, these calls are tuned for throughput rather than latency. If you need responses quickly, we have <a href="#realtime-product-data">realtime versions</a> of each call. Also, proper use of the optional <code>max_age</code> or <code>newer_than</code> query parameters will improve response times.</p>
+<h2 id='product-details'>Product Details</h2>
 <blockquote>
 <p>Example product details request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl https://api.zinc.io/v1/products/0923568964?retailer<span class="o">=</span>amazon <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/products/0923568964?retailer<span class="o">=</span>amazon <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <p>Get up to date information on the title, description, manufacturer details, item specifics, and more for any product on our supported retailers.</p>
 
-<p>To retrieve product details, make a GET request to the following URL, replacing <code class="prettyprint">&lt;product_id&gt;</code> with the retailer&rsquo;s unique identifier for a particular product and specifying the request attributes as query parameters in the URL.</p>
+<p>To retrieve product details, make a GET request to the following URL, replacing <code>&lt;product_id&gt;</code> with the retailer&#39;s unique identifier for a particular product and specifying the request attributes as query parameters in the URL.</p>
 
-<p><code class="prettyprint">https://api.zinc.io/v1/products/&lt;product_id&gt;?retailer=&lt;retailer_name&gt;</code></p>
-
-<h3 id="required-request-attributes">Required request attributes</h3>
-
+<p><code>https://api.zinc.io/v1/products/&lt;product_id&gt;?retailer=&lt;retailer_name&gt;</code></p>
+<h3 id='required-request-attributes'>Required request attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1047,9 +1440,7 @@ does not exist.</p>
 <td>The retailer for the product</td>
 </tr>
 </tbody></table>
-
-<h4 id="optional-request-attributes">Optional request attributes</h4>
-
+<h4 id='optional-request-attributes'>Optional request attributes</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1060,24 +1451,24 @@ does not exist.</p>
 <tr>
 <td>max_age</td>
 <td>Number</td>
-<td>A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with <code class="prettyprint">newer_than</code>.</td>
+<td>A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with <code>newer_than</code>.</td>
 </tr>
 <tr>
 <td>newer_than</td>
 <td>Number</td>
-<td>A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with <code class="prettyprint">max_age</code>.</td>
+<td>A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with <code>max_age</code>.</td>
 </tr>
 <tr>
 <td>async</td>
 <td>Boolean</td>
-<td>Determines whether the resulting response will be asynchronous. If set to <code class="prettyprint">true</code>, then the API will not block waiting for a result. Instead, it will immediately return <code class="prettyprint">status: &quot;processing&quot;</code> and you will be responsible for resending the request until the response is no longer <code class="prettyprint">status: &quot;processing&quot;</code>. Defaults to <code class="prettyprint">false</code>.</td>
+<td>Determines whether the resulting response will be asynchronous. If set to <code>true</code>, then the API will not block waiting for a result. Instead, it will immediately return <code>status: &quot;processing&quot;</code> and you will be responsible for resending the request until the response is no longer <code>status: &quot;processing&quot;</code>. Defaults to <code>false</code>.</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Example product details response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"status"</span>: <span class="s2">"completed"</span>,
     <span class="s2">"original_retail_price"</span>: 899,
     <span class="s2">"timestamp"</span>: 1515775557,
@@ -1195,10 +1586,7 @@ does not exist.</p>
     <span class="s2">"buyapi_hint"</span>: <span class="nb">true</span>,
     <span class="s2">"price"</span>: 799
 <span class="o">}</span>
-</code></pre>
-
-<h3 id="response-attributes">Response attributes</h3>
-
+</code></pre></div><h3 id='response-attributes'>Response attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1209,7 +1597,7 @@ does not exist.</p>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>Possible values are <code class="prettyprint">processing</code>, <code class="prettyprint">failed</code>, or <code class="prettyprint">completed</code>. You will only see <code class="prettyprint">processing</code> if <code class="prettyprint">async: true</code> was set on the request</td>
+<td>Possible values are <code>processing</code>, <code>failed</code>, or <code>completed</code>. You will only see <code>processing</code> if <code>async: true</code> was set on the request</td>
 </tr>
 <tr>
 <td>retailer</td>
@@ -1219,7 +1607,7 @@ does not exist.</p>
 <tr>
 <td>product_id</td>
 <td>String</td>
-<td>The retailer&rsquo;s unique identifier for the product</td>
+<td>The retailer&#39;s unique identifier for the product</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1259,7 +1647,7 @@ does not exist.</p>
 <tr>
 <td>variant_specifics</td>
 <td>Array</td>
-<td>Array of objects containing information about the types and values of a particular product variant. A variant specifics object contains a <code class="prettyprint">dimension</code> field describing the type of the variant (e.g. &ldquo;Color&rdquo;) and a <code class="prettyprint">value</code> field describing the specific value available. At the top level, this contains information on the selected variant</td>
+<td>Array of objects containing information about the types and values of a particular product variant. A variant specifics object contains a <code>dimension</code> field describing the type of the variant (e.g. &quot;Color&quot;) and a <code>value</code> field describing the specific value available. At the top level, this contains information on the selected variant</td>
 </tr>
 <tr>
 <td>all_variants</td>
@@ -1284,7 +1672,7 @@ does not exist.</p>
 <tr>
 <td>epids</td>
 <td>Array</td>
-<td>Array of objects containing external product identifier (epid) objects. An epid object contains a <code class="prettyprint">type</code> field describing the name of the external product identifier and a <code class="prettyprint">value</code> field for the identifier&rsquo;s value</td>
+<td>Array of objects containing external product identifier (epid) objects. An epid object contains a <code>type</code> field describing the name of the external product identifier and a <code>value</code> field for the identifier&#39;s value</td>
 </tr>
 <tr>
 <td>epids_map</td>
@@ -1294,7 +1682,7 @@ does not exist.</p>
 <tr>
 <td>package_dimensions</td>
 <td>Array</td>
-<td>An array detailing the packaging details if available. Each dimension contains a &lsquo;amount&rsquo; and &#39;unit&rsquo;</td>
+<td>An array detailing the packaging details if available. Each dimension contains a &#39;amount&#39; and &#39;unit&#39;</td>
 </tr>
 <tr>
 <td>item_location</td>
@@ -1304,12 +1692,12 @@ does not exist.</p>
 <tr>
 <td>original_retail_price</td>
 <td>Number</td>
-<td>(Amazon only) The &ldquo;List Price&rdquo; in cents of the product (present if the retailer is presenting a crossed out list price)</td>
+<td>(Amazon only) The &quot;List Price&quot; in cents of the product (present if the retailer is presenting a crossed out list price)</td>
 </tr>
 <tr>
 <td>price</td>
 <td>Number</td>
-<td>(Amazon only) The price in cents of the buy box price of the item. <br><strong>This is not always returned and is often not the cheapest option. If you want a product&rsquo;s price you should use <a href="https://zinc.io/#product-prices">product offers</a>.</strong></td>
+<td>(Amazon only) The price in cents of the buy box price of the item. <br><strong>This is not always returned and is often not the cheapest option. If you want a product&#39;s price you should use <a href="https://zinc.io/#product-prices">product offers</a>.</strong></td>
 </tr>
 <tr>
 <td>review_count</td>
@@ -1362,20 +1750,17 @@ does not exist.</p>
 <td>(Costco only) The Costco item number of the product (may not contain variant details)</td>
 </tr>
 </tbody></table>
-
-<h2 id="product-offers">Product Offers</h2>
-
+<h2 id='product-offers'>Product Offers</h2>
 <blockquote>
 <p>Example product offers request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl https://api.zinc.io/v1/products/0923568964/offers?retailer<span class="o">=</span>amazon <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/products/0923568964/offers?retailer<span class="o">=</span>amazon <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <blockquote>
 <p>Example product offers response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"status"</span>: <span class="s2">"completed"</span>,
   <span class="s2">"asin"</span>: <span class="s2">"B007JR5304"</span>,
   <span class="s2">"offers"</span>: <span class="o">[</span>
@@ -1415,16 +1800,13 @@ does not exist.</p>
   <span class="s2">"timestamp"</span>: 1543523165,
   <span class="s2">"retailer"</span>: <span class="s2">"amazon"</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <p>Get information about all the offers for a particular product, including seller name, item price, shipping price, condition, seller reputation, and more.</p>
 
-<p>To retrieve product offers and prices, make a GET request to the following URL, replacing <code class="prettyprint">:product_id</code> with the retailer&rsquo;s unique identifier for a particular product and specifying the request attributes as query parameters in the URL.</p>
+<p>To retrieve product offers and prices, make a GET request to the following URL, replacing <code>:product_id</code> with the retailer&#39;s unique identifier for a particular product and specifying the request attributes as query parameters in the URL.</p>
 
-<p><code class="prettyprint">https://api.zinc.io/v1/products/:product_id/offers</code></p>
-
-<h3 id="required-request-attributes">Required request attributes</h3>
-
+<p><code>https://api.zinc.io/v1/products/:product_id/offers</code></p>
+<h3 id='required-request-attributes-2'>Required request attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1438,9 +1820,7 @@ does not exist.</p>
 <td>The retailer for the product</td>
 </tr>
 </tbody></table>
-
-<h3 id="optional-request-attributes">Optional request attributes</h3>
-
+<h3 id='optional-request-attributes-2'>Optional request attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1451,22 +1831,20 @@ does not exist.</p>
 <tr>
 <td>max_age</td>
 <td>Number</td>
-<td>A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with <code class="prettyprint">newer_than</code>.</td>
+<td>A number in seconds setting the maximum age of the response. The data returned in the response will be at most this many seconds old. Cannot specify with <code>newer_than</code>.</td>
 </tr>
 <tr>
 <td>newer_than</td>
 <td>Number</td>
-<td>A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with <code class="prettyprint">max_age</code>.</td>
+<td>A timestamp setting the minimum time the response should be retrieved from. The data returned in the response will be newer this timestamp. Cannot specify with <code>max_age</code>.</td>
 </tr>
 <tr>
 <td>async</td>
 <td>Boolean</td>
-<td>Determines whether the resulting response will be asynchronous. If set to <code class="prettyprint">true</code>, then the API will not block waiting for a result. Instead, it will immediately return <code class="prettyprint">status: &quot;processing&quot;</code> and you will be responsible for resending the request until the response is no longer <code class="prettyprint">status: &quot;processing&quot;</code>. Defaults to <code class="prettyprint">false</code>.</td>
+<td>Determines whether the resulting response will be asynchronous. If set to <code>true</code>, then the API will not block waiting for a result. Instead, it will immediately return <code>status: &quot;processing&quot;</code> and you will be responsible for resending the request until the response is no longer <code>status: &quot;processing&quot;</code>. Defaults to <code>false</code>.</td>
 </tr>
 </tbody></table>
-
-<h3 id="response-attributes">Response attributes</h3>
-
+<h3 id='response-attributes-2'>Response attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1477,7 +1855,7 @@ does not exist.</p>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>Possible values are <code class="prettyprint">processing</code>, <code class="prettyprint">failed</code>, or <code class="prettyprint">completed</code>. You will only see <code class="prettyprint">processing</code> if <code class="prettyprint">async: true</code> was set on the request.</td>
+<td>Possible values are <code>processing</code>, <code>failed</code>, or <code>completed</code>. You will only see <code>processing</code> if <code>async: true</code> was set on the request.</td>
 </tr>
 <tr>
 <td>retailer</td>
@@ -1490,24 +1868,19 @@ does not exist.</p>
 <td>An array of <a href="#product-offer-object">product offer objects</a> for a particular product on a retailer</td>
 </tr>
 </tbody></table>
-
-<h2 id="product-search">Product Search</h2>
-
+<h2 id='product-search'>Product Search</h2>
 <blockquote>
 <p>Example product search request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s1">'https://api.zinc.io/v1/search?query=fish%20oil&amp;page=1&amp;retailer=amazon'</span> <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.zinc.io/v1/search?query=fish%20oil&amp;page=1&amp;retailer=amazon'</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <p>Get search results from a retailer based on a query term. Results include product id, title, image url, number of reviews, star rating, and price.</p>
 
 <p>To retrieve search results, make a GET request to the following URL, replacing :query with a url-encoded query string and specifying the request attributes as query parameters in the URL.</p>
 
-<p><code class="prettyprint">https://api.zinc.io/v1/search?query=:query&amp;page=1&amp;retailer=:retailer</code></p>
-
-<h3 id="required-request-attributes">Required request attributes</h3>
-
+<p><code>https://api.zinc.io/v1/search?query=:query&amp;page=1&amp;retailer=:retailer</code></p>
+<h3 id='required-request-attributes-3'>Required request attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1535,7 +1908,7 @@ does not exist.</p>
 <blockquote>
 <p>Example product offers response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"status"</span>: <span class="s2">"completed"</span>,
   <span class="s2">"timestamp"</span>: 1522268852,
   <span class="s2">"retailer"</span>: <span class="s2">"amazon"</span>,
@@ -1569,10 +1942,7 @@ does not exist.</p>
     <span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-
-<h3 id="response-attributes">Response attributes</h3>
-
+</code></pre></div><h3 id='response-attributes-3'>Response attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1583,7 +1953,7 @@ does not exist.</p>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>Possible values are <code class="prettyprint">processing</code>, <code class="prettyprint">failed</code>, or <code class="prettyprint">completed</code>. You will only see <code class="prettyprint">processing</code> if <code class="prettyprint">async: true</code> was set on the request.</td>
+<td>Possible values are <code>processing</code>, <code>failed</code>, or <code>completed</code>. You will only see <code>processing</code> if <code>async: true</code> was set on the request.</td>
 </tr>
 <tr>
 <td>retailer</td>
@@ -1618,7 +1988,7 @@ does not exist.</p>
 <tr>
 <td>results.stars</td>
 <td>String</td>
-<td>The star rating of the item (e.g. &#39;4.1 out of 5 stars&rsquo;)</td>
+<td>The star rating of the item (e.g. &#39;4.1 out of 5 stars&#39;)</td>
 </tr>
 <tr>
 <td>results.fresh</td>
@@ -1631,24 +2001,19 @@ does not exist.</p>
 <td>The price of the item</td>
 </tr>
 </tbody></table>
-
-<h1 id="realtime-product-data">Realtime Product Data</h1>
-
+<h1 id='realtime-product-data'>Realtime Product Data</h1>
 <p>The calls documented above are tuned for throughput rather than latency, and for most use cases they work well. There are some use cases (for example, catalog expansion) that have strict latency requirements. To satisfy those use cases we have developed a realtime version of our data APIs. To ensure we meet our latency guarantees, we limit access to the realtime api. To get access to our realtime API, contact <a href="mailto:sales@zinc.io">sales@zinc.io</a>.</p>
-
-<h2 id="realtime-search">Realtime Search</h2>
-
+<h2 id='realtime-search'>Realtime Search</h2>
 <blockquote>
 <p>Example realtime search request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl<span class="s1">'https://api.zinc.io/v1/realtime/search?query=vitamin&amp;retailer=amazon'</span> <span class="se">\</span>
--u &lt;client_token&gt;:
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl<span class="s1">'https://api.zinc.io/v1/realtime/search?query=vitamin&amp;retailer=amazon'</span> <span class="se">\</span>
+<span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
 <blockquote>
 <p>Example realtime search response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"status"</span>: <span class="s2">"completed"</span>,
   <span class="s2">"timestamp"</span>: 1537653337,
   <span class="s2">"nextPage"</span>: <span class="s2">"https://api.zinc.io/v1/realtime/search?nextToken=eyJzZWVuIjpbMjY4NDM1NDU2LDAsMTA0ODU3NiwwLDAsNDIxMDY4OCwwLDAsMTYzODQsMCwwLDAsMTMxMDcyLDAsMjU2LDAsMzI3NjgsMjU2LDAsNDA5NiwxMDQ4NTc2LDAsMCwyMzA0LDQsMjA2MDgsMjY4NDM1NDU2LDAsMCwwLC0yMTQ3NDgzNjQ4LDAsMCwwLDY3MTE3MDU2LDAsMTMxMDcyLDUzNjg3MDkxMiwwLDAsMCwyNTYsMCw1MTIwLDAsNTI0MjkyLDAsMzI3NjgsNjU1MzYsMCwxNiwwLDIwODAsMCwwLDAsMCw2NTUzNiwwLDEwNTYsMCwxMDI0LDAsMCwxNjc3NzIxNiwwLDAsMCwwLDI2ODQzNTQ1Niw1NzYsODE5Miw2NCwxMDczNzQxODI0LDEwNDg1NzYsMCwwLDQsMCwxMDQ4NTc2LDI3MiwwLDI4NTIxMjY3MiwwLDAsMCwwLDAsMCwwLDAsMTY3NzcyMTYsMCwwLC0yMTQ3NDgyNjI0LDI2NDE5MiwwLDAsMCw0MDk2LDAsMCw1MTIsMCwwLDAsMCwwLDIzMDQsMjYyMTQ0LDAsMCwyNjg0MzU0NTYsMCwxLDAsMCw2NTUzNywwLDUyOCwwLDAsMCwtMjE0NzQ2NzI2NCwwLDE2Mzg0LDAsMF0sInBhZ2UiOjIsImNvdW50cnkiOiJ1cyIsInF1ZXJ5Ijoidml0YW1pbiJ9"</span>,
@@ -1747,18 +2112,15 @@ does not exist.</p>
     <span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <p>Expand your product catalog with realtime results from Amazon based on a query term. Results include product id, title, image url, and price.</p>
 
-<p>To retrieve search results, make a GET request to the following URL, replacing <code class="prettyprint">&lt;query&gt;</code> with a url-encoded query string and specifying the request attributes as query parameters in the URL.</p>
+<p>To retrieve search results, make a GET request to the following URL, replacing <code>&lt;query&gt;</code> with a url-encoded query string and specifying the request attributes as query parameters in the URL.</p>
 
-<p><code class="prettyprint">https://api.zinc.io/v1/realtime/search?query=&lt;query&gt;&amp;retailer=&lt;retailer_name&gt;&amp;nextToken=&lt;token&gt;</code></p>
+<p><code>https://api.zinc.io/v1/realtime/search?query=&lt;query&gt;&amp;retailer=&lt;retailer_name&gt;&amp;nextToken=&lt;token&gt;</code></p>
 
 <p>The first page should always return within 4 seconds and will contain 10 results. If you want to show more than 10 results, you should use AJAX to load additional pages for the best user experience. A demo of this can be found at <a href="http://amazonsearchdemo.surge.sh/">http://amazonsearchdemo.surge.sh/</a> (<a href="https://github.com/zincio/zinc-realtime-search-demo">source code</a>). Note that you must contact <a href="mailto:sales@zinc.io">sales@zinc.io</a> first so we can enable this feature for you.</p>
-
-<h3 id="required-request-attributes">Required request attributes</h3>
-
+<h3 id='required-request-attributes-4'>Required request attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1782,9 +2144,7 @@ does not exist.</p>
 <td>Not included for the initial request. For subsequent requests, provide the token returned by previous request.</td>
 </tr>
 </tbody></table>
-
-<h4 id="optional-request-attributes">Optional request attributes</h4>
-
+<h4 id='optional-request-attributes-3'>Optional request attributes</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1795,12 +2155,10 @@ does not exist.</p>
 <tr>
 <td>includeAddons</td>
 <td>Boolean</td>
-<td>If <code class="prettyprint">false</code> addons will not be returned in search results.</td>
+<td>If <code>false</code> addons will not be returned in search results.</td>
 </tr>
 </tbody></table>
-
-<h3 id="response-attributes">Response attributes</h3>
-
+<h3 id='response-attributes-4'>Response attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1811,7 +2169,7 @@ does not exist.</p>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>Possible values are <code class="prettyprint">failed</code>, or <code class="prettyprint">completed</code>.</td>
+<td>Possible values are <code>failed</code>, or <code>completed</code>.</td>
 </tr>
 <tr>
 <td>retailer</td>
@@ -1854,43 +2212,33 @@ does not exist.</p>
 <td>Will be true if the best offer (aka BuyBox) is an addon. Rarely, this field will not be returned which simply means we were unable to determine addon status in timely manner.</td>
 </tr>
 </tbody></table>
-
-<h2 id="realtime-details">Realtime Details</h2>
-
+<h2 id='realtime-details'>Realtime Details</h2>
 <blockquote>
 <p>Example realtime details request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl https://api.zinc.io/v1/realtime/details/0923568964?retailer<span class="o">=</span>amazon <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/realtime/details/0923568964?retailer<span class="o">=</span>amazon <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>To retrieve product details, make a GET request to the following URL, replacing <code>&lt;product_id&gt;</code> with the retailer&#39;s unique identifier for a particular product.</p>
 
-<p>To retrieve product details, make a GET request to the following URL, replacing <code class="prettyprint">&lt;product_id&gt;</code> with the retailer&rsquo;s unique identifier for a particular product.</p>
+<p><code>https://api.zinc.io/v1/realtime/details/&lt;product_id&gt;?retailer=&lt;retailer_name&gt;</code></p>
 
-<p><code class="prettyprint">https://api.zinc.io/v1/realtime/details/&lt;product_id&gt;?retailer=&lt;retailer_name&gt;</code></p>
-
-<p>Using the realtime details call is identical to our <a href="#product-details">normal details call</a> with the exception that <code class="prettyprint">max_age</code> is ignored.</p>
+<p>Using the realtime details call is identical to our <a href="#product-details">normal details call</a> with the exception that <code>max_age</code> is ignored.</p>
 
 <p>If a realtime details call hits our cache, the call does not count against your real-time rate limit.</p>
-
-<h2 id="realtime-offers">Realtime Offers</h2>
-
+<h2 id='realtime-offers'>Realtime Offers</h2>
 <blockquote>
 <p>Example realtime offers request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl https://api.zinc.io/v1/realtime/offers/B00K4F45CA?retailer<span class="o">=</span>amazon <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/realtime/offers/B00K4F45CA?retailer<span class="o">=</span>amazon <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>To retrieve product offers and prices, make a GET request to the following URL, replacing <code>:product_id</code> with the retailer&#39;s unique identifier for a particular product.</p>
 
-<p>To retrieve product offers and prices, make a GET request to the following URL, replacing <code class="prettyprint">:product_id</code> with the retailer&rsquo;s unique identifier for a particular product.</p>
-
-<p><code class="prettyprint">https://api.zinc.io/v1/realtime/offers/:product_id?retailer=&lt;retailer_name&gt;</code></p>
+<p><code>https://api.zinc.io/v1/realtime/offers/:product_id?retailer=&lt;retailer_name&gt;</code></p>
 
 <p>Usage and returned data is identical to our <a href="#product-prices">normal offers call</a>.</p>
-
-          <h1 id="zinc-managed-accounts">Zinc Managed Accounts</h1>
-
-<h2 id="overview">Overview</h2>
-
+<h1 id='zinc-managed-accounts'>Zinc Managed Accounts</h1><h2 id='overview'>Overview</h2>
 <p>Zinc Managed Accounts allow customers to place orders without worrying about
 creating and managing their own Amazon accounts. Instead, users of a Managed Account can fund a balance
 with Zinc using PayPal or wire transfer, which Zinc will then debit to place orders on your behalf.</p>
@@ -1900,35 +2248,30 @@ with Zinc using PayPal or wire transfer, which Zinc will then debit to place ord
 <p>Zinc Managed Accounts are currently available by invite only. Please contact
 <a href="mailto:sales@zinc.io">sales@zinc.io</a> and mention Managed Accounts. You can also contact this address if
 you need more information to determine if Managed Accounts are right for you.</p>
-
-<h2 id="funding-your-account">Funding your account</h2>
-
+<h2 id='funding-your-account'>Funding your account</h2>
 <blockquote>
 <p>Check account balance and view past transactions</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/addax/balance"</span> -u &lt;client_token&gt;:
-curl <span class="s2">"https://api.zinc.io/v1/addax/transactions?count=100&amp;offset=0"</span> -u &lt;client_token&gt;:
-</code></pre>
-
-<p>Please contact <a href="mailto:sales@zinc.io">sales@zinc.io</a>. They&rsquo;ll help set up funding options taylored for
-your needs. Generally, funding is performed either through PayPal&rsquo;s Mass Pay
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/addax/balance"</span> <span class="nt">-u</span> &lt;client_token&gt;:
+curl <span class="s2">"https://api.zinc.io/v1/addax/transactions?count=100&amp;offset=0"</span> <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>Please contact <a href="mailto:sales@zinc.io">sales@zinc.io</a>. They&#39;ll help set up funding options taylored for
+your needs. Generally, funding is performed either through PayPal&#39;s Mass Pay
 option or via wire transfer directly to our bank.</p>
 
-<p>You&rsquo;ll need to fund your account before you&rsquo;ll be able to place orders.</p>
+<p>You&#39;ll need to fund your account before you&#39;ll be able to place orders.</p>
 
 <p>You can check your account balance and transactions at any time.</p>
 
 <p>Note: these funds are used to pay for the cost of your order on Amazon, but
-you&rsquo;ll still be billed the normal ordering fee at the end of the month. Your
+you&#39;ll still be billed the normal ordering fee at the end of the month. Your
 Zinc sales contact can provide more information about billing.</p>
-
-<h2 id="create-an-order">Create an order</h2>
-
+<h2 id='create-an-order'>Create an order</h2>
 <p>Follow the <a href="#create-an-order">standard documentation for creating orders</a> with two changes:</p>
 
 <ol>
-<li>Add <code class="prettyprint">&quot;addax&quot;: true</code> to your request body.</li>
-<li>Do not supply the <code class="prettyprint">retailer_credentials</code>, <code class="prettyprint">payment_method</code>, or <code class="prettyprint">billing_address</code> keys.</li>
+<li>Add <code>&quot;addax&quot;: true</code> to your request body.</li>
+<li>Do not supply the <code>retailer_credentials</code>, <code>payment_method</code>, or <code>billing_address</code> keys.</li>
 </ol>
 
 <p>All other ordering features and options work as specified in the standard
@@ -1939,15 +2282,13 @@ for the currency of the market. Failed orders will not cost you anything.</p>
 
 <p>ZMA orders go into a queue until a fulfillment account that meets the requirements
 of the order is available. If an order is queued for too long without an account
-becoming available, the order will fail with a <code class="prettyprint">zma_temporarily_overloaded</code> error.
+becoming available, the order will fail with a <code>zma_temporarily_overloaded</code> error.
 The default queue timeout value is 4 hours (14400 seconds). To change this value,
-add <code class="prettyprint">&quot;addax_queue_timeout&quot;: 14400</code> to your order, replacing the <code class="prettyprint">14400</code> with your
+add <code>&quot;addax_queue_timeout&quot;: 14400</code> to your order, replacing the <code>14400</code> with your
 preferred timeout. Note: decreasing the timeout will not improve your chances of
 getting your order placed. If you timeout after one hour and then resubmit the
 order, it will go to the end of the queue.</p>
-
-<h2 id="cases">Cases</h2>
-
+<h2 id='cases'>Cases</h2>
 <p>In some cases, a Managed Account order might initially succeed (and thus charge
 your account) but later need to be reversed. For example, your buyer might want
 to return the product, or the order may be cancelled by the Amazon seller.</p>
@@ -1956,19 +2297,16 @@ to return the product, or the order may be cancelled by the Amazon seller.</p>
 requested, and for other scenarios. You can also open a Case to ask for
 assistance with a failed return, cancellation, and other issues. Cases are
 regularly updated by Zinc with information about the status of the case.</p>
-
-<h3 id="checking-the-status-of-a-case">Checking the status of a Case</h3>
-
+<h3 id='checking-the-status-of-a-case'>Checking the status of a Case</h3>
 <p>Make a GET request to the case endpoint</p>
 
 <blockquote>
 <p>Check Case status</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;order_id&gt;/case"</span> <span class="se">\</span>
-  -u &lt;client_token&gt;:
-</code></pre>
-
-<p><code class="prettyprint">state</code> will be one of the following values:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;order_id&gt;/case"</span> <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p><code>state</code> will be one of the following values:</p>
 
 <table><thead>
 <tr>
@@ -1990,7 +2328,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 </tr>
 </tbody></table>
 
-<p><code class="prettyprint">messages</code> contains the entire history of a case, and can have any of these values for <code class="prettyprint">type</code>:</p>
+<p><code>messages</code> contains the entire history of a case, and can have any of these values for <code>type</code>:</p>
 
 <table><thead>
 <tr>
@@ -2052,23 +2390,20 @@ regularly updated by Zinc with information about the status of the case.</p>
 </tr>
 </tbody></table>
 
-<p>The most up to date case status is represented by the latest object in the <code class="prettyprint">messages</code> list.</p>
-
-<h3 id="opening-a-case">Opening a Case</h3>
-
+<p>The most up to date case status is represented by the latest object in the <code>messages</code> list.</p>
+<h3 id='opening-a-case'>Opening a Case</h3>
 <p>Make a POST request to the case endpoint</p>
 
 <blockquote>
 <p>Create a new Case</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;order_id&gt;/case"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
-  -d <span class="s1">'{"reason": "return.request_label", "message": "I need a return label"}'</span>
-</code></pre>
-
-<p>To open a case you must use one of the following values for <code class="prettyprint">reason</code>:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;order_id&gt;/case"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"reason": "return.request_label", "message": "I need a return label"}'</span>
+</code></pre></div>
+<p>To open a case you must use one of the following values for <code>reason</code>:</p>
 
 <table><thead>
 <tr>
@@ -2105,27 +2440,20 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>Other</td>
 </tr>
 </tbody></table>
-
-<h3 id="updating-a-case">Updating a Case</h3>
-
-<p>You can append a freetext <code class="prettyprint">message</code> to a Case by POSTing a <code class="prettyprint">message</code> without a <code class="prettyprint">reason</code>:</p>
+<h3 id='updating-a-case'>Updating a Case</h3>
+<p>You can append a freetext <code>message</code> to a Case by POSTing a <code>message</code> without a <code>reason</code>:</p>
 
 <blockquote>
 <p>Update a Case</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;order_id&gt;/case"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
-  -d <span class="s1">'{"message": "I have an update on this case"}'</span>
-</code></pre>
-
-          <h1 id="proxies">Proxies</h1>
-
-<p>The Zinc API interfaces with the retailers via proxies. This enables each retailer interaction session to use unique and consistent IP addressing. Due to many factors, sometimes the bulk proxies available to us become blocked by retailers. The best path to keeping your own account from being blocked is to provide your own proxy service, by either hosting your own proxy or purchasing a proxy from a provider. We call this &ldquo;bring-your-own-proxy&rdquo; (BYOP).</p>
-
-<h2 id="configure-zincapi-for-your-own-proxy-byop">Configure ZincAPI for your own proxy (BYOP)</h2>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;order_id&gt;/case"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"message": "I have an update on this case"}'</span>
+</code></pre></div><h1 id='proxies'>Proxies</h1>
+<p>The Zinc API interfaces with the retailers via proxies. This enables each retailer interaction session to use unique and consistent IP addressing. Due to many factors, sometimes the bulk proxies available to us become blocked by retailers. The best path to keeping your own account from being blocked is to provide your own proxy service, by either hosting your own proxy or purchasing a proxy from a provider. We call this &quot;bring-your-own-proxy&quot; (BYOP).</p>
+<h2 id='configure-zincapi-for-your-own-proxy-byop'>Configure ZincAPI for your own proxy (BYOP)</h2>
 <p>To configure a BYOP, you must provide the retailer, email account, and full proxy connection URL.</p>
 
 <table><thead>
@@ -2181,33 +2509,25 @@ regularly updated by Zinc with information about the status of the case.</p>
 <blockquote>
 <p>Example BYOP configuration</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
-  -X PUT <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com","proxy_url":"http://proxy_user:proxy_password@192.168.1.1:1234"}'</span>
-</code></pre>
-
-<h2 id="query-zincapi-for-current-byop-details">Query ZincAPI for current BYOP details</h2>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
+  <span class="nt">-X</span> PUT <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com","proxy_url":"http://proxy_user:proxy_password@192.168.1.1:1234"}'</span>
+</code></pre></div><h2 id='query-zincapi-for-current-byop-details'>Query ZincAPI for current BYOP details</h2>
 <p>You can also query the Zinc API for the current BYOP configuration of a specific retailer account. If the account is configured for BYOP, the full proxy information will be returned in the JSON response. If the account is configured for one of our internal proxies, the response will be successful (200) with an empty JSON body.</p>
 
 <blockquote>
 <p>Example query of existing BYOP configuration</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
-  -X GET <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com"}'</span>
-</code></pre>
-
-          <h1 id="object-reference">Object reference</h1>
-
-<h2 id="product-object">Product object</h2>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com"}'</span>
+</code></pre></div><h1 id='object-reference'>Object reference</h1><h2 id='product-object'>Product object</h2>
 <blockquote>
 <p>Example product object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"product_id"</span>: <span class="s2">"B06XGHJ5H3"</span>,
   <span class="s2">"quantity"</span>: 1,
   <span class="s2">"seller_selection_criteria"</span>: <span class="o">{</span>
@@ -2216,8 +2536,7 @@ regularly updated by Zinc with information about the status of the case.</p>
     <span class="s2">"condition_in"</span>: <span class="o">[</span><span class="s2">"New"</span><span class="o">]</span>,
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2228,7 +2547,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>product_id</td>
 <td>String</td>
-<td>The retailer&rsquo;s unique identifier for the product. Note that Zinc does not support digital purchases or Amazon prime pantry items.</td>
+<td>The retailer&#39;s unique identifier for the product. Note that Zinc does not support digital purchases or Amazon prime pantry items.</td>
 </tr>
 <tr>
 <td>quantity</td>
@@ -2238,16 +2557,14 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>seller_selection_criteria</td>
 <td>Object</td>
-<td>A <a href="#seller-selection-criteria-object">seller selection criteria</a> object containing information about which offers to choose when there are multiple offers available. If the seller selection criteria object is not included for a product, the seller selection criteria will default to <code class="prettyprint">&quot;prime&quot;: true</code>, <code class="prettyprint">&quot;handling_days_max&quot;: 6</code>, and <code class="prettyprint">&quot;condition_in&quot;: [&quot;New&quot;]</code>.</td>
+<td>A <a href="#seller-selection-criteria-object">seller selection criteria</a> object containing information about which offers to choose when there are multiple offers available. If the seller selection criteria object is not included for a product, the seller selection criteria will default to <code>&quot;prime&quot;: true</code>, <code>&quot;handling_days_max&quot;: 6</code>, and <code>&quot;condition_in&quot;: [&quot;New&quot;]</code>.</td>
 </tr>
 </tbody></table>
-
-<h2 id="seller-selection-criteria-object">Seller selection criteria object</h2>
-
+<h2 id='seller-selection-criteria-object'>Seller selection criteria object</h2>
 <blockquote>
 <p>Example seller selection criteria object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"addon"</span>: <span class="nb">false</span>,
   <span class="s2">"condition_in"</span>: <span class="o">[</span><span class="s2">"New"</span><span class="o">]</span>,
   <span class="s2">"handling_days_max"</span>: 6,
@@ -2255,11 +2572,10 @@ regularly updated by Zinc with information about the status of the case.</p>
   <span class="s2">"min_seller_num_ratings"</span>: 100,
   <span class="s2">"prime"</span>: <span class="nb">true</span>,
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <p>Seller selection criteria allow you to filter multiple offers for a product from a retailer. They give you fine grained control when a retailer has multiple offers for a single product. This happens frequently when third party or affiliated merchants are selling on a platform, such as o Amazon.</p>
 
-<p>The seller selection criteria serve as a series of optional filters to narrow down the potential set of offers to something reasonable. After all the filters have been applied, Zinc will select the cheapest offer that is still available. For example, if <code class="prettyprint">&quot;handling_days_max&quot;: 6</code> is applied, then the Zinc API will order the cheapest offer where the shipping will arrive in 6 days or less.</p>
+<p>The seller selection criteria serve as a series of optional filters to narrow down the potential set of offers to something reasonable. After all the filters have been applied, Zinc will select the cheapest offer that is still available. For example, if <code>&quot;handling_days_max&quot;: 6</code> is applied, then the Zinc API will order the cheapest offer where the shipping will arrive in 6 days or less.</p>
 
 <table><thead>
 <tr>
@@ -2276,7 +2592,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>buy_box</td>
 <td>Boolean</td>
-<td>(Amazon only) Specifies whether the selected offer should be Amazon&rsquo;s default buy box offer</td>
+<td>(Amazon only) Specifies whether the selected offer should be Amazon&#39;s default buy box offer</td>
 </tr>
 <tr>
 <td>condition_in</td>
@@ -2321,7 +2637,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>min_seller_num_ratings</td>
 <td>Number</td>
-<td>(Amazon only) The minimum number of ratings required for an Amazon seller&rsquo;s offer to be selected</td>
+<td>(Amazon only) The minimum number of ratings required for an Amazon seller&#39;s offer to be selected</td>
 </tr>
 <tr>
 <td>min_seller_percent_positive_feedback</td>
@@ -2333,21 +2649,23 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>Boolean</td>
 <td>(Amazon only) Specifies whether the selected offer should be an Amazon Prime offer</td>
 </tr>
+<tr>
+<td>allow_oos</td>
+<td>Boolean</td>
+<td>(Amazon only) Specifies whether we should still attempt to complete ordering with the cheapest offer if all offers appear unavailable</td>
+</tr>
 </tbody></table>
-
-<h2 id="shipping-object">Shipping object</h2>
-
+<h2 id='shipping-object'>Shipping object</h2>
 <blockquote>
 <p>Example shipping object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"order_by"</span>: <span class="s2">"price"</span>,
   <span class="s2">"max_days"</span>: 5,
   <span class="s2">"max_price"</span>: 1000
 <span class="o">}</span>
-</code></pre>
-
-<p>The shipping object gives you fine grained control over shipping speeds on your orders. Typically, there is a tradeoff between how fast your order arrives and the cost of shipping. The shipping object gives you a way to make sure that you don&rsquo;t go over budget and that your order still arrives on time.</p>
+</code></pre></div>
+<p>The shipping object gives you fine grained control over shipping speeds on your orders. Typically, there is a tradeoff between how fast your order arrives and the cost of shipping. The shipping object gives you a way to make sure that you don&#39;t go over budget and that your order still arrives on time.</p>
 
 <table><thead>
 <tr>
@@ -2359,7 +2677,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>order_by</td>
 <td>String</td>
-<td>The ordering of available shipping methods that meet the desired criteria. Available values are <code class="prettyprint">price</code> or <code class="prettyprint">speed</code>. If ordering by price, then the Zinc API will choose the cheapest shipping method that meets the desired criteria, while <code class="prettyprint">speed</code> will choose the fastest shipping method meeting the criteria.</td>
+<td>The ordering of available shipping methods that meet the desired criteria. Available values are <code>price</code> or <code>speed</code>. If ordering by price, then the Zinc API will choose the cheapest shipping method that meets the desired criteria, while <code>speed</code> will choose the fastest shipping method meeting the criteria.</td>
 </tr>
 <tr>
 <td>max_days</td>
@@ -2372,13 +2690,11 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>The maximum price in cents allowed for the shipping cost of the order.</td>
 </tr>
 </tbody></table>
-
-<h2 id="address-object">Address object</h2>
-
+<h2 id='address-object'>Address object</h2>
 <blockquote>
 <p>Example address object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"first_name"</span>: <span class="s2">"Tim"</span>,
   <span class="s2">"last_name"</span>: <span class="s2">"Beaver"</span>,
   <span class="s2">"address_line1"</span>: <span class="s2">"77 Massachusetts Avenue"</span>,
@@ -2390,8 +2706,7 @@ regularly updated by Zinc with information about the status of the case.</p>
   <span class="s2">"phone_number"</span>: <span class="s2">"5551230101"</span>,
   <span class="s2">"instructions"</span>: <span class="s2">"Place packages inside blue garage door."</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2450,13 +2765,11 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>Optional instructions to include with the shipping addresses</td>
 </tr>
 </tbody></table>
-
-<h2 id="payment-method-object">Payment method object</h2>
-
+<h2 id='payment-method-object'>Payment method object</h2>
 <blockquote>
 <p>Example payment object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"name_on_card"</span>: <span class="s2">"Ben Bitdiddle"</span>,
   <span class="s2">"number"</span>: <span class="s2">"5555555555554444"</span>,
   <span class="s2">"security_code"</span>: <span class="s2">"123"</span>,
@@ -2464,11 +2777,10 @@ regularly updated by Zinc with information about the status of the case.</p>
   <span class="s2">"expiration_year"</span>: 2015,
   <span class="s2">"use_gift"</span>: <span class="nb">false</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
+<p>The recommended way to pay for purchases on a retailer is by using gift card balance already applied to an account. Gift cards are supported on <code>amazon</code>, <code>amazon_uk</code>, <code>amazon_ca</code>, and <code>walmart</code>. To use the existing gift balance on the account, simply pass <code>{&quot;use_gift&quot;: true}</code> as the payment method object.</p>
 
-<p>The recommended way to pay for purchases on a retailer is by using gift card balance already applied to an account. Gift cards are supported on <code class="prettyprint">amazon</code>, <code class="prettyprint">amazon_uk</code>, <code class="prettyprint">amazon_ca</code>, and <code class="prettyprint">walmart</code>. To use the existing gift balance on the account, simply pass <code class="prettyprint">{&quot;use_gift&quot;: true}</code> as the payment method object.</p>
-
-<p>To use a credit card, you must include the <code class="prettyprint">name_on_card</code>, <code class="prettyprint">number</code>, <code class="prettyprint">security_code</code>, <code class="prettyprint">expiration_month</code>, and <code class="prettyprint">expiration_year</code> fields. For Amazon, you should only have a single credit card associated with an account which should be the same as the card passed in the payment method object. This allows the system to correctly answer any payment-related security questions.</p>
+<p>To use a credit card, you must include the <code>name_on_card</code>, <code>number</code>, <code>security_code</code>, <code>expiration_month</code>, and <code>expiration_year</code> fields. For Amazon, you should only have a single credit card associated with an account which should be the same as the card passed in the payment method object. This allows the system to correctly answer any payment-related security questions.</p>
 
 <table><thead>
 <tr>
@@ -2508,27 +2820,24 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>Whether or not to use the gift balance on the retailer account. If true, then the gift balance will be used for payment. Only works for retailers which support gift balance (Amazon and Walmart).</td>
 </tr>
 </tbody></table>
+<h2 id='webhooks-object'>Webhooks object</h2>
+<p>Webhooks let you register a URL that the Zinc API notifies whenever an event happens pertaining to your account. When an event occurs, we will send a <code>POST</code> request to the URL specified in the webhooks object. If no URL was specified, then a webhook will not be sent. The body of the <code>POST</code> request is the standard raw JSON response for that object.</p>
 
-<h2 id="webhooks-object">Webhooks object</h2>
+<p>As an example, let&#39;s say you have just created an order via the Zinc API. Every time the order status changes, a <code>POST</code> request will be sent to the URL that you passed in the <code>status_updated</code> parameter of the webhooks object. The body will mimic the response received from the standard <code>GET https://api.zinc.io/v1/orders/&lt;request_id&gt;</code> request. A webhook will also be sent if order fails, gets placed, or if tracking gets updated.</p>
 
-<p>Webhooks let you register a URL that the Zinc API notifies whenever an event happens pertaining to your account. When an event occurs, we will send a <code class="prettyprint">POST</code> request to the URL specified in the webhooks object. If no URL was specified, then a webhook will not be sent. The body of the <code class="prettyprint">POST</code> request is the standard raw JSON response for that object.</p>
-
-<p>As an example, let&rsquo;s say you have just created an order via the Zinc API. Every time the order status changes, a <code class="prettyprint">POST</code> request will be sent to the URL that you passed in the <code class="prettyprint">status_updated</code> parameter of the webhooks object. The body will mimic the response received from the standard <code class="prettyprint">GET https://api.zinc.io/v1/orders/&lt;request_id&gt;</code> request. A webhook will also be sent if order fails, gets placed, or if tracking gets updated.</p>
-
-<p>Note that the <code class="prettyprint">case_updated</code> webhook is specifically for ZMA order cases.</p>
+<p>Note that the <code>case_updated</code> webhook is specifically for ZMA order cases.</p>
 
 <blockquote>
 <p>Example webhooks object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"request_succeeded"</span>: <span class="s2">"http://mywebsite.com/zinc/request_placed"</span>,
   <span class="s2">"request_failed"</span>: <span class="s2">"http://mywebsite.com/zinc/request_failed"</span>,
   <span class="s2">"tracking_obtained"</span>: <span class="s2">"http://mywebsite.com/zinc/tracking_obtained"</span>,
   <span class="s2">"status_updated"</span>: <span class="s2">"http://mywebsite.com/zinc/status_updated"</span>,
   <span class="s2">"case_updated"</span>: <span class="s2">"http://mywebsite.com/zinc/case_updated"</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2569,18 +2878,15 @@ regularly updated by Zinc with information about the status of the case.</p>
 </tbody></table>
 
 <p>You can optionally pass an Array of webhooks instead of a String, and Zinc will hit all of the webhooks.</p>
-
-<h2 id="retailer-credentials-object">Retailer credentials object</h2>
-
+<h2 id='retailer-credentials-object'>Retailer credentials object</h2>
 <blockquote>
 <p>Example retailer credentials object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"email"</span>: <span class="s2">"timbeaver@gmail.com"</span>,
   <span class="s2">"password"</span>: <span class="s2">"myRetailerPassword"</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2601,28 +2907,25 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>verification_code</td>
 <td>String</td>
-<td>(Optional) The verification code required by the retailer for logging in. Only required in cases where the retailer prevents a login with an <code class="prettyprint">account_locked_verification_required</code> error code.</td>
+<td>(Optional) The verification code required by the retailer for logging in. Only required in cases where the retailer prevents a login with an <code>account_locked_verification_required</code> error code.</td>
 </tr>
 <tr>
 <td>totp_2fa_key</td>
 <td>String</td>
-<td>(Optional) The secret key used for two factor authentication. If you have two factor authentication enabled, you must provide this key. You can find the 64 digit Amazon key by enabling two factor authentication and <a href="images/amazon2fa.png" target="_blank">clicking on the &ldquo;Can&rsquo;t scan the barcode?&rdquo;</a> link. <strong>Note: This is not the 6 digit time based code.</strong></td>
+<td>(Optional) The secret key used for two factor authentication. If you have two factor authentication enabled, you must provide this key. You can find the 64 digit Amazon key by enabling two factor authentication and <a href="images/amazon2fa-fe52102b.png" target="_blank">clicking on the &quot;Can&#39;t scan the barcode?&quot;</a> link. <strong>Note: This is not the 6 digit time based code.</strong></td>
 </tr>
 </tbody></table>
-
-<h2 id="promo-code-object">Promo code object</h2>
-
+<h2 id='promo-code-object'>Promo code object</h2>
 <blockquote>
 <p>Example promo code object</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIVEBUCKSOFF"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A3GH440E2AFGH4"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIVEBUCKSOFF"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A3GH440E2AFGH4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2648,12 +2951,12 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>discount_amount</td>
 <td>Number</td>
-<td>(Optional) Fixed amount in cents by which we should discount the matching merchant&rsquo;s offers during offer selection. Only makes sense if merchant_id is also supplied. Defaults to 0.</td>
+<td>(Optional) Fixed amount in cents by which we should discount the matching merchant&#39;s offers during offer selection. Only makes sense if merchant_id is also supplied. Defaults to 0.</td>
 </tr>
 <tr>
 <td>discount_percentage</td>
 <td>Number</td>
-<td>(Optional) Percentage amount (between 0 and 100) by which we should discount the matching merchant&rsquo;s offers during offer selection. Only makes sense if merchant_id is also supplied. Defaults to 0.</td>
+<td>(Optional) Percentage amount (between 0 and 100) by which we should discount the matching merchant&#39;s offers during offer selection. Only makes sense if merchant_id is also supplied. Defaults to 0.</td>
 </tr>
 <tr>
 <td>cost_override</td>
@@ -2661,20 +2964,20 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>(Optional) If supplied, we will assume all offers by this merchant cost exactly this many cents. Only makes sense if merchant_id is also supplied. Overrides other discount methods.</td>
 </tr>
 </tbody></table>
-
-<h2 id="price-components-object">Price components object</h2>
-
+<h2 id='price-components-object'>Price components object</h2>
 <blockquote>
 <p>Example price components object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"converted_payment_total"</span>: 1999,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"payment_currency"</span>: <span class="s2">"USD"</span>,
   <span class="s2">"shipping"</span> : 0,
   <span class="s2">"subtotal"</span> : 1999,
   <span class="s2">"tax"</span> : 0,
   <span class="s2">"total"</span> : 1999
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2705,21 +3008,34 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>total</td>
 <td>Number</td>
-<td>The total price paid for the order</td>
+<td>The total price paid for the order in the currency specify by the currency attribute</td>
 </tr>
 <tr>
 <td>gift_certificate</td>
 <td>Number</td>
 <td>(Optional) The amount of value used on a gift certificate placed on the account</td>
 </tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Currency of all attributes except converted_payment_total</td>
+</tr>
+<tr>
+<td>payment_currency</td>
+<td>String</td>
+<td>Currency used in the payment transaction</td>
+</tr>
+<tr>
+<td>converted_payment_total</td>
+<td>Number</td>
+<td>Total payment in payment_currency currency</td>
+</tr>
 </tbody></table>
-
-<h2 id="merchant-order-ids-object">Merchant order ids object</h2>
-
+<h2 id='merchant-order-ids-object'>Merchant order ids object</h2>
 <blockquote>
 <p>Example merchant order ids object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"merchant_order_id"</span> : <span class="s2">"112-1234567-7272727"</span>,
   <span class="s2">"merchant"</span> : <span class="s2">"amazon"</span>,
   <span class="s2">"account"</span> : <span class="s2">"timbeaver@gmail.com"</span>,
@@ -2727,8 +3043,7 @@ regularly updated by Zinc with information about the status of the case.</p>
   <span class="s2">"tracking_url"</span>: <span class="s2">"https://www.amazon.com/progress-tracker/package/ref=oh_aui_hz_st_btn?_encoding=UTF8&amp;itemId=jnlnooqppopuun&amp;orderId=112-1234567-7272727"</span>,
   <span class="s2">"delivery_date"</span>: <span class="s2">"Jan. 7, 2018"</span>
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2777,20 +3092,17 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>The projected delivery date given by the retailer</td>
 </tr>
 </tbody></table>
-
-<h2 id="account-status-object">Account status object</h2>
-
+<h2 id='account-status-object'>Account status object</h2>
 <blockquote>
 <p>Example account status object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"prime"</span>: <span class="nb">true</span>,
   <span class="s2">"fresh"</span>: <span class="nb">false</span>,
   <span class="s2">"business"</span>: <span class="nb">false</span>,
   <span class="s2">"charity"</span>: null
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2819,13 +3131,11 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>Indicates if the account has a Charity associated</td>
 </tr>
 </tbody></table>
-
-<h2 id="product-offer-object">Product offer object</h2>
-
+<h2 id='product-offer-object'>Product offer object</h2>
 <blockquote>
 <p>Example product offer object</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"seller"</span>: <span class="o">{</span>
     <span class="s2">"num_ratings"</span>: null,
     <span class="s2">"percent_positive"</span>: null,
@@ -2856,8 +3166,7 @@ regularly updated by Zinc with information about the status of the case.</p>
     <span class="o">}</span>
   <span class="o">]</span>,
 <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2873,7 +3182,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>condition</td>
 <td>String</td>
-<td>The condition of the product. Possible values are <code class="prettyprint">New</code>, <code class="prettyprint">Refurbished</code>, <code class="prettyprint">Used - Like New</code>, <code class="prettyprint">Used - Very Good</code>, <code class="prettyprint">Used - Good</code>, <code class="prettyprint">Used - Acceptable</code>, <code class="prettyprint">Unacceptable</code>.</td>
+<td>The condition of the product. Possible values are <code>New</code>, <code>Refurbished</code>, <code>Used - Like New</code>, <code>Used - Very Good</code>, <code>Used - Good</code>, <code>Used - Acceptable</code>, <code>Unacceptable</code>.</td>
 </tr>
 <tr>
 <td>handling_days.max</td>
@@ -2908,7 +3217,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>seller.id</td>
 <td>String</td>
-<td>The merchant&rsquo;s unique identifier for the product</td>
+<td>The merchant&#39;s unique identifier for the product</td>
 </tr>
 <tr>
 <td>seller.name</td>
@@ -2956,13 +3265,11 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>(Costco only) Whether or not the purchase must be from a Costco Member</td>
 </tr>
 </tbody></table>
-
-<h2 id="tracking-object">Tracking object</h2>
-
+<h2 id='tracking-object'>Tracking object</h2>
 <blockquote>
 <p>Example tracking object</p>
 </blockquote>
-<pre class="highlight shell"><code>    <span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>    <span class="o">{</span>
       <span class="s2">"merchant_order_id"</span>: <span class="s2">"112-111111-6553065"</span>,
       <span class="s2">"carrier"</span>: <span class="s2">"ZNLOGIC"</span>,
       <span class="s2">"tracking_number"</span>: <span class="s2">"ZPYAA0051111007YQ"</span>,
@@ -2975,8 +3282,7 @@ regularly updated by Zinc with information about the status of the case.</p>
       <span class="s2">"retailer_tracking_url"</span>: <span class="s2">"https://www.amazon.com/progress-tracker/package/ref=oh_aui_hz_st_btn?_encoding=UTF8&amp;itemId=khlnkqmn1111n&amp;orderId=112-111111-6553065"</span>,
       <span class="s2">"obtained_at"</span>: <span class="s2">"2018-11-29T20:53:05.924Z"</span>
     <span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3002,7 +3308,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>delivery_status</td>
 <td>String</td>
-<td>The current tracking status. Will be &ldquo;Delivered&rdquo; when the package is delivered.</td>
+<td>The current tracking status. Will be &quot;Delivered&quot; when the package is delivered.</td>
 </tr>
 <tr>
 <td>tracking_url</td>
@@ -3017,7 +3323,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>retailer_tracking_number</td>
 <td>String</td>
-<td>(Amazon only) (Optional) Amazon&rsquo;s tracking numbers are not publicly trackable but are printed on the package so we include them here.</td>
+<td>(Amazon only) (Optional) Amazon&#39;s tracking numbers are not publicly trackable but are printed on the package so we include them here.</td>
 </tr>
 <tr>
 <td>retailer_tracking_url</td>
@@ -3030,23 +3336,20 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>When tracking was last updated</td>
 </tr>
 </tbody></table>
-
-          <h1 id="errors">Errors</h1>
-
+<h1 id='errors'>Errors</h1>
 <blockquote>
 <p>Example error response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"_type"</span>: <span class="s2">"error"</span>,
   <span class="s2">"code"</span>: <span class="s2">"product_unavailable"</span>,
   <span class="s2">"message"</span>: <span class="s2">"One of the products you selected is unavailable."</span>,
   <span class="s2">"data"</span>: <span class="o">{</span><span class="s1">'product_id'</span>: <span class="s1">'018293801'</span><span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
+<p>If there is an error processing a request, the result endpoint will return an error object containing three fields: <code>code</code>, <code>message</code>, and <code>data</code>.</p>
 
-<p>If there is an error processing a request, the result endpoint will return an error object containing three fields: <code class="prettyprint">code</code>, <code class="prettyprint">message</code>, and <code class="prettyprint">data</code>.</p>
-
-<p>The <code class="prettyprint">code</code> field provides a short, unique error code describing the error situation. The <code class="prettyprint">message</code> field provides a human readable message describing the error and is intended for the developer and not the end user. The <code class="prettyprint">data</code> field contains specific information related to the error. For example, the maximum quantity allowed and the desired quantity would be shown for a <code class="prettyprint">max_quantity_exceeded</code> error.</p>
+<p>The <code>code</code> field provides a short, unique error code describing the error situation. The <code>message</code> field provides a human readable message describing the error and is intended for the developer and not the end user. The <code>data</code> field contains specific information related to the error. For example, the maximum quantity allowed and the desired quantity would be shown for a <code>max_quantity_exceeded</code> error.</p>
 
 <p>The Zinc API uses the following errors:</p>
 
@@ -3074,7 +3377,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 </tr>
 <tr>
 <td>additional_information_required</td>
-<td>The retailer asked for additional account verification questions. If using the API, please add a field &lsquo;phone_number&rsquo; in the billing address that matches your billing telephone number.</td>
+<td>The retailer asked for additional account verification questions. If using the API, please add a field &#39;phone_number&#39; in the billing address that matches your billing telephone number.</td>
 </tr>
 <tr>
 <td>billing_address_refused</td>
@@ -3178,7 +3481,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 </tr>
 <tr>
 <td>manual_review_required</td>
-<td>This order is under manual review by Zinc &ndash; please check back later for the status of this order.</td>
+<td>This order is under manual review by Zinc -- please check back later for the status of this order.</td>
 </tr>
 <tr>
 <td>max_price_exceeded</td>
@@ -3187,6 +3490,10 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>max_quantity_exceeded</td>
 <td>You have exceeded the maximum quantity available for a specific product.</td>
+</tr>
+<tr>
+<td>max_delivery_days_exceeded</td>
+<td>This retailers estimated delivery date exceeds the max_delivery_days parameter.</td>
 </tr>
 <tr>
 <td>no_free_shipping</td>
@@ -3202,7 +3509,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 </tr>
 <tr>
 <td>order_probably_placed</td>
-<td>This order was probably placed, but we were not able to retrieve the merchant order ids. You&rsquo;ll need to retry the order, so manually check the retailer website to see if the order was actually placed. If it was, cancel it and then retry the order.</td>
+<td>This order was probably placed, but we were not able to retrieve the merchant order ids. You&#39;ll need to retry the order, so manually check the retailer website to see if the order was actually placed. If it was, cancel it and then retry the order.</td>
 </tr>
 <tr>
 <td>payment_info_problem</td>
@@ -3245,96 +3552,64 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>The ZMA system was unable to place your order within 4 hours.</td>
 </tr>
 </tbody></table>
-
-          <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
-
-<h3 id="if-we-wish-to-place-a-large-quantity-of-orders-is-it-best-to-place-a-large-number-of-orders-with-one-product-per-order-or-a-smaller-number-of-orders-with-multiple-products-in-each">If we wish to place a large quantity of orders, is it best to place a large number of orders with one product per order or a smaller number of orders with multiple products in each?</h3>
-
+<h1 id='frequently-asked-questions'>Frequently Asked Questions</h1><h3 id='if-we-wish-to-place-a-large-quantity-of-orders-is-it-best-to-place-a-large-number-of-orders-with-one-product-per-order-or-a-smaller-number-of-orders-with-multiple-products-in-each'>If we wish to place a large quantity of orders, is it best to place a large number of orders with one product per order or a smaller number of orders with multiple products in each?</h3>
 <ul>
 <li>Either will work but there are tradeoffs. Orders with a single product will produce better error messages when something goes wrong and will not cause other items to not be ordered when individual items fail. Larger quantities in a single order will process faster as there is a cap on the number of orders that can be placed in a short time frame, and will be more likely to have free shipping, depending on the retailer.</li>
 </ul>
-
-<h3 id="will-placing-many-orders-in-short-succession-cause-the-retailer-to-lock-our-account">Will placing many orders in short succession cause the retailer to lock our account?</h3>
-
+<h3 id='will-placing-many-orders-in-short-succession-cause-the-retailer-to-lock-our-account'>Will placing many orders in short succession cause the retailer to lock our account?</h3>
 <ul>
 <li>No. Our system throttles the requests for individual accounts so we should not trigger lockouts from retailers.</li>
 </ul>
-
-<h3 id="what-products-can-i-buy-with-the-automatic-ordering-api">What products can I buy with the Automatic Ordering API?</h3>
-
+<h3 id='what-products-can-i-buy-with-the-automatic-ordering-api'>What products can I buy with the Automatic Ordering API?</h3>
 <ul>
 <li>The API supports most products, but there are some notable exceptions: digital products (such as e-books), gift cards, Prime Pantry, Amazon Fresh items, and speciality Amazon products (such as the Echo and Kindle) are not supported. Also, products that require local pickup, scheduled delivery, age verification, or any other extra specialty step during checkout will fail.</li>
 </ul>
-
-<h3 id="i-submitted-a-lot-of-orders-at-once-why-are-they-processing-slower">I submitted a lot of orders at once, why are they processing slower?</h3>
-
+<h3 id='i-submitted-a-lot-of-orders-at-once-why-are-they-processing-slower'>I submitted a lot of orders at once, why are they processing slower?</h3>
 <ul>
-<li>They are not, they are just queued on our end. For each Amazon account, orders are placed one by one, since you can&rsquo;t have more than one shopping cart at a time. For example, each Amazon order takes about 2 minutes to process, so if you submit 10 orders at the same time for the same Amazon account, the last order will take about 20 minutes to process. If you need orders placed faster, consider using multiple retailer accounts.</li>
+<li>They are not, they are just queued on our end. For each Amazon account, orders are placed one by one, since you can&#39;t have more than one shopping cart at a time. For example, each Amazon order takes about 2 minutes to process, so if you submit 10 orders at the same time for the same Amazon account, the last order will take about 20 minutes to process. If you need orders placed faster, consider using multiple retailer accounts.</li>
 </ul>
-
-<h3 id="i-received-an-internal_error-response-from-the-automatic-ordering-api-how-do-i-handle-this">I received an internal_error response from the Automatic Ordering API. How do I handle this?</h3>
-
+<h3 id='i-received-an-internal_error-response-from-the-automatic-ordering-api-how-do-i-handle-this'>I received an internal_error response from the Automatic Ordering API. How do I handle this?</h3>
 <ul>
-<li>Internal errors are caused by either an outage on the retailer&rsquo;s side (e.g. Amazon or Walmart are having issues) or a temporary Zinc problem. Internal errors are safe to retry &ndash; we recommend using exponential backoff to place another order if you receive an internal error.</li>
+<li>Internal errors are caused by either an outage on the retailer&#39;s side (e.g. Amazon or Walmart are having issues) or a temporary Zinc problem. Internal errors are safe to retry -- we recommend using exponential backoff to place another order if you receive an internal error.</li>
 </ul>
-
-<h3 id="my-item-has-variants-how-do-i-ensure-i-order-the-correct-item-with-zinc">My item has variants, how do I ensure I order the correct item with Zinc?</h3>
-
+<h3 id='my-item-has-variants-how-do-i-ensure-i-order-the-correct-item-with-zinc'>My item has variants, how do I ensure I order the correct item with Zinc?</h3>
 <ul>
 <li>Each Amazon ASIN corresponds to a single variant. Please use our free Google Chrome extension <a href="https://chrome.google.com/webstore/detail/yakpal/gcjaibancpkbofjlkgihljhdheaokifb?hl=en">YakPal</a> to look up variants for any product page on Amazon. Simply pass the ASIN to Zinc under product_id.</li>
 </ul>
-
-<h3 id="how-can-i-disable-using-a-max_price">How can I disable using a max_price?</h3>
-
+<h3 id='how-can-i-disable-using-a-max_price'>How can I disable using a max_price?</h3>
 <ul>
 <li>You can set max_price to an arbitrarily high number, such as 10000000, to avoid getting a max_price_exceeded error.</li>
 </ul>
-
-<h3 id="i-am-receiving-an-amazon-security-code-text-asking-me-to-verify-my-identity-when-placing-the-order">I am receiving an Amazon security code text asking me to verify my identity when placing the order.</h3>
-
+<h3 id='i-am-receiving-an-amazon-security-code-text-asking-me-to-verify-my-identity-when-placing-the-order'>I am receiving an Amazon security code text asking me to verify my identity when placing the order.</h3>
 <ul>
 <li>This is common when placing orders on a new account for the first time, since we are accessing Amazon from a new IP address. See our documentation about <a href="#amazon-email-verification">Amazon email verification</a>.</li>
 </ul>
-
-<h3 id="my-payment-methods-are-saved-in-my-amazon-account-can-i-just-pass-zinc-the-last-4-digits-of-my-credit-card-during-checkout">My payment methods are saved in my Amazon account. Can I just pass Zinc the last 4 digits of my credit card during checkout?</h3>
-
+<h3 id='my-payment-methods-are-saved-in-my-amazon-account-can-i-just-pass-zinc-the-last-4-digits-of-my-credit-card-during-checkout'>My payment methods are saved in my Amazon account. Can I just pass Zinc the last 4 digits of my credit card during checkout?</h3>
 <ul>
 <li>You need to provide us the the full card because Amazon asks to verify it when shipping to new addresses. Alternative, you can select gift cards as your payment method (and you can use <a href="http://piranha.zinc.io">Piranha</a> to both purchase gift cards as well as automatically load them onto your Amazon
 accounts).</li>
 </ul>
-
-<h3 id="when-will-my-tracking-number-post">When will my tracking number post?</h3>
-
+<h3 id='when-will-my-tracking-number-post'>When will my tracking number post?</h3>
 <ul>
 <li>Our algorithm checks at various times based on our knowledge of when tracking becomes available. We post this response via webhook.</li>
 </ul>
-
-<h3 id="what-is-the-structure-of-the-post-body-sent-to-the-webhooks">What is the structure of the POST body sent to the webhooks?</h3>
-
+<h3 id='what-is-the-structure-of-the-post-body-sent-to-the-webhooks'>What is the structure of the POST body sent to the webhooks?</h3>
 <ul>
 <li>All webhook POST bodies are identical to the Order Response object outlined <a href="http://docs.zincapi.com/#retrieving-an-order">here</a>.</li>
 </ul>
-
-<h3 id="can-i-authenticate-zinc-webhooks">Can I authenticate Zinc webhooks?</h3>
-
+<h3 id='can-i-authenticate-zinc-webhooks'>Can I authenticate Zinc webhooks?</h3>
 <ul>
 <li>Yes, use basic auth in the webhook URL as detailed by <a href="http://www.ietf.org/rfc/rfc1738.txt">RFC 1738</a>: “https://<username>:<password>@some.server.com/webhookpath” where <username> and <password> are the basic auth username and password respectively.</li>
 </ul>
-
-<h3 id="i-am-not-receiving-posts-to-the-my-webhook-urls">I am not receiving POSTs to the my webhook URLs.</h3>
-
+<h3 id='i-am-not-receiving-posts-to-the-my-webhook-urls'>I am not receiving POSTs to the my webhook URLs.</h3>
 <ul>
 <li>Make sure that your server is configured to accept POST requests from any other server. To debug this, we recommend creating a <a href="https://requestbin.com/">requestbin</a> URL, passing that in as your webhook, and looking at what the data that we returns looks like. This will also confirm to you that our webhooks are working properly.</li>
 </ul>
-
-<h3 id="why-am-i-getting-multiple-posts-to-my-order_placed-or-other-webhook">Why am I getting multiple POSTs to my “order_placed” or other webhook?</h3>
-
+<h3 id='why-am-i-getting-multiple-posts-to-my-order_placed-or-other-webhook'>Why am I getting multiple POSTs to my “order_placed” or other webhook?</h3>
 <ul>
 <li>We will retry POSTing the webhook until you return a 200 status code, so make sure you are returning a 200 at your webhook endpoint.</li>
 </ul>
-
-<h3 id="do-you-have-any-sample-code-for-using-the-api">Do you have any sample code for using the API?</h3>
-
+<h3 id='do-you-have-any-sample-code-for-using-the-api'>Do you have any sample code for using the API?</h3>
 <ul>
 <li>Sample code that includes an example of a bulk order query can be found in this github <a href="https://github.com/zincio/api-samples">repo</a>.</li>
 </ul>
