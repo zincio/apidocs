@@ -865,6 +865,16 @@
 <td>Number</td>
 <td>(Amazon only) Defaults to unlimited. If set, we will fail orders with error max_delivery_days_exceeded if the retailer estimates delivery more than this many days in the future.</td>
 </tr>
+<tr>
+<td>take_buybox_offers</td>
+<td>Boolean</td>
+<td>Bypass the process of looking at all offers - takes whatever the default offer is on the item details page buy box.</td>
+</tr>
+<tr>
+<td>force_offers_postal_code</td>
+<td>String</td>
+<td>Uses this postal code for offer selection instead of the shipping_address.zip_code value.</td>
+</tr>
 </tbody></table>
 <h3 id='optional-attributes-for-zma-orders'>Optional attributes for ZMA orders</h3>
 <table><thead>
