@@ -111,6 +111,8 @@ po_number | Number | (Amazon business accounts only). Adds a purchase order numb
 amazon_day | String | (Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to `amazon_day`.
 fail_if_taxed | Boolean | Defaults to false. If true, we will fail orders where taxes are included in the total. This is useful for ZMA orders which should not be placed if no tax exempt account is available.
 max_delivery_days | Number | (Amazon only) Defaults to unlimited. If set, we will fail orders with error max_delivery_days_exceeded if the retailer estimates delivery more than this many days in the future.
+take_buybox_offers | Boolean | Bypass the process of looking at all offers - takes whatever the default offer is on the item details page buy box.
+force_offers_postal_code | String | Uses this postal code for offer selection instead of the shipping_address.zip_code value.
 
 ### Optional attributes for ZMA orders
 Attribute | Type | Description
