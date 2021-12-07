@@ -120,6 +120,7 @@ Attribute | Type | Description
 zma_discount | Number | The percent below (or above, if negative) face value that you will be charged for this order. Can range from -50 to 0. Lower discount orders will be processed before higher discount orders. If discount is too high and we are unable to secure ordering at that discount, the order will time out with zma_temporarily_overloaded. Defaults to 0%.
 addax_queue_timeout | Number | Defaults to 14400. Number of seconds an order will stay in the ZMA queue before timing out with `zma_temporarily_overloaded`.
 zma_prime_optout | Boolean | Defaults to `false`. Set this value to `true` to force your ZMA order to use a non-prime fulfillment account.
+zma_priority_bid | Number | A fixed-value bid used to prioritize ZMA orders. Successful orders will include the bid value in their ZMA cost. A value of 100 equals a bid of $1.00. Orders with higher bids get a higher priority.
 
 ## Retrieving an order
 
