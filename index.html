@@ -899,6 +899,11 @@
 <td>Boolean</td>
 <td>Defaults to <code>false</code>. Set this value to <code>true</code> to force your ZMA order to use a non-prime fulfillment account.</td>
 </tr>
+<tr>
+<td>zma_priority_bid</td>
+<td>Number</td>
+<td>A fixed-value bid used to prioritize ZMA orders. Successful orders will include the bid value in their ZMA cost. A value of 100 equals a bid of $1.00. Orders with higher bids get a higher priority.</td>
+</tr>
 </tbody></table>
 <h2 id='retrieving-an-order'>Retrieving an order</h2>
 <blockquote>
