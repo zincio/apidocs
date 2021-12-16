@@ -2839,6 +2839,11 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>Boolean</td>
 <td>Overrides all other payment_method options and uses the default payment configuration on the account. Only applies to Amazon orders.</td>
 </tr>
+<tr>
+<td>is_virtual_card</td>
+<td>Boolean</td>
+<td>Whether or not to check the &quot;Virtual or one-time-use&quot; checkbox when adding the card. Only applies to Amazon orders.</td>
+</tr>
 </tbody></table>
 <h2 id='webhooks-object'>Webhooks object</h2>
 <p>Webhooks let you register a URL that the Zinc API notifies whenever an event happens pertaining to your account. When an event occurs, we will send a <code>POST</code> request to the URL specified in the webhooks object. If no URL was specified, then a webhook will not be sent. The body of the <code>POST</code> request is the standard raw JSON response for that object.</p>
