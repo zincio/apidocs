@@ -138,6 +138,7 @@ expiration_month | Number | The month of the expiration of the card (e.g. Januar
 expiration_year | Number | The year of the expiration of the card (e.g. 2016)
 use_gift | Boolean | Whether or not to use the gift balance on the retailer account. If true, then the gift balance will be used for payment. Only works for retailers which support gift balance (Amazon and Walmart).
 use_account_payment_defaults | Boolean | Overrides all other payment_method options and uses the default payment configuration on the account. Only applies to Amazon orders.
+is_virtual_card | Boolean | Whether or not to check the "Virtual or one-time-use" checkbox when adding the card. Only applies to Amazon orders.
 
 ## Webhooks object
 
