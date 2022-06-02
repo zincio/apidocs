@@ -6,11 +6,7 @@ Zinc Managed Accounts allow customers to place orders without worrying about
 creating and managing their own Amazon accounts. Instead, users of a Managed Account can fund a balance
 with Zinc using PayPal or wire transfer, which Zinc will then debit to place orders on your behalf.
 
-Managed accounts are currently available for Amazon and Amazon UK.
-
-Zinc Managed Accounts are currently available by invite only. Please contact
-<sales@zinc.io> and mention Managed Accounts. You can also contact this address if
-you need more information to determine if Managed Accounts are right for you.
+Managed accounts are currently available for Amazon.com only.
 
 ## Funding your account
 
