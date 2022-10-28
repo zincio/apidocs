@@ -42,3 +42,7 @@ curl "https://api.zinc.io/v1/proxies/byop" \
   -u <client_token>: \
   -d '{"retailer":"amazon","email":"youremail@youremail.com"}'
 ```
+
+## Disable BYOP
+
+Use the DELETE method instead of PUT.
