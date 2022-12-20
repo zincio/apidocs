@@ -11,11 +11,11 @@ Amazon United Kingdom† | amazon_uk   | Y | Y | Y | Y
 Amazon Canada† | amazon_ca           | Y | Y | Y | Y
 Amazon Germany† | amazon_de          | Y | Y | Y | Y
 Amazon Mexico† | amazon_mx           | Y | Y | Y | Y
-Costco | costco                      | Y | Y | Y | N
-Walmart | walmart                    | Y* | Y | Y | N
-Homedepot | homedepot                | Y* | N | N | Y
+Costco | costco                      | Y* | Y | Y | N
+Walmart | walmart                    | Y | Y | Y | N
+HomeDepot | homedepot                | Y* | Y | Y | N
 Lowes | lowes                        | N | Y | N | N
-AliExpress | aliexpress              | Y | Y | Y | N
+AliExpress | aliexpress              | Y* | Y | Y | N
 
 ```*```Currently in beta.
 ```†```Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported
