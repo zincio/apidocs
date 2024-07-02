@@ -2,6 +2,14 @@
 
 The Zinc API interfaces with the retailers via proxies. This enables each retailer interaction session to use unique and consistent IP addressing. Due to many factors, sometimes the bulk proxies available to us become blocked by retailers. The best path to keeping your own account from being blocked is to provide your own proxy service, by either hosting your own proxy or purchasing a proxy from a provider. We call this "bring-your-own-proxy" (BYOP).
 
+## Where do I get a proxy?
+
+We cannot recommend any specific proxy provider. Many commerical providers are
+unsuitable because their IPs are low quality and shared among many users. It is
+best to use a real residential IP address dedicated to your ordering flow.
+
+One option is to deploy the Zinc proxy container, on Github at [zinc/zn-proxy](https://github.com/zincio/zn-proxy).
+
 ## Configure ZincAPI for your own proxy (BYOP)
 
 To configure a BYOP, you must provide the retailer, email account, and full proxy connection URL.
@@ -46,3 +54,4 @@ curl "https://api.zinc.io/v1/proxies/byop" \
 ## Disable BYOP
 
 Use the DELETE method instead of PUT.
+
