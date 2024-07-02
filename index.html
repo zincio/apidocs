@@ -422,10 +422,16 @@
             <a href="#proxies" class="toc-h1 toc-link" data-title="Proxies">Proxies</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#where-do-i-get-a-proxy" class="toc-h2 toc-link" data-title="Where do I get a proxy?">Where do I get a proxy?</a>
+                  </li>
+                  <li>
                     <a href="#configure-zincapi-for-your-own-proxy-byop" class="toc-h2 toc-link" data-title="Configure ZincAPI for your own proxy (BYOP)">Configure ZincAPI for your own proxy (BYOP)</a>
                   </li>
                   <li>
                     <a href="#query-zincapi-for-current-byop-details" class="toc-h2 toc-link" data-title="Query ZincAPI for current BYOP details">Query ZincAPI for current BYOP details</a>
+                  </li>
+                  <li>
+                    <a href="#disable-byop" class="toc-h2 toc-link" data-title="Disable BYOP">Disable BYOP</a>
                   </li>
               </ul>
           </li>
@@ -525,6 +531,9 @@
                     <a href="#do-you-have-any-sample-code-for-using-the-api" class="toc-h2 toc-link" data-title="Do you have any sample code for using the API?">Do you have any sample code for using the API?</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#blank-offers-page" class="toc-h1 toc-link" data-title="Blank Offers Page">Blank Offers Page</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -629,7 +638,7 @@
 <tr>
 <td>Costco</td>
 <td>costco</td>
-<td>Y</td>
+<td>Y*</td>
 <td>Y</td>
 <td>Y</td>
 <td>N</td>
@@ -637,18 +646,18 @@
 <tr>
 <td>Walmart</td>
 <td>walmart</td>
-<td>Y*</td>
+<td>Y</td>
 <td>Y</td>
 <td>Y</td>
 <td>N</td>
 </tr>
 <tr>
-<td>Homedepot</td>
+<td>HomeDepot</td>
 <td>homedepot</td>
 <td>Y*</td>
-<td>N</td>
-<td>N</td>
 <td>Y</td>
+<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>Lowes</td>
@@ -661,7 +670,7 @@
 <tr>
 <td>AliExpress</td>
 <td>aliexpress</td>
-<td>Y</td>
+<td>Y*</td>
 <td>Y</td>
 <td>Y</td>
 <td>N</td>
@@ -2464,6 +2473,12 @@ regularly updated by Zinc with information about the status of the case.</p>
   <span class="nt">-d</span> <span class="s1">'{"message": "I have an update on this case"}'</span>
 </code></pre></div><h1 id='proxies'>Proxies</h1>
 <p>The Zinc API interfaces with the retailers via proxies. This enables each retailer interaction session to use unique and consistent IP addressing. Due to many factors, sometimes the bulk proxies available to us become blocked by retailers. The best path to keeping your own account from being blocked is to provide your own proxy service, by either hosting your own proxy or purchasing a proxy from a provider. We call this &quot;bring-your-own-proxy&quot; (BYOP).</p>
+<h2 id='where-do-i-get-a-proxy'>Where do I get a proxy?</h2>
+<p>We cannot recommend any specific proxy provider. Many commerical providers are
+unsuitable because their IPs are low quality and shared among many users. It is
+best to use a real residential IP address dedicated to your ordering flow.</p>
+
+<p>One option is to deploy the Zinc proxy container, on Github at <a href="https://github.com/zincio/zn-proxy">zinc/zn-proxy</a>.</p>
 <h2 id='configure-zincapi-for-your-own-proxy-byop'>Configure ZincAPI for your own proxy (BYOP)</h2>
 <p>To configure a BYOP, you must provide the retailer, email account, and full proxy connection URL.</p>
 
@@ -2534,7 +2549,9 @@ regularly updated by Zinc with information about the status of the case.</p>
   <span class="nt">-X</span> GET <span class="se">\</span>
   <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com"}'</span>
-</code></pre></div><h1 id='object-reference'>Object reference</h1><h2 id='product-object'>Product object</h2>
+</code></pre></div><h2 id='disable-byop'>Disable BYOP</h2>
+<p>Use the DELETE method instead of PUT.</p>
+<h1 id='object-reference'>Object reference</h1><h2 id='product-object'>Product object</h2>
 <blockquote>
 <p>Example product object</p>
 </blockquote>
@@ -3634,6 +3651,30 @@ accounts).</li>
 <ul>
 <li>Sample code that includes an example of a bulk order query can be found in this github <a href="https://github.com/zincio/api-samples">repo</a>.</li>
 </ul>
+<h1 id='blank-offers-page'>Blank Offers Page</h1>
+<p>Recently, Amazon has begun to return an empty page instead of a list of product offers.
+This appears to be an anti-bot response by Amazon, caused by the IP addresses used to place orders.</p>
+
+<p>This appears to primarily affect the UK, DE, and IN regions. US, CA, and FR currently appear unaffected.</p>
+
+<p>When this happens, our ordering agent will respond with the error <code>amazon_antibot_blank_offers_page</code>.</p>
+
+<p>This is done because we cannot guarantee full ordering safeguards without accessing this offers page.</p>
+
+<p>There are two workarounds that can be attempted:</p>
+
+<ol>
+<li><p>Set <code>take_buybox_offers</code> to true on the top level of the ordering object.
+This will automatically accept the first offer on the Amazon product page,
+without applying any <code>seller_selection_criteria</code>. For safety, it is
+suggested to set <code>max_price</code> and <code>max_delivery_days</code> as well. Because this
+accepts the default offer, it will not require loading the broken page.</p></li>
+<li><p>Bring your own proxy with BYOP. Ideally, you should use a real
+residential IP that is dedicated to your ordering flow. For more details,
+review the <a href="/#proxies">BYOP docs</a>.</p></li>
+</ol>
+
+<p>We will continue to monitor the situation and update this page as new details emerge.</p>
 
       </div>
       <div class="dark-box">
