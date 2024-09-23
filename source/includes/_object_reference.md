@@ -139,6 +139,7 @@ expiration_year | Number | The year of the expiration of the card (e.g. 2016)
 use_gift | Boolean | Whether or not to use the gift balance on the retailer account. If true, then the gift balance will be used for payment. Only works for retailers which support gift balance (Amazon and Walmart).
 use_account_payment_defaults | Boolean | Overrides all other payment_method options and uses the default payment configuration on the account. Only applies to Amazon orders.
 is_virtual_card | Boolean | Whether or not to check the "Virtual or one-time-use" checkbox when adding the card. Only applies to Amazon orders.
+reuse | Boolean | If true, will skip entering credit card if it is already present and we aren't prompted for it. Only applies to Amazon orders.
 
 ## Webhooks object
 
@@ -150,13 +151,14 @@ Note that the `case_updated` webhook is specifically for ZMA order cases.
 
 > Example webhooks object
 
-```shell
+```json
 {
-  "request_succeeded": "http://mywebsite.com/zinc/request_placed",
-  "request_failed": "http://mywebsite.com/zinc/request_failed",
-  "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained",
-  "status_updated": "http://mywebsite.com/zinc/status_updated",
-  "case_updated": "http://mywebsite.com/zinc/case_updated"
+  "request_succeeded": "https://example.com/zinc/request_placed",
+  "request_failed": "https://example.com/zinc/request_failed",
+  "tracking_obtained": "https://example.com/zinc/tracking_obtained",
+  "tracking_updated": "https://example.com/zinc/tracking_updated",
+  "status_updated": "https://example.com/zinc/status_updated",
+  "case_updated": "https://example.com/zinc/case_updated"
 }
 ```
 
@@ -166,10 +168,22 @@ request_succeeded | String | The webhook URL to send data to when a request succ
 order_placed | String | (deprecated) Synonym for request_succeeded (placing orders call only)
 request_failed | String | The webhook URL to send data to when a request fails
 order_failed | String | (deprecated) Synonym for request_failed (placing orders call only)
-tracking_obtained | String | The webhook URL to send data to when tracking for an order is retrieved (placing orders call only)
+tracking_obtained | String | The webhook URL to send data to when ALL tracking for an order is retrieved (placing orders call only)
+tracking_updated | String | The webhook URL to send data to when ANY tracking for an order is retrieved (placing orders call only)
 status_updated | String | The webhook URL to send data to when the status of a request is updated
+case_updated | String | The webhook URL to send data to when a ZMA case associated with the order receives an update
 
 You can optionally pass an Array of webhooks instead of a String, and Zinc will hit all of the webhooks.
+
+Note that webhooks have "at least once" delivery semantics and may be called more than one time each. If you need to do something only once on an event (for example, sending an "order completed" email in response to `request_succeeded`, you should deduplicate in your own application.
+
+Webhooks are not signed, but it is possible to increase webhook security by including a secret query parameter or HTTP basic auth credentials in the webhook, like the following:
+
+```
+https://zincapi:secret-password-here@example.com/zinc/tracking_obtained
+```
+
+Additionally, for maximum security, you can discard the body of the webhook and instead use it as a trigger to re-fetch the body from the normal `/v1/orders/:order_id` API endpoint.
 
 ## Retailer credentials object
 
