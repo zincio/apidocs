@@ -737,9 +737,9 @@
     "totp_2fa_key": "3DE4 3ERE 23WE WIKJ GRSQ VOBG CO3D METM 2NO2 OGUX Z7U4 DP2H UYMA"
   },
   "webhooks": {
-    "request_succeeded": "http://mywebsite.com/zinc/request_succeeded",
-    "request_failed": "http://mywebsite.com/zinc/requrest_failed",
-    "tracking_obtained": "http://mywebsite.com/zinc/tracking_obtained"
+    "request_succeeded": "http://example.com/zinc/request_succeeded",
+    "request_failed": "http://example.com/zinc/requrest_failed",
+    "tracking_obtained": "http://example.com/zinc/tracking_obtained"
   },
   "client_notes": {
     "our_internal_order_id": "abc123",
@@ -2857,6 +2857,11 @@ best to use a real residential IP address dedicated to your ordering flow.</p>
 <td>Boolean</td>
 <td>Whether or not to check the &quot;Virtual or one-time-use&quot; checkbox when adding the card. Only applies to Amazon orders.</td>
 </tr>
+<tr>
+<td>reuse</td>
+<td>Boolean</td>
+<td>If true, will skip entering credit card if it is already present and we aren&#39;t prompted for it. Only applies to Amazon orders.</td>
+</tr>
 </tbody></table>
 <h2 id='webhooks-object'>Webhooks object</h2>
 <p>Webhooks let you register a URL that the Zinc API notifies whenever an event happens pertaining to your account. When an event occurs, we will send a <code>POST</code> request to the URL specified in the webhooks object. If no URL was specified, then a webhook will not be sent. The body of the <code>POST</code> request is the standard raw JSON response for that object.</p>
@@ -2868,14 +2873,15 @@ best to use a real residential IP address dedicated to your ordering flow.</p>
 <blockquote>
 <p>Example webhooks object</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"request_succeeded"</span>: <span class="s2">"http://mywebsite.com/zinc/request_placed"</span>,
-  <span class="s2">"request_failed"</span>: <span class="s2">"http://mywebsite.com/zinc/request_failed"</span>,
-  <span class="s2">"tracking_obtained"</span>: <span class="s2">"http://mywebsite.com/zinc/tracking_obtained"</span>,
-  <span class="s2">"status_updated"</span>: <span class="s2">"http://mywebsite.com/zinc/status_updated"</span>,
-  <span class="s2">"case_updated"</span>: <span class="s2">"http://mywebsite.com/zinc/case_updated"</span>
-<span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"request_succeeded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/zinc/request_placed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_failed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/zinc/request_failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tracking_obtained"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/zinc/tracking_obtained"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tracking_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/zinc/tracking_updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/zinc/status_updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"case_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/zinc/case_updated"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2906,16 +2912,33 @@ best to use a real residential IP address dedicated to your ordering flow.</p>
 <tr>
 <td>tracking_obtained</td>
 <td>String</td>
-<td>The webhook URL to send data to when tracking for an order is retrieved (placing orders call only)</td>
+<td>The webhook URL to send data to when ALL tracking for an order is retrieved (placing orders call only)</td>
+</tr>
+<tr>
+<td>tracking_updated</td>
+<td>String</td>
+<td>The webhook URL to send data to when ANY tracking for an order is retrieved (placing orders call only)</td>
 </tr>
 <tr>
 <td>status_updated</td>
 <td>String</td>
 <td>The webhook URL to send data to when the status of a request is updated</td>
 </tr>
+<tr>
+<td>case_updated</td>
+<td>String</td>
+<td>The webhook URL to send data to when a ZMA case associated with the order receives an update</td>
+</tr>
 </tbody></table>
 
 <p>You can optionally pass an Array of webhooks instead of a String, and Zinc will hit all of the webhooks.</p>
+
+<p>Note that webhooks have &quot;at least once&quot; delivery semantics and may be called more than one time each. If you need to do something only once on an event (for example, sending an &quot;order completed&quot; email in response to <code>request_succeeded</code>, you should deduplicate in your own application.</p>
+
+<p>Webhooks are not signed, but it is possible to increase webhook security by including a secret query parameter or HTTP basic auth credentials in the webhook, like the following:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>https://zincapi:secret-password-here@example.com/zinc/tracking_obtained
+</code></pre></div>
+<p>Additionally, for maximum security, you can discard the body of the webhook and instead use it as a trigger to re-fetch the body from the normal <code>/v1/orders/:order_id</code> API endpoint.</p>
 <h2 id='retailer-credentials-object'>Retailer credentials object</h2>
 <blockquote>
 <p>Example retailer credentials object</p>
