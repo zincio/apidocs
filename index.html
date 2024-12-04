@@ -402,6 +402,23 @@
               </ul>
           </li>
           <li>
+            <a href="#ai-routes" class="toc-h1 toc-link" data-title="AI Routes">AI Routes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#product-search" class="toc-h2 toc-link" data-title="Product Search">Product Search</a>
+                  </li>
+                  <li>
+                    <a href="#product-details" class="toc-h2 toc-link" data-title="Product Details">Product Details</a>
+                  </li>
+                  <li>
+                    <a href="#product-variants" class="toc-h2 toc-link" data-title="Product Variants">Product Variants</a>
+                  </li>
+                  <li>
+                    <a href="#product-offers" class="toc-h2 toc-link" data-title="Product Offers">Product Offers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#zinc-managed-accounts" class="toc-h1 toc-link" data-title="Zinc Managed Accounts">Zinc Managed Accounts</a>
               <ul class="toc-list-h2">
                   <li>
@@ -2262,6 +2279,54 @@ does not exist.</p>
 <p><code>https://api.zinc.io/v1/realtime/offers/:product_id?retailer=&lt;retailer_name&gt;</code></p>
 
 <p>Usage and returned data is identical to our <a href="#product-prices">normal offers call</a>.</p>
+<h1 id='ai-routes'>AI Routes</h1>
+<p>Zinc provides API endpoints optimized for use with LLM tool-calling and
+langchain. Responses from these endpoints are intended to be passed directly to
+LLMs or intelligent agents. These endpoints are still under development, and their
+exact response formats are subject to change. If you need a consistent response
+format, consider the traditional API endpoints. These are optimized for AI.</p>
+
+<p>All of these routes can accept a retailer parameter. If retailer is omitted,
+these routes assume <code>amazon</code> i.e. Amazon.com US.</p>
+<h2 id='product-search'>Product Search</h2>
+<blockquote>
+<p>Example AI product search request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/ai/search?query<span class="o">=</span>harry+potter&amp;limit<span class="o">=</span>8 <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>Returns a simplified JSON list of search results, with up to <code>limit</code> results,
+at most one page. If further pages are required, make further calls, providing
+the <code>page</code> query parameter.</p>
+<h2 id='product-details'>Product Details</h2>
+<blockquote>
+<p>Example AI product details request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/ai/products/0923568964/details <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>Returns the same values as the typical product details endpoint, but with some
+irrelevant information omitted to decrease token count, saving money and
+context length for other uses.</p>
+<h2 id='product-variants'>Product Variants</h2>
+<blockquote>
+<p>Example AI product variants request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/ai/products/B0CF9G946H/variants <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>Returns a list of all variants available for a product with their specific
+<code>product_id</code> values.</p>
+<h2 id='product-offers'>Product Offers</h2>
+<blockquote>
+<p>Example AI product offers request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/ai/products/0923568964/offers <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;:
+</code></pre></div>
+<p>Returns the same values as the typical product offers endpoint, but with some
+irrelevant information omitted to decrease token count, saving money and
+context length for other uses.</p>
 <h1 id='zinc-managed-accounts'>Zinc Managed Accounts</h1><h2 id='overview'>Overview</h2>
 <p>Zinc Managed Accounts allow customers to place orders without worrying about
 creating and managing their own Amazon accounts. Instead, users of a Managed Account can fund a balance
