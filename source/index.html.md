@@ -15,6 +15,7 @@ includes:
   - cancellations
   - returns
   - products
+  - ai
   - addax
   - proxies
   - object_reference
