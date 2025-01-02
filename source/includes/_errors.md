@@ -34,6 +34,7 @@ incomplete_account_setup | You attempted to place an order with an account that 
 insufficient_zma_balance | Insufficient funds in your Managed Account Balance to complete the order. Add more funds through your payment channel.
 insufficient_variants | You did not select all required variants for a product.
 internal_error | Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.
+invalid_address | The provided address was incomplete or could not be parsed. Try providing an address in canonical Zinc format rather than free-form text.
 invalid_card_number | The credit card number you entered is not valid.
 invalid_client_token |  Your client token is invalid.
 invalid_expiration_date | The expiration date on your credit card is not valid.
@@ -53,6 +54,7 @@ manual_review_required | This order is under manual review by Zinc -- please che
 max_price_exceeded | The retailers final price exceeds the maximum price.
 max_quantity_exceeded | You have exceeded the maximum quantity available for a specific product.
 max_delivery_days_exceeded | This retailers estimated delivery date exceeds the max_delivery_days parameter.
+mismatching_retailer | Product URLs were provided for multiple retailers, or an explicit retailer was provided, but it did not match the provided URLs. Try again using only products from a single retailer.
 no_free_shipping | Free shipping is not available for the item(s) you selected.
 no_gift_shipping | No gift shipping was available on this order.
 no_two_day_shipping | Two day shipping (or faster) is not available for the item(s) you selected.
@@ -65,5 +67,6 @@ shipping_address_refused | The shipping address you provided was refused by the 
 shipping_address_unavailable | The item(s) cannot be shipped to the selected shipping address.
 shipping_method_unavailable | The selected shipping_method is not available for the selected shipping_address.
 unauthorized_access | You are not authorized to make this API call. Please contact support@zinc.io. (Usually, attempting to use Addax before it has been enabled)
+unknown_retailer | The provided product URLs did not correspond to a known supported retailer. Check the URL and try again, or use a different request format with explicit retailer.
 unsupported_product_id | The item product_id is not specific enough. Choose a specific product_id to order.
-zma_temporarily_overloaded | The ZMA system was unable to place your order within 4 hours.
+zma_temporarily_overloaded | The ZMA system was unable to place your order within 4 hours. Try again later, or check your parameters.
