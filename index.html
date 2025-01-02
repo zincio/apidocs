@@ -416,6 +416,9 @@
                   <li>
                     <a href="#product-offers" class="toc-h2 toc-link" data-title="Product Offers">Product Offers</a>
                   </li>
+                  <li>
+                    <a href="#product-ordering" class="toc-h2 toc-link" data-title="Product Ordering">Product Ordering</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2327,6 +2330,80 @@ context length for other uses.</p>
 <p>Returns the same values as the typical product offers endpoint, but with some
 irrelevant information omitted to decrease token count, saving money and
 context length for other uses.</p>
+<h2 id='product-ordering'>Product Ordering</h2>
+<p>Unlike some of the other AI routes, this one is a progressive enhancement from our
+<a href="/#orders">traditional ordering flow</a>. Most parameters of the standard order have been
+made optional, with only <code>products</code> and <code>shipping_address</code> required. Additionally,
+<code>products</code> has been modified so that URLs can be supplied instead of product_ids.</p>
+
+<p>Orders will use ZMA (aka <code>addax</code>) by default. The default <code>shipping_method</code> is <code>cheapest</code>.
+The default <code>max_price</code> is $1,000,000 (i.e. functionally unlimited). The default shipping
+phone number (if not provided) is 555-555-5555. Any of these values can be overridden by
+providing them as shown in the standard order flow documentation.</p>
+
+<p>Three schemas are permitted for <code>products</code>:</p>
+
+<ol>
+<li><p>The list of URLs, where retailer is inferred, and quantity is assumed to be 1
+<code>
+{
+&quot;products&quot;: [&quot;https://www.amazon.com/dp/B07986PWD3&quot;]
+}
+</code></p></li>
+<li><p>The traditional standard, when retailer is explicitly provided
+<code>
+{
+&quot;retailer&quot;: &quot;amazon&quot;,
+&quot;products&quot;: [
+{&quot;product_id&quot;: &quot;B07986PWD3&quot;, &quot;quantity&quot;: 1}
+]
+}
+</code></p></li>
+<li><p>The list of objects with URLs, where retailer is inferred
+<code>
+{
+&quot;products&quot;: [
+{&quot;url&quot;:&quot;https://www.amazon.com/dp/B07986PWD3&quot;, &quot;quantity&quot;:3}
+]
+}
+</code></p></li>
+</ol>
+
+<p>Note that each order can have any number of products from a single retailer, but cannot
+mix products between multiple retailers.</p>
+
+<p>Additionally, for US addresses only, the shipping address can be provided as a free-form
+string. This will be parsed, normalized, and canonicalized by a proprietary lite geocoding
+implementation. This feature is experimental, and for best results, we recommend either
+collecting a structured address directly from your customer, or integrating a true
+geocoding solution, like <a href="https://developers.google.com/maps/documentation/geocoding/start">Google&#39;s
+geocoder</a> or
+<a href="https://nominatim.org/">Nominatim</a>.</p>
+
+<blockquote>
+<p>Example AI product ordering request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.zinc.io/v1/orders <span class="se">\</span>
+  <span class="nt">-u</span> &lt;client_token&gt;: <span class="se">\</span>
+  <span class="nt">-H</span> content-type:application/json <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "products": ["https://www.amazon.com/dp/B07986PWD3"],
+    "shipping_address": {
+      "first_name": "Bob",
+      "last_name": "Smith",
+      "address_line1": "1234 Main St",
+      "city": "New York",
+      "state": "NY",
+      "zip_code": "10001",
+      "country": "us"
+    }
+  }'</span>
+</code></pre></div>
+<p>The response will either have <code>&quot;_type&quot;: &quot;error&quot;</code> and a corresponding <code>code</code>, <code>message</code>,
+and <code>data</code>, or it will have a <code>request_id</code> parameter, which allows the
+<code>/v1/orders/:request_id</code> endpoint to be polled to determine response status. It can take
+between 5 and 15 minutes to process an Amazon order, and up to 6 hours to process orders
+on other retailers.</p>
 <h1 id='zinc-managed-accounts'>Zinc Managed Accounts</h1><h2 id='overview'>Overview</h2>
 <p>Zinc Managed Accounts allow customers to place orders without worrying about
 creating and managing their own Amazon accounts. Instead, users of a Managed Account can fund a balance
@@ -3546,6 +3623,10 @@ best to use a real residential IP address dedicated to your ordering flow.</p>
 <td>Zinc or the retailer you requested is experiencing outages. Please try again or contact support@zinc.io if this error persists.</td>
 </tr>
 <tr>
+<td>invalid_address</td>
+<td>The provided address was incomplete or could not be parsed. Try providing an address in canonical Zinc format rather than free-form text.</td>
+</tr>
+<tr>
 <td>invalid_card_number</td>
 <td>The credit card number you entered is not valid.</td>
 </tr>
@@ -3622,6 +3703,10 @@ best to use a real residential IP address dedicated to your ordering flow.</p>
 <td>This retailers estimated delivery date exceeds the max_delivery_days parameter.</td>
 </tr>
 <tr>
+<td>mismatching_retailer</td>
+<td>Product URLs were provided for multiple retailers, or an explicit retailer was provided, but it did not match the provided URLs. Try again using only products from a single retailer.</td>
+</tr>
+<tr>
 <td>no_free_shipping</td>
 <td>Free shipping is not available for the item(s) you selected.</td>
 </tr>
@@ -3670,12 +3755,16 @@ best to use a real residential IP address dedicated to your ordering flow.</p>
 <td>You are not authorized to make this API call. Please contact support@zinc.io. (Usually, attempting to use Addax before it has been enabled)</td>
 </tr>
 <tr>
+<td>unknown_retailer</td>
+<td>The provided product URLs did not correspond to a known supported retailer. Check the URL and try again, or use a different request format with explicit retailer.</td>
+</tr>
+<tr>
 <td>unsupported_product_id</td>
 <td>The item product_id is not specific enough. Choose a specific product_id to order.</td>
 </tr>
 <tr>
 <td>zma_temporarily_overloaded</td>
-<td>The ZMA system was unable to place your order within 4 hours.</td>
+<td>The ZMA system was unable to place your order within 4 hours. Try again later, or check your parameters.</td>
 </tr>
 </tbody></table>
 <h1 id='frequently-asked-questions'>Frequently Asked Questions</h1><h3 id='if-we-wish-to-place-a-large-quantity-of-orders-is-it-best-to-place-a-large-number-of-orders-with-one-product-per-order-or-a-smaller-number-of-orders-with-multiple-products-in-each'>If we wish to place a large quantity of orders, is it best to place a large number of orders with one product per order or a smaller number of orders with multiple products in each?</h3>
