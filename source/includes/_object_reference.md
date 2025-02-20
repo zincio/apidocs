@@ -37,7 +37,7 @@ seller_selection_criteria | Object | A [seller selection criteria](#seller-selec
 }
 ```
 
-Seller selection criteria allow you to filter multiple offers for a product from a retailer. They give you fine grained control when a retailer has multiple offers for a single product. This happens frequently when third party or affiliated merchants are selling on a platform, such as o Amazon.
+Seller selection criteria allow you to filter multiple offers for a product from a retailer. They give you fine grained control when a retailer has multiple offers for a single product. This happens frequently when third party or affiliated merchants are selling on a platform such as Amazon.
 
 The seller selection criteria serve as a series of optional filters to narrow down the potential set of offers to something reasonable. After all the filters have been applied, Zinc will select the cheapest offer that is still available. For example, if `"handling_days_max": 6` is applied, then the Zinc API will order the cheapest offer where the shipping will arrive in 6 days or less.
 
